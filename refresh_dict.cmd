@@ -1,0 +1,54 @@
+@echo off
+rem Regenerate the SBU + XBU Salesforce data dictionary and commit the result.
+rem Read-only against both production orgs: sobject describes + Tooling queries.
+rem Run by Windows Task Scheduler on the last day of each month (install_task.cmd).
+rem
+rem Deliberately does NOT push. A background push that fails on an expired
+rem credential fails silently into the log; the commit is what preserves the
+rem baseline, so push by hand when convenient.
+setlocal
+set R=%~dp0
+set R=%R:~0,-1%
+set LOG=%R%\refresh.log
+
+echo. >> "%LOG%"
+echo ==== start %DATE% %TIME% ==== >> "%LOG%"
+cd /d "%R%" || exit /b 1
+
+rem Today, and the date of the previous run (from the changes file this run
+rem is about to replace). Both read before anything is overwritten.
+for /f %%d in ('node -e "console.log(new Date().toISOString().slice(0,10))"') do set TODAY=%%d
+set PREV_DATE=
+for /f %%d in ('node -e "try{console.log(require(process.argv[1]).genDate)}catch(e){console.log('''')}" "%R%\changes.json"') do set PREV_DATE=%%d
+if "%PREV_DATE%"=="" (
+  echo FATAL: cannot determine previous run date from changes.json >> "%LOG%"
+  goto :fail
+)
+echo previous run %PREV_DATE%, this run %TODAY% >> "%LOG%"
+
+rem The scan overwrites the snapshot in place, so set the old one aside first.
+if not exist "%R%\.prev" mkdir "%R%\.prev"
+copy /y "%R%\sbu_data.json" "%R%\.prev\sbu_data.json" >nul || goto :fail
+copy /y "%R%\xbu_data.json" "%R%\.prev\xbu_data.json" >nul || goto :fail
+
+node scan_org2.js production sbu "%R%\sbu_data.json" "%R%\md_sbu"  >> "%LOG%" 2>&1 || goto :fail
+node scan_org2.js xbu        xbu "%R%\xbu_data.json" "%R%\md"      >> "%LOG%" 2>&1 || goto :fail
+
+rem Diff against the snapshot set aside above, then tag each added field with its
+rem real CreatedDate so an FLS grant is not reported as a newly created field.
+node diff_snapshot.js "%R%\.prev" %PREV_DATE%  >> "%LOG%" 2>&1 || goto :fail
+node enrich_changes.js %PREV_DATE%             >> "%LOG%" 2>&1 || goto :fail
+
+node pack.js %TODAY%       >> "%LOG%" 2>&1 || goto :fail
+node build_dict_html3.js   >> "%LOG%" 2>&1 || goto :fail
+node validate_merged.js    >> "%LOG%" 2>&1 || goto :fail
+
+git -C "%R%" add -A                                 >> "%LOG%" 2>&1
+git -C "%R%" commit -m "dictionary refresh %TODAY%" >> "%LOG%" 2>&1
+
+echo ==== ok %DATE% %TIME% ==== >> "%LOG%"
+exit /b 0
+
+:fail
+echo ==== FAILED errorlevel %errorlevel% at %DATE% %TIME% ==== >> "%LOG%"
+exit /b 1

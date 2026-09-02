@@ -1,0 +1,5 @@
+# This repo depends on byte-exact reproducibility: the built page is compared
+# byte-for-byte against its source, and validate_merged.js locates the explorer
+# script using \n anchors. Any CRLF translation on checkout breaks both.
+# Store and check out every file exactly as committed.
+* -text

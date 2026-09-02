@@ -1,0 +1,2141 @@
+{
+ "sbu": {
+  "prevObjects": 429,
+  "curObjects": 546,
+  "prevFields": 12206,
+  "curFields": 14766,
+  "objAdded": [],
+  "objRemoved": [],
+  "churnAdded": [
+   "AccountContactRelation",
+   "ActionPlan",
+   "ActiveScratchOrg",
+   "Address",
+   "AgentWork",
+   "ApprovalSubmission",
+   "ApprovalSubmissionDetail",
+   "ApprovalWorkItem",
+   "AssetRelationship",
+   "AssociatedLocation",
+   "AsyncOperationTracker",
+   "AttributeCategory",
+   "AttributeCategoryAttribute",
+   "AttributeDefinition",
+   "AttributePicklist",
+   "AttributePicklistValue",
+   "AttrPicklistExcludedValue",
+   "AuthorizationForm",
+   "AuthorizationFormConsent",
+   "AuthorizationFormDataUse",
+   "AuthorizationFormText",
+   "BroadcastTopic",
+   "BroadcastTopicCollabRoom",
+   "BroadcastTopicUserRole",
+   "BusinessBrand",
+   "CalcMatrixColumnRange",
+   "CalcProcStepRelationship",
+   "CalculationMatrix",
+   "CalculationMatrixColumn",
+   "CalculationMatrixRow",
+   "CalculationMatrixVersion",
+   "CalculationProcedure",
+   "CalculationProcedureStep",
+   "CalculationProcedureVariable",
+   "CalculationProcedureVersion",
+   "CaseRelatedIssue",
+   "ChangeRequest",
+   "ChangeRequestRelatedIssue",
+   "ChangeRequestRelatedItem",
+   "CommSubscription",
+   "CommSubscriptionChannelType",
+   "CommSubscriptionConsent",
+   "CommSubscriptionTiming",
+   "ContactPointAddress",
+   "ContactPointConsent",
+   "ContactPointEmail",
+   "ContactPointPhone",
+   "ContactPointTypeConsent",
+   "ContactRequest",
+   "ContentVersion",
+   "ContractLineItem",
+   "Customer",
+   "DataUseLegalBasis",
+   "DataUsePurpose",
+   "DelegatedAccount",
+   "DuplicateRecordItem",
+   "DuplicateRecordSet",
+   "EngagementChannelType",
+   "EntityMilestone",
+   "ExpressionSet",
+   "ExpressionSetVersion",
+   "FlowOrchestrationInstance",
+   "FlowOrchestrationLog",
+   "FlowOrchestrationStageInstance",
+   "FlowOrchestrationStepInstance",
+   "FlowOrchestrationWorkItem",
+   "Idea",
+   "Image",
+   "Incident",
+   "IncidentRelatedItem",
+   "Individual",
+   "LinkedArticle",
+   "Location",
+   "LocationTrustMeasure",
+   "Macro",
+   "MessagingEndUser",
+   "MessagingSession",
+   "NamespaceRegistry",
+   "OperatingHours",
+   "OperatingHoursHoliday",
+   "OpportunityContactRole",
+   "OpportunityTeamMember",
+   "PartyConsent",
+   "Problem",
+   "ProblemIncident",
+   "ProblemRelatedItem",
+   "ProcessException",
+   "ProductAttributeDefinition",
+   "ProductCatalog",
+   "ProductCategory",
+   "ProductCategoryDisqual",
+   "ProductCategoryProduct",
+   "ProductCategoryQualification",
+   "ProductClassification",
+   "ProductClassificationAttr",
+   "ProductComponentGroup",
+   "ProductComponentGrpOverride",
+   "ProductConfigFlowAssignment",
+   "ProductConfigurationFlow",
+   "ProductDisqualification",
+   "ProductQualification",
+   "ProductRelatedComponent",
+   "ProductRelationshipType",
+   "ProductRelComponentOverride",
+   "ProductSellingModel",
+   "QuickText",
+   "Recommendation",
+   "RecordAction",
+   "RevenueAsyncOperation",
+   "RevenueTransactionErrorLog",
+   "Scorecard",
+   "ScorecardAssociation",
+   "ScorecardMetric",
+   "ScratchOrgInfo",
+   "Seller",
+   "ServiceResource",
+   "ServiceResourceSkill",
+   "SharingRecordCollection",
+   "SkillRequirement",
+   "SocialPersona",
+   "SocialPost",
+   "Solution",
+   "SurveyInvitation",
+   "SurveySubject",
+   "Swarm",
+   "TimeSlot",
+   "UnitOfMeasure",
+   "UserProvisioningRequest",
+   "UserServicePresence",
+   "VideoCall",
+   "VideoCallParticipant",
+   "VoiceCall",
+   "WorkPlan",
+   "WorkPlanTemplate",
+   "WorkPlanTemplateEntry",
+   "WorkStep",
+   "WorkStepTemplate"
+  ],
+  "churnRemoved": [
+   "beynd__GuideCX_Create_Project__e",
+   "cases_Deleted__e",
+   "ChargentBase__Aggregation_After_Commit__e",
+   "ChargentBase__Aggregation_Immediate__e",
+   "ChargentBase__Chargent_Event__e",
+   "dlrs__UserNotification__e",
+   "RDNACadence__Custom_Call_Notification__e",
+   "RDNACadence__Dml__e",
+   "RDNACadence__Email__e",
+   "RDNACadence__Email_Action_Event__e",
+   "RDNACadence__Sequence_Action_Event__e",
+   "RDNACadence__Sequence_Action_Field_Update__e",
+   "RDNACadence__Sequence_Error__e",
+   "RDNACadence__Sequence_History_Event__e",
+   "ringcx_sf__Record_Changed_Event__e",
+   "ringdna100__Dml__e",
+   "ringdna100__Email_Action_Event__e",
+   "ringdna100__Error__e",
+   "slackv2__Subscription_Error__e",
+   "slackv2__Subscription_Event__e"
+  ],
+  "fAdded": [
+   {
+    "obj": "Billing_Case_Request__c",
+    "field": "Account_Name_frml__c",
+    "label": "Account Name",
+    "type": "string",
+    "created": "2026-08-25",
+    "newInWindow": false
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Age_Mins__c",
+    "label": "Case Age (Mins)",
+    "type": "double",
+    "created": "2026-08-26",
+    "newInWindow": true
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Billing_Notes__c",
+    "label": "Billing Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "OpportunityLineItem",
+    "field": "Opportunity_Product_Names__c",
+    "label": "Opportunity Product Names",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "AI_Summary_Notes__c",
+    "label": "AI Summary Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Admin_Training_Date__c",
+    "label": "Admin Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Archived__c",
+    "label": "Archived",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Asset_List__c",
+    "label": "Asset List",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "At_Risk__c",
+    "label": "At Risk",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Brand_Opportunity__c",
+    "label": "Brand - Opportunity",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Cancellation_Date__c",
+    "label": "Cancellation Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Cashier_Training_Date__c",
+    "label": "Cashier Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Confidence__c",
+    "label": "Confidence",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Customer_Team_Members__c",
+    "label": "Customer Team Members",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case_Status__c",
+    "label": "Data Migration Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case__c",
+    "label": "Data Migration Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Completed__c",
+    "label": "Data Migration Completed",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Confirmed_Tested_By__c",
+    "label": "Data Migration Confirmed/Tested By",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Owner__c",
+    "label": "Data Migration Owner",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Status__c",
+    "label": "Data Migration Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Tier__c",
+    "label": "Data Migration Tier",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration__c",
+    "label": "Data Migration",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Dealroom_Link__c",
+    "label": "Dealroom Link",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Delivered__c",
+    "label": "Delivered",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Does_your_business_accept_EBT_SNAP__c",
+    "label": "Does your business accept EBT (SNAP)?",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Done_Date__c",
+    "label": "Done Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "External_Project_ID__c",
+    "label": "External Project ID",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "First_Processing_Date_100__c",
+    "label": "First Processing Date ($100)",
+    "type": "datetime",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case_Status__c",
+    "label": "Fulfillment Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case__c",
+    "label": "Fulfillment Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Go_Live_Notes__c",
+    "label": "Go Live Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Go_Live__c",
+    "label": "Go-Live",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_NOT_Setup__c",
+    "label": "Hardware NOT Setup",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_Setup_Date__c",
+    "label": "Hardware Setup Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_Setup__c",
+    "label": "Hardware Setup",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware__c",
+    "label": "Hardware",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "IS_Note__c",
+    "label": "IS Note",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Industry__c",
+    "label": "Industry",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Limited_Payments__c",
+    "label": "Limited Payments",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Modules_Completed__c",
+    "label": "Modules Completed",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Modules_Remaining__c",
+    "label": "Modules Remaining",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "OnRamp_Status__c",
+    "label": "OnRamp Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Onboarding_Kick_Off_Call__c",
+    "label": "Onboarding Kick Off Call",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Onramp_Project_ID__c",
+    "label": "Onramp Project ID",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity_Notes__c",
+    "label": "Opportunity Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity__c",
+    "label": "Opportunity",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "PM_Note__c",
+    "label": "PM Note",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "POS_Software__c",
+    "label": "POS Software",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payment_Processing__c",
+    "label": "Payment Processing",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case_Status__c",
+    "label": "Payments Onboarding Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case__c",
+    "label": "Payments Onboarding Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Planned_End_Date__c",
+    "label": "Planned End Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Playbook__c",
+    "label": "Playbook",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Post_Go_Live__c",
+    "label": "Post-Go Live",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Post_Live_Notes__c",
+    "label": "Post-Live Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Primary_Contact__c",
+    "label": "Primary Contact",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Processor__c",
+    "label": "Processor",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Product_List__c",
+    "label": "Product List",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Products__c",
+    "label": "Products",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Age__c",
+    "label": "Project Age",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Cancellation_Reason__c",
+    "label": "Project Cancellation Reason",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Link__c",
+    "label": "Project Link",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Manager__c",
+    "label": "Project Manager",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Name__c",
+    "label": "Project Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Status__c",
+    "label": "Project Status",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Value__c",
+    "label": "Project Value",
+    "type": "currency",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Rate_Type__c",
+    "label": "Rate Type",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Retail_Dashboard_URL__c",
+    "label": "Retail Dashboard URL",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Software_Training_Date__c",
+    "label": "Software Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Source_Object_Id__c",
+    "label": "Source Object Id",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Staff_and_Training__c",
+    "label": "Staff and Training",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Start_Date__c",
+    "label": "Start Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tags__c",
+    "label": "Tags",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tracking_Numbers__c",
+    "label": "Tracking Numbers",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Training_Date__c",
+    "label": "Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Training_Participants__c",
+    "label": "Training Participants",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Owner__c",
+    "label": "Website Onboarding Case Owner",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Status__c",
+    "label": "Website Onboarding Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case__c",
+    "label": "Website Onboarding Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Tier__c",
+    "label": "Website Onboarding Tier",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Status__c",
+    "label": "Website Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "What_features_do_they_need_most__c",
+    "label": "What features do they need most?",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "What_is_the_Target_Go_Live_Date__c",
+    "label": "What is the Target Go-Live Date?",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Workflow_Gaps__c",
+    "label": "Workflow Gaps",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "X35_Days_Orientation__c",
+    "label": "35 Days Orientation",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Age__c",
+    "label": "Age",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Contact_Email__c",
+    "label": "Contact Email",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Contact_Phone__c",
+    "label": "Contact Phone",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case_URL__c",
+    "label": "Data Migration Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Owner_Name__c",
+    "label": "Data Migration Owner Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case_URL__c",
+    "label": "Fulfillment Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity_Type__c",
+    "label": "Opportunity Type",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case_URL__c",
+    "label": "Payments Onboarding Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Pre_Migration_Software__c",
+    "label": "Pre-Migration Software",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Primary_Contact_Name2__c",
+    "label": "Primary Contact Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Type__c",
+    "label": "Project Type",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tenant_ID__c",
+    "label": "Tenant ID",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Time_to_Value__c",
+    "label": "Time to Value",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Total_Modules__c",
+    "label": "Total Modules",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Owner_Name__c",
+    "label": "Website Onboarding Case Owner Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_URL__c",
+    "label": "Website Onboarding Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Old_Record_ID__c",
+    "label": "Old Record ID",
+    "type": "string",
+    "created": "2026-08-20",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "Profile_Last_Confirmed__c",
+    "label": "Profile Last Confirmed",
+    "type": "date",
+    "created": "2026-08-26",
+    "newInWindow": true
+   }
+  ],
+  "fRemoved": [
+   {
+    "obj": "Case",
+    "field": "Upsell__c",
+    "label": "Upsell?",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Testing_Completion_Date__c",
+    "label": "Testing Completion Date",
+    "type": "datetime"
+   }
+  ],
+  "fChanged": [
+   {
+    "obj": "User",
+    "field": "Department__c",
+    "label": "Department",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Business Operations",
+       "IT",
+       "Other"
+      ],
+      "removed": [
+       "Information Technology",
+       "Legal"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "Location_Country__c",
+    "label": "Location - Country",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Other"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "Role__c",
+    "label": "Role",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Coordinator",
+       "Accountant",
+       "Analyst",
+       "Rev Operations Analyst",
+       "Specialist",
+       "Sr. Specialist",
+       "Engineer",
+       "QA",
+       "Architect",
+       "Team Lead",
+       "Director",
+       "Sr Director",
+       "Vice President",
+       "Sr. Vice President",
+       "Executive Vice President",
+       "C-Suite/President",
+       "Other"
+      ],
+      "removed": [
+       "Quality Analyst",
+       "Implementation Specialist",
+       "Sr. Implementation Specialist",
+       "Leadership"
+      ],
+      "reordered": false
+     }
+    ]
+   }
+  ],
+  "addedCreatedInWindow": 2,
+  "addedPreexisting": 101,
+  "addedUnknownCreated": 0
+ },
+ "xbu": {
+  "prevObjects": 432,
+  "curObjects": 546,
+  "prevFields": 12375,
+  "curFields": 14983,
+  "objAdded": [],
+  "objRemoved": [],
+  "churnAdded": [
+   "AccountContactRelation",
+   "ActionPlan",
+   "ActiveScratchOrg",
+   "Address",
+   "AgentWork",
+   "ApprovalSubmission",
+   "ApprovalSubmissionDetail",
+   "ApprovalWorkItem",
+   "AssetRelationship",
+   "AssociatedLocation",
+   "AsyncOperationTracker",
+   "AttributeCategory",
+   "AttributeCategoryAttribute",
+   "AttributeDefinition",
+   "AttributePicklist",
+   "AttributePicklistValue",
+   "AttrPicklistExcludedValue",
+   "AuthorizationForm",
+   "AuthorizationFormConsent",
+   "AuthorizationFormDataUse",
+   "AuthorizationFormText",
+   "BroadcastTopic",
+   "BroadcastTopicCollabRoom",
+   "BroadcastTopicUserRole",
+   "BusinessBrand",
+   "CalcMatrixColumnRange",
+   "CalcProcStepRelationship",
+   "CalculationMatrix",
+   "CalculationMatrixColumn",
+   "CalculationMatrixRow",
+   "CalculationMatrixVersion",
+   "CalculationProcedure",
+   "CalculationProcedureStep",
+   "CalculationProcedureVariable",
+   "CalculationProcedureVersion",
+   "CommSubscription",
+   "CommSubscriptionChannelType",
+   "CommSubscriptionConsent",
+   "CommSubscriptionTiming",
+   "ContactPointAddress",
+   "ContactPointConsent",
+   "ContactPointEmail",
+   "ContactPointPhone",
+   "ContactPointTypeConsent",
+   "ContactRequest",
+   "ContentVersion",
+   "ContractLineItem",
+   "Customer",
+   "DataUseLegalBasis",
+   "DataUsePurpose",
+   "DelegatedAccount",
+   "DuplicateRecordItem",
+   "DuplicateRecordSet",
+   "EngagementAttendee",
+   "EngagementChannelType",
+   "EngagementInteraction",
+   "EngagementTopic",
+   "ExpressionSet",
+   "ExpressionSetVersion",
+   "FlowOrchestrationInstance",
+   "FlowOrchestrationLog",
+   "FlowOrchestrationStageInstance",
+   "FlowOrchestrationStepInstance",
+   "FlowOrchestrationWorkItem",
+   "ForecastingCustomData",
+   "Idea",
+   "Image",
+   "Individual",
+   "LinkedArticle",
+   "Location",
+   "LocationTrustMeasure",
+   "Macro",
+   "MessagingEndUser",
+   "MessagingSession",
+   "NamespaceRegistry",
+   "OperatingHours",
+   "OperatingHoursHoliday",
+   "OpportunityContactRole",
+   "OpportunityLineItemSplit",
+   "OpportunitySplit",
+   "OpportunityTeamMember",
+   "PartyConsent",
+   "ProcessException",
+   "ProductAttributeDefinition",
+   "ProductCatalog",
+   "ProductCategory",
+   "ProductCategoryDisqual",
+   "ProductCategoryProduct",
+   "ProductCategoryQualification",
+   "ProductClassification",
+   "ProductClassificationAttr",
+   "ProductComponentGroup",
+   "ProductComponentGrpOverride",
+   "ProductConfigFlowAssignment",
+   "ProductConfigurationFlow",
+   "ProductDisqualification",
+   "ProductQualification",
+   "ProductRelatedComponent",
+   "ProductRelationshipType",
+   "ProductRelComponentOverride",
+   "ProductSellingModel",
+   "ProfileSkill",
+   "ProfileSkillEndorsement",
+   "ProfileSkillUser",
+   "QuickText",
+   "Recommendation",
+   "RecordAction",
+   "RecordAlert",
+   "RevenueAsyncOperation",
+   "RevenueTransactionErrorLog",
+   "Scorecard",
+   "ScorecardAssociation",
+   "ScorecardMetric",
+   "ScratchOrgInfo",
+   "Seller",
+   "ServiceResource",
+   "SharingRecordCollection",
+   "SocialPersona",
+   "SocialPost",
+   "Solution",
+   "SurveyInvitation",
+   "SurveySubject",
+   "Swarm",
+   "TimeSlot",
+   "UnitOfMeasure",
+   "UserProvisioningRequest",
+   "UserServicePresence",
+   "VideoCall",
+   "VideoCallParticipant",
+   "VoiceCall",
+   "WorkBadge",
+   "WorkBadgeDefinition",
+   "WorkThanks"
+  ],
+  "churnRemoved": [
+   "beynd__GuideCX_Create_Project__e",
+   "Case_Deleted__e",
+   "cases_Deleted__e",
+   "dlrs__UserNotification__e",
+   "RDNACadence__Custom_Call_Notification__e",
+   "RDNACadence__Dml__e",
+   "RDNACadence__Email__e",
+   "RDNACadence__Email_Action_Event__e",
+   "RDNACadence__Sequence_Action_Event__e",
+   "RDNACadence__Sequence_Action_Field_Update__e",
+   "RDNACadence__Sequence_Error__e",
+   "RDNACadence__Sequence_History_Event__e",
+   "ringcx_sf__Record_Changed_Event__e",
+   "ringdna100__Dml__e",
+   "ringdna100__Email_Action_Event__e",
+   "ringdna100__Error__e",
+   "slackv2__Subscription_Error__e",
+   "slackv2__Subscription_Event__e",
+   "zkmulti__Shipment_Event__e"
+  ],
+  "fAdded": [
+   {
+    "obj": "Account",
+    "field": "Software_Migration_Date__c",
+    "label": "Software Migration Date",
+    "type": "date",
+    "created": "2026-08-27",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Age_Mins__c",
+    "label": "Case Age (Mins)",
+    "type": "double",
+    "created": "2026-08-26",
+    "newInWindow": true
+   },
+   {
+    "obj": "Contact",
+    "field": "Account_Type__c",
+    "label": "Account Type",
+    "type": "string",
+    "created": "2026-08-26",
+    "newInWindow": true
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Onboarding_Project_Created__c",
+    "label": "Onboarding Project Created",
+    "type": "boolean",
+    "created": "2026-08-27",
+    "newInWindow": true
+   },
+   {
+    "obj": "Project__c",
+    "field": "AI_Summary_Notes__c",
+    "label": "AI Summary Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Admin_Training_Date__c",
+    "label": "Admin Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Archived__c",
+    "label": "Archived",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Asset_List__c",
+    "label": "Asset List",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "At_Risk__c",
+    "label": "At Risk",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Brand_Opportunity__c",
+    "label": "Brand - Opportunity",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Cancellation_Date__c",
+    "label": "Cancellation Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Cashier_Training_Date__c",
+    "label": "Cashier Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Confidence__c",
+    "label": "Confidence",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Customer_Team_Members__c",
+    "label": "Customer Team Members",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case_Status__c",
+    "label": "Data Migration Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case__c",
+    "label": "Data Migration Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Completed__c",
+    "label": "Data Migration Completed",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Confirmed_Tested_By__c",
+    "label": "Data Migration Confirmed/Tested By",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Owner__c",
+    "label": "Data Migration Owner",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Status__c",
+    "label": "Data Migration Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Tier__c",
+    "label": "Data Migration Tier",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration__c",
+    "label": "Data Migration",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Dealroom_Link__c",
+    "label": "Dealroom Link",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Delivered__c",
+    "label": "Delivered",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Does_your_business_accept_EBT_SNAP__c",
+    "label": "Does your business accept EBT (SNAP)?",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Done_Date__c",
+    "label": "Done Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "First_Processing_Date_100__c",
+    "label": "First Processing Date ($100)",
+    "type": "datetime",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case_Status__c",
+    "label": "Fulfillment Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case__c",
+    "label": "Fulfillment Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Go_Live_Notes__c",
+    "label": "Go Live Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Go_Live__c",
+    "label": "Go-Live",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_NOT_Setup__c",
+    "label": "Hardware NOT Setup",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_Setup_Date__c",
+    "label": "Hardware Setup Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware_Setup__c",
+    "label": "Hardware Setup",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Hardware__c",
+    "label": "Hardware",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "IS_Note__c",
+    "label": "IS Note",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Industry__c",
+    "label": "Industry",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Limited_Payments__c",
+    "label": "Limited Payments",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Modules_Completed__c",
+    "label": "Modules Completed",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Modules_Remaining__c",
+    "label": "Modules Remaining",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "OnRamp_Status__c",
+    "label": "OnRamp Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Onboarding_Kick_Off_Call__c",
+    "label": "Onboarding Kick Off Call",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Onramp_Project_ID__c",
+    "label": "Onramp Project ID",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity_Notes__c",
+    "label": "Opportunity Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity__c",
+    "label": "Opportunity",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "PM_Note__c",
+    "label": "PM Note",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "POS_Software__c",
+    "label": "POS Software",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payment_Processing__c",
+    "label": "Payment Processing",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case_Status__c",
+    "label": "Payments Onboarding Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case__c",
+    "label": "Payments Onboarding Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Planned_End_Date__c",
+    "label": "Planned End Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Playbook__c",
+    "label": "Playbook",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Post_Go_Live__c",
+    "label": "Post-Go Live",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Post_Live_Notes__c",
+    "label": "Post-Live Notes",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Primary_Contact__c",
+    "label": "Primary Contact",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Processor__c",
+    "label": "Processor",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Product_List__c",
+    "label": "Product List",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Products__c",
+    "label": "Products",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Age__c",
+    "label": "Project Age",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Cancellation_Reason__c",
+    "label": "Project Cancellation Reason",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Link__c",
+    "label": "Project Link",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Manager__c",
+    "label": "Project Manager",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Name__c",
+    "label": "Project Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Status__c",
+    "label": "Project Status",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Value__c",
+    "label": "Project Value",
+    "type": "currency",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Rate_Type__c",
+    "label": "Rate Type",
+    "type": "picklist",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Retail_Dashboard_URL__c",
+    "label": "Retail Dashboard URL",
+    "type": "url",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Software_Training_Date__c",
+    "label": "Software Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Source_Object_Id__c",
+    "label": "Source Object Id",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Staff_and_Training__c",
+    "label": "Staff and Training",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Start_Date__c",
+    "label": "Start Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tags__c",
+    "label": "Tags",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tracking_Numbers__c",
+    "label": "Tracking Numbers",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Training_Date__c",
+    "label": "Training Date",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Training_Participants__c",
+    "label": "Training Participants",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Owner__c",
+    "label": "Website Onboarding Case Owner",
+    "type": "reference",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Status__c",
+    "label": "Website Onboarding Case Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case__c",
+    "label": "Website Onboarding Case",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Tier__c",
+    "label": "Website Onboarding Tier",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Status__c",
+    "label": "Website Status",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "What_features_do_they_need_most__c",
+    "label": "What features do they need most?",
+    "type": "textarea",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "What_is_the_Target_Go_Live_Date__c",
+    "label": "What is the Target Go-Live Date?",
+    "type": "date",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Workflow_Gaps__c",
+    "label": "Workflow Gaps",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "X35_Days_Orientation__c",
+    "label": "35 Days Orientation",
+    "type": "boolean",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Age__c",
+    "label": "Age",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Contact_Email__c",
+    "label": "Contact Email",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Contact_Phone__c",
+    "label": "Contact Phone",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Case_URL__c",
+    "label": "Data Migration Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Data_Migration_Owner_Name__c",
+    "label": "Data Migration Owner Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Fulfillment_Case_URL__c",
+    "label": "Fulfillment Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Opportunity_Type__c",
+    "label": "Opportunity Type",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Payments_Onboarding_Case_URL__c",
+    "label": "Payments Onboarding Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Pre_Migration_Software__c",
+    "label": "Pre-Migration Software",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Primary_Contact_Name2__c",
+    "label": "Primary Contact Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Project_Type__c",
+    "label": "Project Type",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Tenant_ID__c",
+    "label": "Tenant ID",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Time_to_Value__c",
+    "label": "Time to Value",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Total_Modules__c",
+    "label": "Total Modules",
+    "type": "double",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_Owner_Name__c",
+    "label": "Website Onboarding Case Owner Name",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "Project__c",
+    "field": "Website_Onboarding_Case_URL__c",
+    "label": "Website Onboarding Case URL",
+    "type": "string",
+    "created": "2026-08-19",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "Profile_Last_Confirmed__c",
+    "label": "Profile Last Confirmed",
+    "type": "date",
+    "created": "2026-08-26",
+    "newInWindow": true
+   }
+  ],
+  "fRemoved": [],
+  "fChanged": [
+   {
+    "obj": "User",
+    "field": "Department__c",
+    "label": "Department",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Business Operations",
+       "Product",
+       "Leadership",
+       "IT",
+       "Other"
+      ],
+      "removed": [
+       "Legal"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "Location_Country__c",
+    "label": "Location - Country",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Other"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "Role__c",
+    "label": "Role",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Coordinator",
+       "Accountant",
+       "Analyst",
+       "Rev Operations Analyst",
+       "Specialist",
+       "Sr. Specialist",
+       "Engineer",
+       "QA",
+       "Architect",
+       "Team Lead",
+       "Director",
+       "Sr Director",
+       "Vice President",
+       "Sr. Vice President",
+       "Executive Vice President",
+       "C-Suite/President",
+       "Other"
+      ],
+      "removed": [
+       "Quality Analyst",
+       "Implementation Specialist",
+       "Sr. Implementation Specialist",
+       "Leadership"
+      ],
+      "reordered": false
+     }
+    ]
+   }
+  ],
+  "addedCreatedInWindow": 5,
+  "addedPreexisting": 96,
+  "addedUnknownCreated": 0
+ },
+ "prevDate": "2026-08-25",
+ "genDate": "2026-08-28"
+}

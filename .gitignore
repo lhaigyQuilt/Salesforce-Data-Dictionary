@@ -1,0 +1,21 @@
+# Regenerable scan intermediates — rebuilt by scan_org2.js on every refresh.
+*_describes.json
+*_descmap.json
+*_gvs.json
+*_entities.json
+
+# Derived from sbu_data.json + xbu_data.json by pack.js.
+packed.json
+
+# Retrieved field metadata, used only to resolve exact global-value-set names.
+# ~46 MB and static; without it, value-set names fall back to inference.
+# Re-retrieve with: sf project retrieve start -m CustomField -o <alias>
+md/
+md_sbu/
+
+# Previous-run snapshot, staged by refresh_dict.cmd for the diff.
+# Git history is the real record of prior snapshots.
+.prev/
+
+refresh.log
+node_modules/
