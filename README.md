@@ -96,3 +96,31 @@ changed are reported separately and are **not** counted as schema changes —
 - Access is strictly read-only: describes and Tooling `SELECT`s, no writes.
 - Viewing the page needs a browser with `DecompressionStream` (current Chrome, Edge,
   Firefox, Safari).
+
+## Hosting
+
+`server.js` serves the page so it can run on Railway (or any PaaS that sets `PORT`).
+Node built-ins only — no dependencies. Locally:
+
+```
+npm start          # http://localhost:3000
+```
+
+Routes are an explicit allowlist: `/` and `/index.html` serve the dictionary,
+`/changes.json`, `/sbu_data.json` and `/xbu_data.json` serve the data, `/healthz`
+returns `ok`. Nothing is resolved from the request path, so traversal returns 404.
+
+**There is deliberately no `build` script.** Railway's builder runs one automatically
+if present, and `pack.js` refuses to run on data more than 12 hours old — so any deploy
+made more than half a day after a refresh would fail the build for no reason. The page
+is committed already and needs no build step. Rebuild locally instead:
+
+```
+node pack.js && node build_dict_html3.js
+```
+
+### Deploying the right commit
+
+Railway's **Redeploy** on an old deployment row rebuilds *that row's* commit, not the
+latest. To deploy current `main`, push a commit or use the service's deploy action —
+otherwise it will keep rebuilding whichever commit that row pinned.
