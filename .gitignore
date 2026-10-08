@@ -19,3 +19,6 @@ md_sbu/
 
 refresh.log
 node_modules/
+
+# Local safety copies made before hand edits / test runs; not part of the repo.
+.backup-*/

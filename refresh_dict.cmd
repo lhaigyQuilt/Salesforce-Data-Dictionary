@@ -19,7 +19,9 @@ rem Today, and the date of the previous run (from the changes file this run
 rem is about to replace). Both read before anything is overwritten.
 for /f %%d in ('node -e "console.log(new Date().toISOString().slice(0,10))"') do set TODAY=%%d
 set PREV_DATE=
-for /f %%d in ('node -e "try{console.log(require(process.argv[1]).genDate)}catch(e){console.log('''')}" "%R%\changes.json"') do set PREV_DATE=%%d
+rem Relative path: we are already cd'd into %R%. A missing/unreadable file prints nothing,
+rem which the check below turns into a clear FATAL.
+for /f %%d in ('node -e "try{console.log(require('./changes.json').genDate)}catch(e){}"') do set PREV_DATE=%%d
 if "%PREV_DATE%"=="" (
   echo FATAL: cannot determine previous run date from changes.json >> "%LOG%"
   goto :fail
