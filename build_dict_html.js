@@ -14,7 +14,7 @@ const HTML = `<title>Salesforce Data Dictionary — SBU &amp; XBU Production</ti
   --c-formula:#6d55d6; --c-ref:#2277bd; --c-pick:#4a5ad0; --c-num:#1f8f80; --c-date:#2b7f9e;
   --c-text:#6a7684; --c-bool:#8a6a2f; --c-other:#7a869a;
   --req:#b5671a; --uniq:#1f8560; --extid:#7a52bf;
-  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a;
+  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a; --org-both:#2f6496; --reqhl:#c2185b; --req-bg:#fdf1f6; --managed:#7a5c00;
   --shadow:0 1px 2px rgba(20,35,52,.06),0 6px 20px rgba(20,35,52,.06);
   --pop:0 8px 28px rgba(20,35,52,.16);
   --radius:10px; --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -27,7 +27,7 @@ const HTML = `<title>Salesforce Data Dictionary — SBU &amp; XBU Production</ti
   --c-formula:#a795ff; --c-ref:#5aaef0; --c-pick:#8a97f0; --c-num:#4cc4b2; --c-date:#63b8d6;
   --c-text:#9aa6b4; --c-bool:#c7a45f; --c-other:#9aa6ba;
   --req:#e0954a; --uniq:#4cc49a; --extid:#b79bf0;
-  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a;
+  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a; --org-both:#7fb2e0; --reqhl:#f06d9b; --req-bg:#2b1622; --managed:#d9b44a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
   --pop:0 10px 34px rgba(0,0,0,.55);
 }}
@@ -37,7 +37,7 @@ const HTML = `<title>Salesforce Data Dictionary — SBU &amp; XBU Production</ti
   --line:#dde4ec; --line2:#e9eef4; --accent:#1f6aa8; --accent-ink:#0e4c7d; --accent-soft:#e4eef6;
   --c-formula:#6d55d6; --c-ref:#2277bd; --c-pick:#4a5ad0; --c-num:#1f8f80; --c-date:#2b7f9e;
   --c-text:#6a7684; --c-bool:#8a6a2f; --c-other:#7a869a; --req:#b5671a; --uniq:#1f8560; --extid:#7a52bf;
-  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a;
+  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a; --org-both:#2f6496; --reqhl:#c2185b; --req-bg:#fdf1f6; --managed:#7a5c00;
   --shadow:0 1px 2px rgba(20,35,52,.06),0 6px 20px rgba(20,35,52,.06);
   --pop:0 8px 28px rgba(20,35,52,.16);
 }
@@ -47,7 +47,7 @@ const HTML = `<title>Salesforce Data Dictionary — SBU &amp; XBU Production</ti
   --line:#243240; --line2:#1c2836; --accent:#4ea6e6; --accent-ink:#8fcbf3; --accent-soft:#16304a;
   --c-formula:#a795ff; --c-ref:#5aaef0; --c-pick:#8a97f0; --c-num:#4cc4b2; --c-date:#63b8d6;
   --c-text:#9aa6b4; --c-bool:#c7a45f; --c-other:#9aa6ba; --req:#e0954a; --uniq:#4cc49a; --extid:#b79bf0;
-  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a;
+  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a; --org-both:#7fb2e0; --reqhl:#f06d9b; --req-bg:#2b1622; --managed:#d9b44a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
   --pop:0 10px 34px rgba(0,0,0,.55);
 }
@@ -99,6 +99,13 @@ select.ctl{appearance:none;-webkit-appearance:none;
 .seg button{border:1px solid transparent;background:none;color:var(--muted);font-family:inherit;font-size:11px;font-weight:600;
   padding:2px 9px;border-radius:5px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.fld.sub{margin:-3px 0 0 10px;padding:3px 0 0 11px;border-left:2px solid var(--line)}
+.fld.sub>.lbl::before{content:'↳ ';color:var(--faint)}
+.badgefilter{display:flex;flex-wrap:wrap;gap:6px}
+.bopt{display:flex;align-items:center;gap:5px;cursor:pointer;padding:3px 7px 3px 5px;border:1px solid var(--line);border-radius:7px;background:var(--surface2)}
+.bopt input{accent-color:var(--accent);margin:0;width:13px;height:13px}
+.bopt.off{opacity:.45;cursor:not-allowed}
+input.ctl{cursor:text}
 .clearall{border:0;background:none;color:var(--accent);font-family:inherit;font-size:11.5px;cursor:pointer;padding:0;
   text-decoration:underline;text-underline-offset:2px;align-self:flex-start}
 
@@ -109,41 +116,52 @@ select.ctl{appearance:none;-webkit-appearance:none;
 .obj{width:100%;text-align:left;border:0;background:none;color:inherit;font-family:inherit;display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:8px;cursor:pointer}
 .obj:hover{background:var(--surface2)}
 .obj[aria-current="true"]{background:var(--accent-soft)}
-.obj .oapi{font-family:var(--mono);font-size:12px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.obj .olabel{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obj .olabel{font-size:12.5px;font-weight:560;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obj .oapi{font-family:var(--mono);font-size:10.5px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .obj .otext{min-width:0;flex:1;display:flex;flex-direction:column;line-height:1.25}
 .count{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums;background:var(--surface2);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;flex-shrink:0}
 .count.match{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .tag{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:5px;flex-shrink:0;font-weight:650}
 .tag.custom{color:var(--c-num);border:1px solid var(--c-num);background:transparent}
 .tag.std{color:var(--faint);border:1px solid var(--line)}
-.orgtag{font-size:9px;letter-spacing:.05em;font-weight:750;padding:1px 5px;border-radius:5px;flex-shrink:0;border:1px solid;white-space:nowrap}
-.orgtag.sbu{color:var(--org-sbu);border-color:var(--org-sbu)}
-.orgtag.xbu{color:var(--org-xbu);border-color:var(--org-xbu)}
-.orgtag.both{color:var(--muted);border-color:var(--line)}
-.diffchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:750;color:var(--diff);border:1px solid var(--diff);
-  border-radius:5px;padding:1px 5px;flex-shrink:0;font-variant-numeric:tabular-nums}
+.orgtag{font-size:9.5px;letter-spacing:.05em;font-weight:800;padding:2px 6px;border-radius:5px;flex-shrink:0;border:1px solid;white-space:nowrap;text-transform:uppercase;color:var(--surface)}
+.orgtag.sbu{background:var(--org-sbu);border-color:var(--org-sbu)}
+.orgtag.xbu{background:var(--org-xbu);border-color:var(--org-xbu)}
+.orgtag.both{background:var(--org-both);border-color:var(--org-both)}
+.diffchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--surface);background:var(--diff);border:1px solid var(--diff);
+  border-radius:5px;padding:2px 6px;flex-shrink:0;font-variant-numeric:tabular-nums}
 
 main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
-.mhead h2{margin:0;font-size:20px;font-weight:670;font-family:var(--mono);letter-spacing:-.01em}
+.mhead h2{margin:0;font-size:28px;font-weight:700;letter-spacing:-.015em}
+.mhead .mapi{font-family:var(--mono);font-size:15px;color:var(--muted)}
+.mhead .orgtag,.mhead .tag{font-size:12.5px;padding:4px 10px;border-radius:6px;align-self:center}
 .mhead .mlabel{font-size:14px;color:var(--muted)}
-.mmeta{font-size:12px;color:var(--faint);margin-bottom:16px;font-variant-numeric:tabular-nums}
+.mmeta{font-size:14px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
 .field{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
+.field{display:flex;gap:14px;align-items:flex-start}
+.frail{display:flex;flex-direction:column;gap:6px;width:66px;flex-shrink:0}
+.mgdchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--surface);background:var(--managed);
+  border:1px solid var(--managed);border-radius:5px;padding:2px 6px;flex-shrink:0;white-space:nowrap}
+.frail .orgtag,.frail .diffchip,.frail .attr,.frail .mgdchip{display:block;text-align:center;font-size:11px;padding:5px 0;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.field.isreq{background:var(--req-bg);border-color:var(--reqhl);box-shadow:inset 4px 0 0 var(--reqhl),var(--shadow)}
 .field.differs{border-left:3px solid var(--diff)}
 .frow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.fname{font-family:var(--mono);font-size:13.5px;font-weight:600;color:var(--ink)}
-.fnameobj{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.flabel{color:var(--muted);font-size:13px}
-.type{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:6px;border:1px solid;font-weight:600;white-space:nowrap}
+.flabel{color:var(--ink);font-size:14px;font-weight:700}
+.fbadges{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
+.fobj{color:var(--muted);font-size:12.5px}
+.fapi{font-family:var(--mono);font-size:12px;color:var(--ink2);overflow-wrap:anywhere}
+.fapi .fnameobj{color:var(--faint)}
+.type{font-size:11.5px;padding:1px 8px;border-radius:6px;border:1px solid;font-weight:600;white-space:nowrap}
 .attrs{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
 .attr{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;padding:2px 6px;border-radius:5px}
-.attr.req{color:var(--req);border:1px solid var(--req)}
+.attr.req{color:var(--surface);background:var(--reqhl);border:1px solid var(--reqhl)}
 .attr.uniq{color:var(--uniq);border:1px solid var(--uniq)}
 .attr.ext{color:var(--extid);border:1px solid var(--extid)}
-.fdetail{margin-top:8px;display:flex;flex-direction:column;gap:7px}
+.fdetail{display:flex;flex-direction:column;gap:7px;flex:1;min-width:0}
 .kv{display:flex;gap:8px;font-size:12.5px;align-items:baseline}
-.kv .k{color:var(--faint);text-transform:uppercase;font-size:10px;letter-spacing:.05em;min-width:74px;flex-shrink:0;padding-top:1px}
+.kv .k{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:11.5px;padding:1px 8px;border-radius:5px;min-width:104px;flex-shrink:0;white-space:nowrap}
+.kv .v.frow{flex:1;min-width:0}
 .kv .v{color:var(--ink2)}
 .diffs{display:flex;flex-direction:column;gap:5px;flex:1}
 .diffrow{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
@@ -167,6 +185,11 @@ main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .hidden{display:none!important}
 mark{background:var(--accent-soft);color:var(--accent-ink);border-radius:3px;padding:0 1px}
 .note{font-size:12px;color:var(--faint);margin:2px 0 14px}
+.legend{border-top:1px solid var(--line2);padding-top:9px;font-size:11.5px;color:var(--ink2)}
+.legend summary{cursor:pointer;color:var(--accent);font-size:11.5px}
+.legend dl{display:grid;grid-template-columns:auto 1fr;gap:7px 9px;margin:9px 0 2px;align-items:center}
+.legend dt{display:flex;gap:4px;flex-wrap:wrap}
+.legend dd{margin:0;color:var(--muted);line-height:1.35}
 ::-webkit-scrollbar{width:11px;height:11px}
 ::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px;border:3px solid var(--surface)}
 @media (max-width:820px){.app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}aside{max-height:46vh}main{grid-column:1}}
@@ -185,52 +208,91 @@ mark{background:var(--accent-soft);color:var(--accent-ink);border-radius:3px;pad
 
   <aside>
     <div class="search">
-      <input id="q" type="search" placeholder="Search objects &amp; fields…" autocomplete="off" spellcheck="false" aria-label="Search objects and fields">
+      <input id="q" type="search" placeholder="Search by label, API name or description…" autocomplete="off" spellcheck="false" aria-label="Search objects and fields">
 
       <div class="fld">
-        <label for="fBu">Business Unit</label>
+        <label for="fBu">Org</label>
         <select class="ctl" id="fBu">
-          <option value="both" selected>SBU / XBU</option>
-          <option value="sbu">SBU only</option>
-          <option value="xbu">XBU only</option>
+          <option value="both" selected>Both orgs (SBU + XBU)</option>
+          <option value="sbu">SBU only — POS Nation</option>
+          <option value="xbu">XBU only — Rain POS</option>
         </select>
       </div>
 
       <div class="fld">
-        <label for="fObj">Object Selection</label>
+        <label for="fObj">Object</label>
         <select class="ctl" id="fObj">
-          <option value="both" selected>Both</option>
-          <option value="standard">Standard</option>
-          <option value="custom">Custom</option>
+          <option value="both" selected>All objects</option>
         </select>
       </div>
 
       <div class="fld">
-        <span class="lbl" id="lblType">Type of Field</span>
+        <label for="fOrigin">Fields</label>
+        <select class="ctl" id="fOrigin">
+          <option value="all" selected>Custom and standard fields</option>
+          <option value="custom">Custom fields only</option>
+          <option value="standard">Standard fields only</option>
+        </select>
+      </div>
+
+      <div class="fld sub">
+        <span class="lbl" id="lblType">Show</span>
         <div class="multi" id="mType" data-open="false">
           <button class="ctl" type="button" id="btnType" aria-haspopup="true" aria-expanded="false" aria-labelledby="lblType btnType">
-            <span id="typeSummary">All Fields</span><span class="caret" aria-hidden="true">▾</span>
+            <span id="typeSummary">All fields</span><span class="caret" aria-hidden="true">▾</span>
           </button>
           <div class="pop" id="popType" hidden role="group" aria-label="Type of field">
-            <label class="opt"><input type="checkbox" id="cbAll" value="__all" checked> All Fields</label>
+            <label class="opt"><input type="checkbox" id="cbAll" value="__all" checked> All fields</label>
             <div class="popsep"></div>
-            <div class="opthead">Limit to</div>
-            <label class="opt"><input type="checkbox" value="formula"> Formula</label>
-            <label class="opt"><input type="checkbox" value="required"> Required</label>
-            <label class="opt"><input type="checkbox" value="picklist"> Picklist</label>
-            <label class="opt"><input type="checkbox" value="lookup"> Lookup</label>
+            <div class="opthead">Only show</div>
+            <label class="opt"><input type="checkbox" value="formula"> Formula fields</label>
+            <label class="opt"><input type="checkbox" value="required"> Required fields</label>
+            <label class="opt"><input type="checkbox" value="picklist"> Picklists</label>
+            <label class="opt"><input type="checkbox" value="lookup"> Lookups</label>
             <div class="popfoot">
               <span class="lbl2">Match</span>
               <div class="seg" role="group" aria-label="Match mode">
-                <button type="button" data-mode="any" aria-pressed="true">Any</button>
-                <button type="button" data-mode="all" aria-pressed="false">All</button>
+                <button type="button" data-mode="any" aria-pressed="true" title="Fields matching any ticked option">Any</button>
+                <button type="button" data-mode="all" aria-pressed="false" title="Fields matching every ticked option">All</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="fld">
+        <label for="fLabel">Field label contains</label>
+        <input class="ctl" id="fLabel" type="search" placeholder="e.g. status" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="fld">
+        <span class="lbl" id="lblBadges">Badges</span>
+        <div class="badgefilter" id="fBadges" role="group" aria-labelledby="lblBadges">
+          <label class="bopt"><input type="checkbox" value="both"><span class="orgtag both">Both</span></label>
+          <label class="bopt"><input type="checkbox" value="sbuonly"><span class="orgtag sbu">SBU only</span></label>
+          <label class="bopt"><input type="checkbox" value="xbuonly"><span class="orgtag xbu">XBU only</span></label>
+          <label class="bopt"><input type="checkbox" value="differs"><span class="diffchip">Differs</span></label>
+          <label class="bopt"><input type="checkbox" value="required"><span class="attr req">Required</span></label>
+          <label class="bopt"><input type="checkbox" value="managed"><span class="mgdchip">Managed</span></label>
+        </div>
+      </div>
+
       <button class="clearall" type="button" id="clearAll" hidden>Clear filters</button>
+
+      <details class="legend">
+        <summary>What do the labels mean?</summary>
+        <dl>
+          <dt><span class="orgtag both">Both</span></dt><dd>Exists in both SBU and XBU</dd>
+          <dt><span class="orgtag sbu">SBU</span><span class="orgtag xbu">XBU</span></dt><dd>Exists in that org only</dd>
+          <dt><span class="tag custom">Custom</span></dt><dd>Custom object built in-house (no badge = standard Salesforce object)</dd>
+          <dt><span class="diffchip">3 differ</span></dt><dd>Fields set up differently in SBU and XBU</dd>
+          <dt><span class="count">42</span></dt><dd>Number of fields (or matches while searching)</dd>
+          <dt><span class="attr req">Required</span></dt><dd>Must have a value before the record can be saved (card is highlighted pink)</dd>
+          <dt><span class="mgdchip">Managed</span></dt><dd>Installed by a managed package (an AppExchange app), named in the Package row. Cannot be deleted</dd>
+          <dt><span class="attr uniq">Unique</span></dt><dd>No two records can share the same value</dd>
+          <dt><span class="attr ext">External Id</span></dt><dd>Used to match records from imports and integrations</dd>
+        </dl>
+      </details>
     </div>
     <div class="objlist" id="objlist"></div>
   </aside>
@@ -313,6 +375,7 @@ const COMBINED=(function(){
 // ---- state ----
 let bu='both', objScope='both', typeSel=new Set(), typeMode='any';
 let pinnedObj=null, query='';
+let badgeSel=new Set(), labelQ='', originSel='all';
 const CAP=500;
 
 const main=document.getElementById('main'), list=document.getElementById('objlist'), q=document.getElementById('q');
@@ -321,10 +384,26 @@ const selBu=document.getElementById('fBu'), selObj=document.getElementById('fObj
 const mType=document.getElementById('mType'), btnType=document.getElementById('btnType'),
       popType=document.getElementById('popType'), typeSummary=document.getElementById('typeSummary'),
       clearAll=document.getElementById('clearAll'), cbAll=document.getElementById('cbAll');
+const fLabel=document.getElementById('fLabel'), fBadges=document.getElementById('fBadges'), fOrigin=document.getElementById('fOrigin');
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>n.toLocaleString();
-const TYPE_LABEL={formula:'Formula',required:'Required',picklist:'Picklist',lookup:'Lookup'};
+const TYPE_LABEL={formula:'Formula fields',required:'Required fields',picklist:'Picklists',lookup:'Lookups'};
+// Salesforce describe types -> the names people see in Setup.
+const TYPE_NAME={string:'Text',textarea:'Text Area',reference:'Lookup',boolean:'Checkbox',picklist:'Picklist',
+  multipicklist:'Multi-Select Picklist',combobox:'Picklist (editable)',double:'Number',int:'Number',long:'Number',
+  currency:'Currency',percent:'Percent',datetime:'Date/Time',date:'Date',time:'Time',id:'Record ID',url:'URL',
+  phone:'Phone',email:'Email',address:'Address',location:'Geolocation',encryptedstring:'Text (Encrypted)',base64:'File'};
+function friendlyType(f){
+  const t=(f.type||'').toLowerCase();
+  let n=TYPE_NAME[t]||(f.type||'—');
+  if(t==='textarea'&&Number(f.len)>255)n='Long Text Area';
+  if(f.formula)return 'Formula ('+n+')';
+  if((t==='string'||t==='textarea'||t==='encryptedstring')&&Number(f.len))n+=' ('+nf(Number(f.len))+')';
+  return n;}
+// A checkbox is never blank, so Salesforce marks every one required; that reads as wrong to a business user.
+const isReq=f=>!!f.req&&f.type!=='boolean';
+const byLabel=(a,b)=>(a.label||a.name||a.api).localeCompare(b.label||b.name||b.api,undefined,{sensitivity:'base'});
 const uid=()=>'x'+Math.random().toString(36).slice(2);
 
 function typeClass(t){t=(t||'').toLowerCase();
@@ -350,20 +429,50 @@ function view(){
       if(rb===undefined)return -1;
       return ra-rb;
     }
-    return a.o.api.localeCompare(b.o.api);
+    return byLabel(a.o,b.o);
   });
 }
 let VIEW=view(), VISIBLE=[];
 
 function fieldMatches(f,ql){if(!ql)return true;
-  return (f.name+' '+f.label+' '+f.type+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
+  return (f.name+' '+f.label+' '+f.type+' '+friendlyType(f)+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
 function testType(f,t){
   if(t==='formula')return !!f.formula;
-  if(t==='required')return !!f.req;
+  if(t==='required')return isReq(f);
   if(t==='picklist')return (f.pick&&f.pick.length>0)||!!f.gvs;
   if(t==='lookup')return !!(f.ref&&f.ref.length);
   return true;}
+// Badge filter. Org boxes are OR'd with each other; Differs and Required each narrow further.
+// Org and Differs only mean something in the merged view, so single-org views ignore them.
+function passBadges(f){
+  if(!badgeSel.size)return true;
+  if(bu==='both'){
+    const orgPick=['both','sbuonly','xbuonly'].filter(k=>badgeSel.has(k));
+    const orgs=f._orgs||[];
+    if(orgPick.length&&!orgPick.includes(orgs.length>1?'both':orgs[0]+'only'))return false;
+    if(badgeSel.has('differs')&&!(f._diffs&&f._diffs.length))return false;
+  }
+  if(badgeSel.has('required')&&!isReq(f))return false;
+  if(badgeSel.has('managed')&&!packageOf(f))return false;
+  return true;}
+function passLabel(f){return !labelQ||(f.label||'').toLowerCase().includes(labelQ);}
+// Custom = API name with a custom suffix: __c (incl. managed packages), __s (custom address parts), __pc (person account).
+const isCustomField=f=>/__(c|s|pc)$/i.test(f.name||'');
+// Managed-package fields carry a namespace prefix: ns__Field__c (or __pc), and ns__Field__Part__s for
+// address parts. Plain custom address parts (Business__City__s) have one separator fewer, so they don't match.
+function packageOf(f){
+  const p=(f.name||'').split('__'), suf=p.length>1?p[p.length-1].toLowerCase():'';
+  const need=suf==='s'?4:(suf==='c'||suf==='pc')?3:Infinity;
+  return p.length>=need?p[0]:'';}
+function passOrigin(f){return originSel==='all'||(originSel==='custom')===isCustomField(f);}
+function anyFieldFilter(){return typeSel.size>0||badgeSel.size>0||!!labelQ||originSel!=='all';}
+function syncBadgeFilter(){
+  fBadges.querySelectorAll('input').forEach(cb=>{
+    const off=bu!=='both'&&cb.value!=='required'&&cb.value!=='managed';
+    cb.disabled=off; cb.parentNode.classList.toggle('off',off);
+    cb.parentNode.title=off?'Only applies when Org is Both orgs':'';});}
 function passTypes(f){
+  if(!passOrigin(f)||!passBadges(f)||!passLabel(f))return false;
   if(!typeSel.size)return true;
   // in merged mode a field qualifies if either org's version qualifies
   const variants=f._v?Object.keys(f._v).map(k=>f._v[k]):[f];
@@ -371,21 +480,37 @@ function passTypes(f){
   return typeMode==='all'
     ? sel.every(t=>variants.some(v=>testType(v,t)))
     : sel.some(t=>variants.some(v=>testType(v,t)));}
-function objPassesScope(o){
-  if(objScope==='custom'&&!o.custom)return false;
-  if(objScope==='standard'&&o.custom)return false;
-  return true;}
+function objPassesScope(o){return objScope==='both'||o.api===objScope;}
+// Object picker: every object in the current org view, listed by label. The API name
+// is shown only where two objects share a label, so the choices stay distinguishable.
+// Rebuilt only when the org changes, not on every keystroke.
+let pickerFor=null;
+function fillObjPicker(){
+  const rows=VIEW.map(r=>r.o);
+  if(objScope!=='both'&&!rows.some(o=>o.api===objScope))objScope='both';
+  if(pickerFor!==bu){
+    const seen={};
+    rows.forEach(o=>{const k=(o.label||o.api).toLowerCase();seen[k]=(seen[k]||0)+1;});
+    const opt=o=>{const l=o.label||o.api;
+      return '<option value="'+esc(o.api)+'">'+esc(seen[l.toLowerCase()]>1?l+' ('+o.api+')':l)+'</option>';};
+    const key=rows.filter(o=>PIN_RANK[o.api]!==undefined), rest=rows.filter(o=>PIN_RANK[o.api]===undefined);
+    selObj.innerHTML='<option value="both">All objects</option>'
+      +(key.length?'<optgroup label="Key objects">'+key.map(opt).join('')+'</optgroup>':'')
+      +'<optgroup label="All objects">'+rest.map(opt).join('')+'</optgroup>';
+    pickerFor=bu;
+  }
+  selObj.value=objScope;}
 function objMatchCount(o,ql){let n=0;for(const f of o.fields){if(passTypes(f)&&fieldMatches(f,ql))n++;}return n;}
 function hl(text,ql){text=esc(text);if(!ql)return text;
   const i=text.toLowerCase().indexOf(ql);if(i<0)return text;
   return text.slice(0,i)+'<mark>'+text.slice(i,i+ql.length)+'</mark>'+text.slice(i+ql.length);}
 function orgBadge(orgs){
-  if(orgs.length>1) return '<span class="orgtag both">SBU/XBU</span>';
-  return '<span class="orgtag '+orgs[0]+'">'+orgs[0].toUpperCase()+'</span>';
+  if(orgs.length>1) return '<span class="orgtag both" title="Exists in both SBU and XBU">Both</span>';
+  return '<span class="orgtag '+orgs[0]+'" title="Exists in '+orgs[0].toUpperCase()+' only">'+orgs[0].toUpperCase()+'</span>';
 }
 
 function computeVisible(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const out=[];
   for(const r of VIEW){
     if(!objPassesScope(r.o))continue;
@@ -402,7 +527,7 @@ function renderHeader(){
   subEl.textContent = ids.length>1
     ? 'SBU + XBU Production · merged view · generated '+ORGS[ids[0]].meta.gen
     : ORGS[ids[0]].meta.name+' · '+ORGS[ids[0]].meta.sub+' · generated '+ORGS[ids[0]].meta.gen;
-  const ql=query.toLowerCase(), filtering=!!ql||typeSel.size>0;
+  const ql=query.toLowerCase(), filtering=!!ql||anyFieldFilter();
   let objs=0,cust=0,flds=0,dif=0;
   for(const {o} of VISIBLE){
     objs++; if(o.custom)cust++;
@@ -413,10 +538,10 @@ function renderHeader(){
   }
   statsEl.innerHTML=
     '<div class="stat"><b>'+nf(objs)+'</b><span>Objects</span></div>'+
-    '<div class="stat"><b>'+nf(cust)+'</b><span>Custom</span></div>'+
+    '<div class="stat"><b>'+nf(cust)+'</b><span>Custom objects</span></div>'+
     '<div class="stat"><b>'+nf(flds)+'</b><span>Fields</span></div>'+
-    (bu==='both'?'<div class="stat"><b>'+nf(dif)+'</b><span>Differing</span></div>':'');
-  clearAll.hidden=!(bu!=='both'||objScope!=='both'||typeSel.size>0||!!query);
+    (bu==='both'?'<div class="stat" title="Fields set up differently in SBU and XBU"><b>'+nf(dif)+'</b><span>Differ SBU vs XBU</span></div>':'');
+  clearAll.hidden=!(bu!=='both'||objScope!=='both'||anyFieldFilter()||!!query);
 }
 
 function objRow(r,ql,anyFilter){
@@ -425,14 +550,14 @@ function objRow(r,ql,anyFilter){
   const isMatch=(ql||anyFilter)&&mc>0;
   return '<button class="obj" role="listitem" aria-current="'+cur+'" data-api="'+esc(o.api)+'" data-org="'+(r.org||'')+'">'
     +(bu==='both'?orgBadge(o.orgs):'')
-    +'<span class="tag '+(o.custom?'custom':'std')+'">'+(o.custom?'C':'S')+'</span>'
-    +'<span class="otext"><span class="oapi">'+hl(o.api,ql)+'</span><span class="olabel">'+hl(o.label,ql)+'</span></span>'
-    +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' fields differ between SBU and XBU">Δ'+o.nDiff+'</span>':'')
-    +'<span class="count'+(isMatch?' match':'')+'">'+mc+'</span></button>';
+    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span>'+(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span>'
+    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'')
+    +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' field'+(o.nDiff===1?'':'s')+' set up differently in SBU and XBU">'+o.nDiff+' differ</span>':'')
+    +'<span class="count'+(isMatch?' match':'')+'" title="'+mc+((ql||anyFilter)?' matching':'')+' field'+(mc===1?'':'s')+'">'+mc+'</span></button>';
 }
 
 function renderList(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const pin=VISIBLE.filter(r=>PIN_RANK[r.o.api]!==undefined);
   const rest=VISIBLE.filter(r=>PIN_RANK[r.o.api]===undefined);
   let html='';
@@ -443,7 +568,9 @@ function renderList(){
 
 function dval(f,attr){
   if(!f)return '—';
-  if(attr==='req'||attr==='uniq'||attr==='extId')return f[attr]?'Yes':'No';
+  if(attr==='req')return isReq(f)?'Yes':'No';
+  if(attr==='uniq'||attr==='extId')return f[attr]?'Yes':'No';
+  if(attr==='type')return friendlyType(f);
   if(attr==='ref')return (f.ref&&f.ref.length)?f.ref.join(', '):'—';
   if(attr==='pick')return (f.pick?f.pick.length:0)+' values';
   if(attr==='formula')return 'see below';
@@ -476,59 +603,66 @@ function diffBlock(f){
     }
     rows+='</div>';
   }
-  return '<div class="kv"><span class="k">Differs</span><span class="v diffs">'+rows+'</span></div>';
+  return '<div class="kv"><span class="k">SBU vs XBU</span><span class="v diffs">'+rows+'</span></div>';
 }
 
-function fieldCard(f,ql,withObj,objApi){
-  const tc=typeClass(f.type);
+function fieldCard(f,ql,withObj,objApi,objLabel){
+  const tc=f.formula?'--c-formula':typeClass(f.type);
   const merged=!!f._orgs;
   const differs=merged&&f._diffs.length>0;
   let attrs='';
-  if(f.req)attrs+='<span class="attr req">Required</span>';
-  if(f.uniq)attrs+='<span class="attr uniq">Unique</span>';
-  if(f.extId)attrs+='<span class="attr ext">External Id</span>';
+  if(f.uniq)attrs+='<span class="attr uniq" title="No two records can share the same value">Unique</span>';
+  if(f.extId)attrs+='<span class="attr ext" title="Used to match records from imports and integrations">External Id</span>';
   let det='';
   if(differs)det+=diffBlock(f);
-  if(f.ref&&f.ref.length)det+='<div class="kv"><span class="k">Lookup to</span><span class="v reflist">'+f.ref.map(r=>'<span>'+esc(r)+'</span>').join('')+'</span></div>';
+  if(f.ref&&f.ref.length)det+='<div class="kv"><span class="k">Looks up to</span><span class="v reflist">'+f.ref.map(r=>'<span>'+esc(r)+'</span>').join('')+'</span></div>';
   if(f.pick&&f.pick.length){const id=uid();
-    det+='<div class="kv"><span class="k">Picklist</span><span class="v"><button class="toggle" type="button" onclick="var e=document.getElementById(\\''+id+'\\');e.classList.toggle(\\'hidden\\')">'+f.pick.length+' values</button>'
+    det+='<div class="kv"><span class="k">Values</span><span class="v"><button class="toggle" type="button" onclick="var e=document.getElementById(\\''+id+'\\');e.classList.toggle(\\'hidden\\')">'+f.pick.length+' values</button>'
       +(f.gvs?' <span style="color:var(--faint)">· global value set <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span>':'')
       +'<div id="'+id+'" class="pills hidden" style="margin-top:5px">'+f.pick.map(p=>'<span class="pill">'+esc(p)+'</span>').join('')+'</div></span></div>';}
-  else if(f.gvs)det+='<div class="kv"><span class="k">Picklist</span><span class="v">Global value set: <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span></div>';
+  else if(f.gvs)det+='<div class="kv"><span class="k">Values</span><span class="v">Global value set: <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span></div>';
   if(f.formula){const id=uid();
     det+='<div class="kv"><span class="k">Formula</span><span class="v" style="flex:1"><button class="toggle" type="button" onclick="var e=document.getElementById(\\''+id+'\\');e.classList.toggle(\\'hidden\\')">show</button>'
       +'<div id="'+id+'" class="formula hidden" style="margin-top:5px">'+esc(f.formula)+'</div></span></div>';}
   if(f.desc)det+='<div class="kv"><span class="k">Description</span><span class="v desc">'+hl(f.desc,ql)+'</span></div>';
-  if(f.help)det+='<div class="kv"><span class="k">Help text</span><span class="v help">'+hl(f.help,ql)+'</span></div>';
-  const lenTxt=f.len?' ('+esc(f.len)+')':'';
-  return '<div class="field'+(differs?' differs':'')+'"><div class="frow">'
-    +(merged?orgBadge(f._orgs):'')
-    +(differs?'<span class="diffchip">differs</span>':'')
-    +(withObj?'<span class="fnameobj">'+esc(objApi)+'.</span>':'')
-    +'<span class="fname">'+hl(f.name,ql)+'</span>'
-    +'<span class="type" style="color:var('+tc+');border-color:var('+tc+')">'+esc(f.type||'—')+lenTxt+'</span>'
-    +'<span class="flabel">'+hl(f.label,ql)+'</span>'
-    +'<span class="attrs">'+attrs+'</span></div>'
-    +(det?'<div class="fdetail">'+det+'</div>':'')+'</div>';
+  if(f.help)det+='<div class="kv"><span class="k">Help Text</span><span class="v help">'+hl(f.help,ql)+'</span></div>';
+  // every value is labelled, so a reader never has to guess which name is the label and which the API name
+  const kv=(k,v)=>'<div class="kv"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';
+  const pkg=packageOf(f);
+  // left rail: which org(s) the field is in, and whether SBU and XBU set it up differently
+  const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
+    +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
+    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>':'')
+    +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
+  return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
+    +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')
+    +'<div class="kv"><span class="k">Field Label</span><span class="v frow"><span class="flabel">'+hl(f.label||f.name,ql)+'</span>'
+      +'<span class="fbadges">'+attrs+'</span></span></div>'
+    +kv('API Name','<span class="fapi">'+hl(f.name,ql)+'</span>')
+    +(pkg?kv('Package','<span class="fapi">'+esc(pkg)+'</span>'):'')
+    +kv('Type','<span class="type" title="Salesforce type: '+esc(f.type||'—')+'" style="color:var('+tc+');border-color:var('+tc+')">'+esc(friendlyType(f))+'</span>')
+    +det+'</div></div>';
 }
 
 function renderMain(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const totalFieldsN=VIEW.reduce((a,r)=>a+r.o.fields.length,0);
   if(pinnedObj){
     const row=VISIBLE.find(r=>r.o.api===pinnedObj.api&&r.org===pinnedObj.org);
-    if(!row){main.innerHTML='<div class="empty">That object isn’t in the current filter.</div>';return;}
+    if(!row){main.innerHTML='<div class="empty">'+(objScope!=='both'
+      ?'No fields in this object match the current search or filter.'
+      :'That object isn’t in the current filter.')+'</div>';return;}
     const o=row.o;
-    const fields=o.fields.filter(f=>passTypes(f)&&fieldMatches(f,ql));
+    const fields=o.fields.filter(f=>passTypes(f)&&fieldMatches(f,ql)).sort(byLabel);
     let meta=fields.length+' of '+o.fields.length+' fields'+(ql?' matching “'+esc(query)+'”':'');
     if(bu==='both'){
       meta+= ' · '+(o.orgs.length>1?'in SBU and XBU':'only in '+o.orgs[0].toUpperCase());
       if(o.nDiff)meta+=' · '+o.nDiff+' field'+(o.nDiff===1?'':'s')+' differ';
     }
-    let h='<div class="mhead">'+(bu==='both'?orgBadge(o.orgs):'')+'<h2>'+esc(o.api)+'</h2><span class="mlabel">'+esc(o.label)+'</span>'
+    let h='<div class="mhead">'+(bu==='both'?orgBadge(o.orgs):'')+'<h2>'+esc(o.label||o.api)+'</h2>'+(o.label&&o.label!==o.api?'<span class="mapi">'+esc(o.api)+'</span>':'')
       +'<span class="tag '+(o.custom?'custom':'std')+'">'+(o.custom?'Custom':'Standard')+'</span></div>'
       +'<div class="mmeta">'+meta+'</div>';
-    h+=fields.length?fields.map(f=>fieldCard(f,ql,false,o.api)).join(''):'<div class="empty">No fields match the current filter.</div>';
+    h+=fields.length?fields.map(f=>fieldCard(f,ql,false,o.api,o.label)).join(''):'<div class="empty">No fields match the current filter.</div>';
     main.innerHTML=h;main.scrollTop=0;return;
   }
   if(!ql&&!anyFilter){
@@ -542,18 +676,21 @@ function renderMain(){
   let h='<div class="mhead"><h2 style="font-family:var(--sans)">Field results</h2></div>'
     +'<div class="mmeta">'+rows.length+(truncated?'+':'')+' fields'+(query?' matching “'+esc(query)+'”':'')+' · '+esc(scopeTxt)+'</div>';
   if(truncated)h+='<div class="note">Showing first '+CAP+'. Refine the search or open a single object for the full list.</div>';
-  h+=rows.length?rows.map(([o,f])=>fieldCard(f,ql,true,o.api)).join(''):'<div class="empty">No fields match.</div>';
+  h+=rows.length?rows.map(([o,f])=>fieldCard(f,ql,true,o.api,o.label)).join(''):'<div class="empty">No fields match.</div>';
   main.innerHTML=h;main.scrollTop=0;
 }
 
 function syncTypeSummary(){
   const sel=[...typeSel];
   cbAll.checked=sel.length===0;
-  typeSummary.textContent = !sel.length ? 'All Fields'
+  typeSummary.textContent = !sel.length ? 'All fields'
     : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(typeMode==='all'?' + ':', ')
-    : sel.length+' selected ('+typeMode+')';
+    : sel.length+' selected · match '+typeMode;
 }
-function render(){VIEW=view();VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
+function render(){VIEW=view();fillObjPicker();syncBadgeFilter();
+  // a picked object stays open, so search and field filters apply within it
+  if(objScope!=='both')pinnedObj={api:objScope,org:bu==='both'?null:bu};
+  VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
 
 list.addEventListener('click',e=>{const b=e.target.closest('.obj');if(!b)return;
   pinnedObj={api:b.dataset.api,org:b.dataset.org||null};render();});
@@ -580,10 +717,17 @@ popType.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()
   syncTypeSummary();pinnedObj=null;render();}));
 clearAll.addEventListener('click',()=>{
   bu='both';objScope='both';typeSel.clear();typeMode='any';query='';pinnedObj=null;
+  badgeSel.clear();labelQ='';fLabel.value='';originSel='all';fOrigin.value='all';fBadges.querySelectorAll('input').forEach(c=>c.checked=false);
   selBu.value='both';selObj.value='both';q.value='';
   popType.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=(c===cbAll));
   popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode==='any'?'true':'false'));
   syncTypeSummary();render();list.scrollTop=0;});
+
+// these two keep the open object open, so they filter within it
+fLabel.addEventListener('input',()=>{labelQ=fLabel.value.trim().toLowerCase();render();});
+fOrigin.addEventListener('change',()=>{originSel=fOrigin.value;render();});
+fBadges.querySelectorAll('input').forEach(cb=>cb.addEventListener('change',()=>{
+  cb.checked?badgeSel.add(cb.value):badgeSel.delete(cb.value);render();}));
 
 const root=document.documentElement,tb=document.getElementById('themeBtn');
 tb.addEventListener('click',()=>{const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');

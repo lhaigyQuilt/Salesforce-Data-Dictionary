@@ -42,7 +42,10 @@ const ids = ['main', 'objlist', 'q', 'stats', 'orgsub', 'fBu', 'fObj', 'mType', 
 const dupes = ids.filter(id => (pg.match(new RegExp('id="' + id + '"', 'g')) || []).length !== 1);
 dupes.length ? fail('ids missing or duplicated: ' + dupes.join(', ')) : ok('all ' + ids.length + ' element ids present exactly once');
 /<div class="app" id="appView" hidden>/.test(pg) ? ok('changes page is the landing view') : fail('app is not hidden at load');
-(pg.match(/class="cbox"/g) || []).length === 2 ? ok('both org change sections rendered') : fail('expected 2 change sections');
+['chNew', 'chChanged', 'chRemoved'].every(id => (pg.match(new RegExp('id="' + id + '"', 'g')) || []).length === 1) &&
+  (pg.match(/class="csum"/g) || []).length === 2
+  ? ok('changes page: both org summaries and all three change sections rendered')
+  : fail('changes page is missing an org summary or a change section');
 
 // ---- theme tokens: nothing may be defined only in a dark block ----
 const root = pg.slice(pg.indexOf(':root{'), pg.indexOf('@media (prefers-color-scheme:dark)'));

@@ -7,7 +7,7 @@
   --c-formula:#6d55d6; --c-ref:#2277bd; --c-pick:#4a5ad0; --c-num:#1f8f80; --c-date:#2b7f9e;
   --c-text:#6a7684; --c-bool:#8a6a2f; --c-other:#7a869a;
   --req:#b5671a; --uniq:#1f8560; --extid:#7a52bf;
-  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a;
+  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a; --org-both:#2f6496; --reqhl:#c2185b; --req-bg:#fdf1f6; --managed:#7a5c00;
   --shadow:0 1px 2px rgba(20,35,52,.06),0 6px 20px rgba(20,35,52,.06);
   --pop:0 8px 28px rgba(20,35,52,.16);
   --radius:10px; --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
@@ -20,7 +20,7 @@
   --c-formula:#a795ff; --c-ref:#5aaef0; --c-pick:#8a97f0; --c-num:#4cc4b2; --c-date:#63b8d6;
   --c-text:#9aa6b4; --c-bool:#c7a45f; --c-other:#9aa6ba;
   --req:#e0954a; --uniq:#4cc49a; --extid:#b79bf0;
-  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a;
+  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a; --org-both:#7fb2e0; --reqhl:#f06d9b; --req-bg:#2b1622; --managed:#d9b44a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
   --pop:0 10px 34px rgba(0,0,0,.55);
 }}
@@ -30,7 +30,7 @@
   --line:#dde4ec; --line2:#e9eef4; --accent:#1f6aa8; --accent-ink:#0e4c7d; --accent-soft:#e4eef6;
   --c-formula:#6d55d6; --c-ref:#2277bd; --c-pick:#4a5ad0; --c-num:#1f8f80; --c-date:#2b7f9e;
   --c-text:#6a7684; --c-bool:#8a6a2f; --c-other:#7a869a; --req:#b5671a; --uniq:#1f8560; --extid:#7a52bf;
-  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a;
+  --org-sbu:#157f6d; --org-xbu:#5a54c9; --diff:#b5671a; --org-both:#2f6496; --reqhl:#c2185b; --req-bg:#fdf1f6; --managed:#7a5c00;
   --shadow:0 1px 2px rgba(20,35,52,.06),0 6px 20px rgba(20,35,52,.06);
   --pop:0 8px 28px rgba(20,35,52,.16);
 }
@@ -40,7 +40,7 @@
   --line:#243240; --line2:#1c2836; --accent:#4ea6e6; --accent-ink:#8fcbf3; --accent-soft:#16304a;
   --c-formula:#a795ff; --c-ref:#5aaef0; --c-pick:#8a97f0; --c-num:#4cc4b2; --c-date:#63b8d6;
   --c-text:#9aa6b4; --c-bool:#c7a45f; --c-other:#9aa6ba; --req:#e0954a; --uniq:#4cc49a; --extid:#b79bf0;
-  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a;
+  --org-sbu:#45b8a6; --org-xbu:#9a95f0; --diff:#e0954a; --org-both:#7fb2e0; --reqhl:#f06d9b; --req-bg:#2b1622; --managed:#d9b44a;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 26px rgba(0,0,0,.35);
   --pop:0 10px 34px rgba(0,0,0,.55);
 }
@@ -92,6 +92,13 @@ select.ctl{appearance:none;-webkit-appearance:none;
 .seg button{border:1px solid transparent;background:none;color:var(--muted);font-family:inherit;font-size:11px;font-weight:600;
   padding:2px 9px;border-radius:5px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.fld.sub{margin:-3px 0 0 10px;padding:3px 0 0 11px;border-left:2px solid var(--line)}
+.fld.sub>.lbl::before{content:'↳ ';color:var(--faint)}
+.badgefilter{display:flex;flex-wrap:wrap;gap:6px}
+.bopt{display:flex;align-items:center;gap:5px;cursor:pointer;padding:3px 7px 3px 5px;border:1px solid var(--line);border-radius:7px;background:var(--surface2)}
+.bopt input{accent-color:var(--accent);margin:0;width:13px;height:13px}
+.bopt.off{opacity:.45;cursor:not-allowed}
+input.ctl{cursor:text}
 .clearall{border:0;background:none;color:var(--accent);font-family:inherit;font-size:11.5px;cursor:pointer;padding:0;
   text-decoration:underline;text-underline-offset:2px;align-self:flex-start}
 
@@ -102,41 +109,52 @@ select.ctl{appearance:none;-webkit-appearance:none;
 .obj{width:100%;text-align:left;border:0;background:none;color:inherit;font-family:inherit;display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:8px;cursor:pointer}
 .obj:hover{background:var(--surface2)}
 .obj[aria-current="true"]{background:var(--accent-soft)}
-.obj .oapi{font-family:var(--mono);font-size:12px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.obj .olabel{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obj .olabel{font-size:12.5px;font-weight:560;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obj .oapi{font-family:var(--mono);font-size:10.5px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .obj .otext{min-width:0;flex:1;display:flex;flex-direction:column;line-height:1.25}
 .count{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums;background:var(--surface2);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;flex-shrink:0}
 .count.match{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .tag{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:5px;flex-shrink:0;font-weight:650}
 .tag.custom{color:var(--c-num);border:1px solid var(--c-num);background:transparent}
 .tag.std{color:var(--faint);border:1px solid var(--line)}
-.orgtag{font-size:9px;letter-spacing:.05em;font-weight:750;padding:1px 5px;border-radius:5px;flex-shrink:0;border:1px solid;white-space:nowrap}
-.orgtag.sbu{color:var(--org-sbu);border-color:var(--org-sbu)}
-.orgtag.xbu{color:var(--org-xbu);border-color:var(--org-xbu)}
-.orgtag.both{color:var(--muted);border-color:var(--line)}
-.diffchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:750;color:var(--diff);border:1px solid var(--diff);
-  border-radius:5px;padding:1px 5px;flex-shrink:0;font-variant-numeric:tabular-nums}
+.orgtag{font-size:9.5px;letter-spacing:.05em;font-weight:800;padding:2px 6px;border-radius:5px;flex-shrink:0;border:1px solid;white-space:nowrap;text-transform:uppercase;color:var(--surface)}
+.orgtag.sbu{background:var(--org-sbu);border-color:var(--org-sbu)}
+.orgtag.xbu{background:var(--org-xbu);border-color:var(--org-xbu)}
+.orgtag.both{background:var(--org-both);border-color:var(--org-both)}
+.diffchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--surface);background:var(--diff);border:1px solid var(--diff);
+  border-radius:5px;padding:2px 6px;flex-shrink:0;font-variant-numeric:tabular-nums}
 
 main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
-.mhead h2{margin:0;font-size:20px;font-weight:670;font-family:var(--mono);letter-spacing:-.01em}
+.mhead h2{margin:0;font-size:28px;font-weight:700;letter-spacing:-.015em}
+.mhead .mapi{font-family:var(--mono);font-size:15px;color:var(--muted)}
+.mhead .orgtag,.mhead .tag{font-size:12.5px;padding:4px 10px;border-radius:6px;align-self:center}
 .mhead .mlabel{font-size:14px;color:var(--muted)}
-.mmeta{font-size:12px;color:var(--faint);margin-bottom:16px;font-variant-numeric:tabular-nums}
+.mmeta{font-size:14px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
 .field{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
+.field{display:flex;gap:14px;align-items:flex-start}
+.frail{display:flex;flex-direction:column;gap:6px;width:66px;flex-shrink:0}
+.mgdchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--surface);background:var(--managed);
+  border:1px solid var(--managed);border-radius:5px;padding:2px 6px;flex-shrink:0;white-space:nowrap}
+.frail .orgtag,.frail .diffchip,.frail .attr,.frail .mgdchip{display:block;text-align:center;font-size:11px;padding:5px 0;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.field.isreq{background:var(--req-bg);border-color:var(--reqhl);box-shadow:inset 4px 0 0 var(--reqhl),var(--shadow)}
 .field.differs{border-left:3px solid var(--diff)}
 .frow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.fname{font-family:var(--mono);font-size:13.5px;font-weight:600;color:var(--ink)}
-.fnameobj{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.flabel{color:var(--muted);font-size:13px}
-.type{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:6px;border:1px solid;font-weight:600;white-space:nowrap}
+.flabel{color:var(--ink);font-size:14px;font-weight:700}
+.fbadges{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
+.fobj{color:var(--muted);font-size:12.5px}
+.fapi{font-family:var(--mono);font-size:12px;color:var(--ink2);overflow-wrap:anywhere}
+.fapi .fnameobj{color:var(--faint)}
+.type{font-size:11.5px;padding:1px 8px;border-radius:6px;border:1px solid;font-weight:600;white-space:nowrap}
 .attrs{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
 .attr{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700;padding:2px 6px;border-radius:5px}
-.attr.req{color:var(--req);border:1px solid var(--req)}
+.attr.req{color:var(--surface);background:var(--reqhl);border:1px solid var(--reqhl)}
 .attr.uniq{color:var(--uniq);border:1px solid var(--uniq)}
 .attr.ext{color:var(--extid);border:1px solid var(--extid)}
-.fdetail{margin-top:8px;display:flex;flex-direction:column;gap:7px}
+.fdetail{display:flex;flex-direction:column;gap:7px;flex:1;min-width:0}
 .kv{display:flex;gap:8px;font-size:12.5px;align-items:baseline}
-.kv .k{color:var(--faint);text-transform:uppercase;font-size:10px;letter-spacing:.05em;min-width:74px;flex-shrink:0;padding-top:1px}
+.kv .k{background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:11.5px;padding:1px 8px;border-radius:5px;min-width:104px;flex-shrink:0;white-space:nowrap}
+.kv .v.frow{flex:1;min-width:0}
 .kv .v{color:var(--ink2)}
 .diffs{display:flex;flex-direction:column;gap:5px;flex:1}
 .diffrow{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
@@ -160,6 +178,11 @@ main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .hidden{display:none!important}
 mark{background:var(--accent-soft);color:var(--accent-ink);border-radius:3px;padding:0 1px}
 .note{font-size:12px;color:var(--faint);margin:2px 0 14px}
+.legend{border-top:1px solid var(--line2);padding-top:9px;font-size:11.5px;color:var(--ink2)}
+.legend summary{cursor:pointer;color:var(--accent);font-size:11.5px}
+.legend dl{display:grid;grid-template-columns:auto 1fr;gap:7px 9px;margin:9px 0 2px;align-items:center}
+.legend dt{display:flex;gap:4px;flex-wrap:wrap}
+.legend dd{margin:0;color:var(--muted);line-height:1.35}
 ::-webkit-scrollbar{width:11px;height:11px}
 ::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px;border:3px solid var(--surface)}
 @media (max-width:820px){.app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}aside{max-height:46vh}main{grid-column:1}}
@@ -168,140 +191,87 @@ mark{background:var(--accent-soft);color:var(--accent-ink);border-radius:3px;pad
 /* ---- changes landing page ---- */
 #changesView[hidden]{display:none}
 #changesView{height:100vh;overflow-y:auto;background:var(--bg)}
-.cwrap{max-width:1120px;margin:0 auto;padding:0 24px 72px}
-.chead{padding:34px 0 20px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
-.chead h1{margin:0;font-size:26px;font-weight:660;letter-spacing:-.02em}
-.chead .csince{font-size:12px;color:var(--muted);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.cwrap{max-width:1040px;margin:0 auto;padding:0 24px 72px}
+.chead{padding:34px 0 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.chead h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-.02em}
+.chead .csince{font-size:15px;color:var(--muted);margin-top:4px}
 .chead .cgo{margin-left:auto;display:flex;gap:8px}
 .btn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:8px;
-  padding:9px 15px;font-size:12.5px;font-family:inherit;cursor:pointer}
+  padding:9px 15px;font-size:13px;font-family:inherit;cursor:pointer}
 .btn:hover{border-color:var(--accent);color:var(--accent-ink)}
-.btn.primary{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
-.cintro{color:var(--ink2);font-size:13.5px;max-width:76ch;margin:16px 0 0}
-.ccallout{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
-  border-radius:var(--radius);padding:14px 16px;margin:18px 0 0;box-shadow:var(--shadow)}
-.ccallout.warn{border-left-color:var(--diff)}
-.ccallout h4{margin:0 0 5px;font-size:12.5px;font-weight:660}
-.ccallout p{margin:0 0 7px;font-size:13px;color:var(--ink2);max-width:80ch}
-.ccallout p:last-child{margin-bottom:0}
-.cbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:18px 20px 20px;margin-top:20px;box-shadow:var(--shadow)}
-.cbox-h{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:14px}
-.cbox-h h3{margin:0;font-size:15px;font-weight:650}
-.cdot{width:9px;height:9px;border-radius:50%;flex:none}
-.cdot.sbu{background:var(--org-sbu)} .cdot.xbu{background:var(--org-xbu)}
-.csub{font-size:11.5px;color:var(--faint);font-family:var(--mono)}
-.cstats{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px}
-.cstat{background:var(--surface2);border:1px solid var(--line2);border-radius:7px;padding:7px 12px;min-width:112px}
-.cstat .k{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:650}
-.cstat .v{display:block;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;margin-top:2px}
-.cstat .v.add{color:var(--uniq)} .cstat .v.rem{color:var(--diff)} .cstat .v.chg{color:var(--req)}
-.cgrid{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:900px){.cgrid{grid-template-columns:1fr 1fr}.ccol:nth-child(2){grid-row:span 2}}
-.ccol h4{margin:0 0 9px;font-size:12.5px;font-weight:650;padding-bottom:6px;border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:7px}
-.ccol .cnt{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400}
-.ccol>p{margin:0 0 9px;font-size:12.5px;color:var(--ink2)}
-.cnote{font-size:11.5px;color:var(--muted);margin:0 0 11px}
-.cnone{color:var(--faint);font-style:italic;font-size:12.5px;margin:0}
-.cobj{margin-bottom:11px}
-.cobj-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
-.cobj-h code{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent-ink)}
-.cn{font-size:10px;color:var(--faint);font-family:var(--mono)}
-ul.clist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
-ul.clist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;font-size:12px;
-  padding:3px 0;border-bottom:1px dotted var(--line2)}
-ul.clist li code{font-family:var(--mono);color:var(--ink)}
-.cty{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
-.ctag{font-size:10px;padding:1px 6px;border-radius:999px;font-family:var(--mono);white-space:nowrap}
-.ctag.new{background:var(--accent-soft);color:var(--accent-ink)}
-.ctag.pre{background:var(--surface2);color:var(--faint);border:1px solid var(--line2)}
-.cdet{flex-basis:100%;font-size:11.5px;color:var(--ink2)}
-.cattr{font-family:var(--mono);font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
-.pv{font-family:var(--mono);font-size:11px;padding:1px 5px;border-radius:4px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:650}
+.btn.primary:hover{color:var(--surface);filter:brightness(1.08)}
+.cintro{color:var(--ink2);font-size:14px;max-width:80ch;margin:16px 0 0}
+.csums{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:20px}
+.csum{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.csum-h{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.csum-h b{font-size:15px}
+.csum-h span{font-size:12px;color:var(--faint)}
+.csum-h .orgtag{font-size:11px;padding:3px 9px;color:var(--surface)}
+.csum-n{display:flex;gap:10px;flex-wrap:wrap}
+.csum-n div{flex:1;min-width:84px;background:var(--surface2);border:1px solid var(--line2);border-radius:8px;padding:9px 12px}
+.csum-n b{display:block;font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.csum-n span{font-size:12px;color:var(--muted)}
+.csum-n .add{color:var(--uniq)} .csum-n .rem{color:var(--reqhl)} .csum-n .chg{color:var(--diff)}
+.csum-t{font-size:12px;color:var(--faint);margin-top:10px}
+.csec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-top:18px;box-shadow:var(--shadow)}
+.csec h2{margin:0 0 12px;font-size:18px;font-weight:680;display:flex;align-items:center;gap:8px}
+.cnt{font-size:12px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:1px 9px}
+.cnone{color:var(--muted);font-size:13.5px;margin:0}
+.cobj+.cobj{margin-top:14px}
+.cobj-h{display:flex;align-items:baseline;gap:8px;margin-bottom:2px;padding-bottom:5px;border-bottom:1px solid var(--line2)}
+.cobj-h b{font-size:14.5px}
+.cobj-h code{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.cn{font-size:11.5px;color:var(--faint);margin-left:auto}
+ul.clist{list-style:none;margin:0;padding:0}
+ul.clist li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 0;border-bottom:1px dotted var(--line2)}
+ul.clist li:last-child{border-bottom:0}
+ul.clist .orgtag{color:var(--surface)}
+.cfl{font-weight:650;font-size:14px;color:var(--ink)}
+.capi{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.cty{font-size:11.5px;color:var(--ink2);border:1px solid var(--line);border-radius:6px;padding:0 7px}
+.cwhen{font-size:12px;color:var(--muted)}
+.cview{margin-left:auto;border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent-ink);border-radius:7px;
+  padding:3px 11px;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600}
+.cview:hover{background:var(--accent);color:var(--surface)}
+.corg{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding-left:2px}
+.cchg{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.ck{font-size:11.5px;font-weight:700;color:var(--muted);margin-left:4px}
+.pv{font-size:12px;padding:1px 7px;border-radius:5px}
 .pv.add{color:var(--uniq);border:1px solid var(--uniq)}
-.pv.rem{color:var(--diff);border:1px solid var(--diff)}
+.pv.rem{color:var(--reqhl);border:1px solid var(--reqhl);text-decoration:line-through}
+.cmore{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;margin-top:18px}
+.cmore summary{cursor:pointer;font-weight:650;font-size:14px;color:var(--ink2)}
+.cmore p{font-size:13px;color:var(--ink2);max-width:82ch;margin:10px 0}
 </style>
 
 <div id="changesView">
   <div class="cwrap">
     <div class="chead">
       <div>
-        <h1>Changes since 2026-08-25</h1>
-        <div class="csince">2026-08-25 &rarr; 2026-08-28 &middot; 1,092 objects &middot; 29,749 fields</div>
+        <h1>What changed in Salesforce</h1>
+        <div class="csince">Aug 25, 2026 &rarr; Aug 28, 2026</div>
       </div>
       <div class="cgo">
         <button class="btn" id="themeBtn2" type="button">Theme</button>
-        <button class="btn primary" id="toDict" type="button">Open dictionary &rarr;</button>
+        <button class="btn primary" id="toDict" type="button">Open the dictionary &rarr;</button>
       </div>
     </div>
 
-    <p class="cintro">Objects that appear or disappear only because the object-selection rule changed
-    are called out separately below and are not counted as schema changes.</p>
+    <p class="cintro">Fields that were created, changed or deleted in the SBU and XBU production orgs between the last
+    two monthly scans. Use <b>View in dictionary</b> on any field to see its full details.</p>
 
-    <div class="ccallout">
-      <h4>The object-selection rule changed with this run</h4>
-      <p>Objects are now chosen from <code>EntityDefinition</code> where <code>IsCustomizable = true</code>
-      and <code>IsQueryable = true</code>, minus names ending in <code>Share</code>, <code>History</code>,
-      <code>Feed</code>, <code>ChangeEvent</code>, <code>Tag</code>, <code>__e</code>, <code>Rule</code> or
-      <code>RuleShare</code>. The previous run used a fixed list of 23 standard objects plus anything with a
-      custom suffix, and deliberately kept platform events.</p>
-      <p>That adds <b>137 standard objects in SBU</b> and
-      <b>133 in XBU</b>, and drops <b>20 SBU</b>
-      and <b>19 XBU</b> platform events (<code>__e</code>).
-      None of those are schema changes, so none are reported as such.</p>
+    <div class="csums">
+      <div class="csum"><div class="csum-h"><span class="orgtag sbu">SBU</span><b>SBU Production</b><span>POS Nation · Quilt Software</span></div><div class="csum-n"><div><b class="add">2</b><span>new fields</span></div><div><b class="rem">2</b><span>deleted</span></div><div><b class="chg">3</b><span>changed</span></div></div><div class="csum-t">546 objects &middot; 14,766 fields in the dictionary</div></div>
+      <div class="csum"><div class="csum-h"><span class="orgtag xbu">XBU</span><b>XBU Production</b><span>Rain POS</span></div><div class="csum-n"><div><b class="add">5</b><span>new fields</span></div><div><b class="rem">0</b><span>deleted</span></div><div><b class="chg">3</b><span>changed</span></div></div><div class="csum-t">546 objects &middot; 14,983 fields in the dictionary</div></div>
     </div>
 
-    <div class="ccallout warn">
-      <h4>Most &ldquo;added&rdquo; fields already existed &mdash; they were invisible to the previous scan</h4>
-      <p>Of the 103 fields newly present in SBU, only
-      <b>2</b> were created after 2026-08-25; in XBU only
-      <b>5</b> of 101 were. The rest already existed in
-      org metadata &mdash; most on <code>Project__c</code>, created 2026&#8209;08&#8209;19 and 2026&#8209;08&#8209;20 &mdash;
-      but the 2026-08-25 scan&rsquo;s describe returned only system fields for that object, because a describe
-      omits fields the running user can&rsquo;t read.</p>
-      <p>Every entry below carries its real creation date so the two cases stay distinguishable.</p>
-    </div>
-
+    <section class="csec" id="chNew"><h2>New fields <span class="cnt">5</span></h2><div class="cobj"><div class="cobj-h"><b>Account</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag xbu">XBU</span><span class="cfl">Software Migration Date</span><code class="capi">Software_Migration_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 27, 2026</span><button class="cview" type="button" data-obj="Account" data-field="Software_Migration_Date__c" data-label="Software Migration Date">View in dictionary</button></li></ul></div><div class="cobj"><div class="cobj-h"><b>Case</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Case Age (Mins)</span><code class="capi">Case_Age_Mins__c</code><span class="cty">Formula (Number)</span><span class="cwhen">created Aug 26, 2026</span><button class="cview" type="button" data-obj="Case" data-field="Case_Age_Mins__c" data-label="Case Age (Mins)">View in dictionary</button></li></ul></div><div class="cobj"><div class="cobj-h"><b>Contact</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag xbu">XBU</span><span class="cfl">Account Type</span><code class="capi">Account_Type__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 26, 2026</span><button class="cview" type="button" data-obj="Contact" data-field="Account_Type__c" data-label="Account Type">View in dictionary</button></li></ul></div><div class="cobj"><div class="cobj-h"><b>Opportunity</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag xbu">XBU</span><span class="cfl">Onboarding Project Created</span><code class="capi">Onboarding_Project_Created__c</code><span class="cty">Checkbox</span><span class="cwhen">created Aug 27, 2026</span><button class="cview" type="button" data-obj="Opportunity" data-field="Onboarding_Project_Created__c" data-label="Onboarding Project Created">View in dictionary</button></li></ul></div><div class="cobj"><div class="cobj-h"><b>User</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Profile Last Confirmed</span><code class="capi">Profile_Last_Confirmed__c</code><span class="cty">Date</span><span class="cwhen">created Aug 26, 2026</span><button class="cview" type="button" data-obj="User" data-field="Profile_Last_Confirmed__c" data-label="Profile Last Confirmed">View in dictionary</button></li></ul></div></section>
+    <section class="csec" id="chChanged"><h2>Changed fields <span class="cnt">3</span></h2><div class="cobj"><div class="cobj-h"><b>User</b><span class="cn">3 fields</span></div><ul class="clist"><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Department</span><code class="capi">Department__c</code><span class="cty">Picklist</span><button class="cview" type="button" data-obj="User" data-field="Department__c" data-label="Department">View in dictionary</button><div class="corg"><span class="orgtag sbu">SBU</span><span class="cchg"><span class="ck">Values added</span><span class="pv add">Business Operations</span><span class="pv add">IT</span><span class="pv add">Other</span><span class="ck">Values removed</span><span class="pv rem">Information Technology</span><span class="pv rem">Legal</span></span></div><div class="corg"><span class="orgtag xbu">XBU</span><span class="cchg"><span class="ck">Values added</span><span class="pv add">Business Operations</span><span class="pv add">Product</span><span class="pv add">Leadership</span><span class="pv add">IT</span><span class="pv add">Other</span><span class="ck">Values removed</span><span class="pv rem">Legal</span></span></div></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Location - Country</span><code class="capi">Location_Country__c</code><span class="cty">Picklist</span><button class="cview" type="button" data-obj="User" data-field="Location_Country__c" data-label="Location - Country">View in dictionary</button><div class="corg"><span class="cchg"><span class="ck">Values added</span><span class="pv add">Other</span></span></div></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Role</span><code class="capi">Role__c</code><span class="cty">Picklist</span><button class="cview" type="button" data-obj="User" data-field="Role__c" data-label="Role">View in dictionary</button><div class="corg"><span class="cchg"><span class="ck">Values added</span><span class="pv add">Coordinator</span><span class="pv add">Accountant</span><span class="pv add">Analyst</span><span class="pv add">Rev Operations Analyst</span><span class="pv add">Specialist</span><span class="pv add">Sr. Specialist</span><span class="pv add">Engineer</span><span class="pv add">QA</span><span class="pv add">Architect</span><span class="pv add">Team Lead</span><span class="pv add">Director</span><span class="pv add">Sr Director</span><span class="pv add">Vice President</span><span class="pv add">Sr. Vice President</span><span class="pv add">Executive Vice President</span><span class="pv add">C-Suite/President</span><span class="pv add">Other</span><span class="ck">Values removed</span><span class="pv rem">Quality Analyst</span><span class="pv rem">Implementation Specialist</span><span class="pv rem">Sr. Implementation Specialist</span><span class="pv rem">Leadership</span></span></div></li></ul></div></section>
+    <section class="csec" id="chRemoved"><h2>Deleted fields <span class="cnt">2</span></h2><div class="cobj"><div class="cobj-h"><b>Case</b><span class="cn">2 fields</span></div><ul class="clist"><li><span class="orgtag sbu">SBU</span><span class="cfl">Testing Completion Date</span><code class="capi">Testing_Completion_Date__c</code><span class="cty">Date/Time</span></li><li><span class="orgtag sbu">SBU</span><span class="cfl">Upsell?</span><code class="capi">Upsell__c</code><span class="cty">Checkbox</span></li></ul></div></section>
     
-  <section class="cbox">
-    <div class="cbox-h"><span class="cdot sbu"></span><h3>SBU Production</h3><span class="csub">POS Nation · Quilt Software</span></div>
-    <div class="cstats">
-      <div class="cstat"><span class="k">Objects</span><span class="v">429 &rarr; 546</span></div>
-      <div class="cstat"><span class="k">Fields</span><span class="v">12,206 &rarr; 14,766</span></div>
-      <div class="cstat"><span class="k">Added</span><span class="v add">103</span></div>
-      <div class="cstat"><span class="k">Removed</span><span class="v rem">2</span></div>
-      <div class="cstat"><span class="k">Changed</span><span class="v chg">3</span></div>
-    </div>
-    <div class="cgrid">
-      <div class="ccol"><h4>Objects</h4><p class="cnone">No objects added or removed.</p></div>
-      <div class="ccol"><h4>Fields added <span class="cnt">103</span></h4>
-        <p class="cnote">2 created since 2026-08-25;
-        101 already existed but weren&rsquo;t visible to the previous scan.</p>
-        <div class="cobj"><div class="cobj-h"><code>Billing_Case_Request__c</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Account_Name_frml__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-25</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Case</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Case_Age_Mins__c</code><span class="cty">double</span><span class="ctag new">created 2026-08-26</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Opportunity</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Billing_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>OpportunityLineItem</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Opportunity_Product_Names__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Project__c</code><span class="cn">98 fields</span></div><ul class="clist"><li><code>Admin_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Age__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>AI_Summary_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Archived__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Asset_List__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>At_Risk__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Brand_Opportunity__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Cancellation_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Cashier_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Confidence__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Contact_Email__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Contact_Phone__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Customer_Team_Members__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Completed__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Confirmed_Tested_By__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Owner__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Owner_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Tier__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Dealroom_Link__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Delivered__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Does_your_business_accept_EBT_SNAP__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Done_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>External_Project_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>First_Processing_Date_100__c</code><span class="cty">datetime</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Go_Live__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Go_Live_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_NOT_Setup__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_Setup__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_Setup_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Industry__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>IS_Note__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Limited_Payments__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Modules_Completed__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Modules_Remaining__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Old_Record_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-20</span></li><li><code>Onboarding_Kick_Off_Call__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Onramp_Project_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>OnRamp_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity_Type__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payment_Processing__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Planned_End_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Playbook__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>PM_Note__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>POS_Software__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Post_Go_Live__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Post_Live_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Pre_Migration_Software__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Primary_Contact__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Primary_Contact_Name2__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Processor__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Product_List__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Products__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Age__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Cancellation_Reason__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Link__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Manager__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Status__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Type__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Value__c</code><span class="cty">currency</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Rate_Type__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Retail_Dashboard_URL__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Software_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Source_Object_Id__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Staff_and_Training__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Start_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tags__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tenant_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Time_to_Value__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Total_Modules__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tracking_Numbers__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Training_Participants__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Owner__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Owner_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Tier__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>What_features_do_they_need_most__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>What_is_the_Target_Go_Live_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Workflow_Gaps__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>X35_Days_Orientation__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>User</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Profile_Last_Confirmed__c</code><span class="cty">date</span><span class="ctag new">created 2026-08-26</span></li></ul></div></div>
-      <div class="ccol"><h4>Fields removed <span class="cnt">2</span></h4><ul class="clist flat"><li><code>Case.Testing_Completion_Date__c</code><span class="cty">datetime</span></li><li><code>Case.Upsell__c</code><span class="cty">boolean</span></li></ul></div>
-      <div class="ccol"><h4>Type / required / picklist changes <span class="cnt">3</span></h4><ul class="clist flat"><li><code>User.Department__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Business Operations, +IT, +Other</span> <span class="pv rem">&minus;Information Technology, &minus;Legal</span></div></li><li><code>User.Location_Country__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Other</span></div></li><li><code>User.Role__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Coordinator, +Accountant, +Analyst, +Rev Operations Analyst, +Specialist, +Sr. Specialist, +Engineer, +QA, +Architect, +Team Lead, +Director, +Sr Director, +Vice President, +Sr. Vice President, +Executive Vice President, +C-Suite/President, +Other</span> <span class="pv rem">&minus;Quality Analyst, &minus;Implementation Specialist, &minus;Sr. Implementation Specialist, &minus;Leadership</span></div></li></ul></div>
-    </div>
-  </section>
-  <section class="cbox">
-    <div class="cbox-h"><span class="cdot xbu"></span><h3>XBU Production</h3><span class="csub">Rain POS · rainpos.my.salesforce.com</span></div>
-    <div class="cstats">
-      <div class="cstat"><span class="k">Objects</span><span class="v">432 &rarr; 546</span></div>
-      <div class="cstat"><span class="k">Fields</span><span class="v">12,375 &rarr; 14,983</span></div>
-      <div class="cstat"><span class="k">Added</span><span class="v add">101</span></div>
-      <div class="cstat"><span class="k">Removed</span><span class="v rem">0</span></div>
-      <div class="cstat"><span class="k">Changed</span><span class="v chg">3</span></div>
-    </div>
-    <div class="cgrid">
-      <div class="ccol"><h4>Objects</h4><p class="cnone">No objects added or removed.</p></div>
-      <div class="ccol"><h4>Fields added <span class="cnt">101</span></h4>
-        <p class="cnote">5 created since 2026-08-25;
-        96 already existed but weren&rsquo;t visible to the previous scan.</p>
-        <div class="cobj"><div class="cobj-h"><code>Account</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Software_Migration_Date__c</code><span class="cty">date</span><span class="ctag new">created 2026-08-27</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Case</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Case_Age_Mins__c</code><span class="cty">double</span><span class="ctag new">created 2026-08-26</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Contact</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Account_Type__c</code><span class="cty">string</span><span class="ctag new">created 2026-08-26</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Opportunity</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Onboarding_Project_Created__c</code><span class="cty">boolean</span><span class="ctag new">created 2026-08-27</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>Project__c</code><span class="cn">96 fields</span></div><ul class="clist"><li><code>Admin_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Age__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>AI_Summary_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Archived__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Asset_List__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>At_Risk__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Brand_Opportunity__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Cancellation_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Cashier_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Confidence__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Contact_Email__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Contact_Phone__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Customer_Team_Members__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Completed__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Confirmed_Tested_By__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Owner__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Owner_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Data_Migration_Tier__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Dealroom_Link__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Delivered__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Does_your_business_accept_EBT_SNAP__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Done_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>First_Processing_Date_100__c</code><span class="cty">datetime</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Fulfillment_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Go_Live__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Go_Live_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_NOT_Setup__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_Setup__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Hardware_Setup_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Industry__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>IS_Note__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Limited_Payments__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Modules_Completed__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Modules_Remaining__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Onboarding_Kick_Off_Call__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Onramp_Project_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>OnRamp_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Opportunity_Type__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payment_Processing__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Payments_Onboarding_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Planned_End_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Playbook__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>PM_Note__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>POS_Software__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Post_Go_Live__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Post_Live_Notes__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Pre_Migration_Software__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Primary_Contact__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Primary_Contact_Name2__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Processor__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Product_List__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Products__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Age__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Cancellation_Reason__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Link__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Manager__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Status__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Type__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Project_Value__c</code><span class="cty">currency</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Rate_Type__c</code><span class="cty">picklist</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Retail_Dashboard_URL__c</code><span class="cty">url</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Software_Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Source_Object_Id__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Staff_and_Training__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Start_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tags__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tenant_ID__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Time_to_Value__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Total_Modules__c</code><span class="cty">double</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Tracking_Numbers__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Training_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Training_Participants__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Owner__c</code><span class="cty">reference</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Owner_Name__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Case_URL__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Onboarding_Tier__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Website_Status__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>What_features_do_they_need_most__c</code><span class="cty">textarea</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>What_is_the_Target_Go_Live_Date__c</code><span class="cty">date</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>Workflow_Gaps__c</code><span class="cty">string</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li><li><code>X35_Days_Orientation__c</code><span class="cty">boolean</span><span class="ctag pre" title="Already existed on 2026-08-25; not visible to that scan.">pre-existing &middot; 2026-08-19</span></li></ul></div><div class="cobj"><div class="cobj-h"><code>User</code><span class="cn">1 field</span></div><ul class="clist"><li><code>Profile_Last_Confirmed__c</code><span class="cty">date</span><span class="ctag new">created 2026-08-26</span></li></ul></div></div>
-      <div class="ccol"><h4>Fields removed <span class="cnt">0</span></h4><p class="cnone">None.</p></div>
-      <div class="ccol"><h4>Type / required / picklist changes <span class="cnt">3</span></h4><ul class="clist flat"><li><code>User.Department__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Business Operations, +Product, +Leadership, +IT, +Other</span> <span class="pv rem">&minus;Legal</span></div></li><li><code>User.Location_Country__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Other</span></div></li><li><code>User.Role__c</code><div class="cdet"><span class="cattr">picklist</span> <span class="pv add">+Coordinator, +Accountant, +Analyst, +Rev Operations Analyst, +Specialist, +Sr. Specialist, +Engineer, +QA, +Architect, +Team Lead, +Director, +Sr Director, +Vice President, +Sr. Vice President, +Executive Vice President, +C-Suite/President, +Other</span> <span class="pv rem">&minus;Quality Analyst, &minus;Implementation Specialist, &minus;Sr. Implementation Specialist, &minus;Leadership</span></div></li></ul></div>
-    </div>
-  </section>
+    <details class="cmore"><summary>101 fields newly visible in the dictionary &mdash; not new in Salesforce</summary><p>These fields already existed in Salesforce before Aug 25, 2026, but the previous scan could not see them (usually because of field-level security on the account that runs the scan). Nothing about them changed in Salesforce, so they are not counted as new above.</p><div class="cobj"><div class="cobj-h"><b>Billing Case Request</b><code>Billing_Case_Request__c</code><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag sbu">SBU</span><span class="cfl">Account Name</span><code class="capi">Account_Name_frml__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 25, 2026</span></li></ul></div><div class="cobj"><div class="cobj-h"><b>Opportunity</b><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag sbu">SBU</span><span class="cfl">Billing Notes</span><code class="capi">Billing_Notes__c</code><span class="cty">Text Area (255)</span><span class="cwhen">created Aug 19, 2026</span></li></ul></div><div class="cobj"><div class="cobj-h"><b>Opportunity Product</b><code>OpportunityLineItem</code><span class="cn">1 field</span></div><ul class="clist"><li><span class="orgtag sbu">SBU</span><span class="cfl">Opportunity Product Names</span><code class="capi">Opportunity_Product_Names__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li></ul></div><div class="cobj"><div class="cobj-h"><b>Project</b><code>Project__c</code><span class="cn">98 fields</span></div><ul class="clist"><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">35 Days Orientation</span><code class="capi">X35_Days_Orientation__c</code><span class="cty">Checkbox</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Admin Training Date</span><code class="capi">Admin_Training_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Age</span><code class="capi">Age__c</code><span class="cty">Formula (Number)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">AI Summary Notes</span><code class="capi">AI_Summary_Notes__c</code><span class="cty">Long Text Area (20,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Archived</span><code class="capi">Archived__c</code><span class="cty">Checkbox</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Asset List</span><code class="capi">Asset_List__c</code><span class="cty">Long Text Area (131,072)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">At Risk</span><code class="capi">At_Risk__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Brand - Opportunity</span><code class="capi">Brand_Opportunity__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Cancellation Date</span><code class="capi">Cancellation_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Cashier Training Date</span><code class="capi">Cashier_Training_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Confidence</span><code class="capi">Confidence__c</code><span class="cty">Number</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Contact Email</span><code class="capi">Contact_Email__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Contact Phone</span><code class="capi">Contact_Phone__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Customer Team Members</span><code class="capi">Customer_Team_Members__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration</span><code class="capi">Data_Migration__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Case</span><code class="capi">Data_Migration_Case__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Case Status</span><code class="capi">Data_Migration_Case_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Case URL</span><code class="capi">Data_Migration_Case_URL__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Completed</span><code class="capi">Data_Migration_Completed__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Confirmed/Tested By</span><code class="capi">Data_Migration_Confirmed_Tested_By__c</code><span class="cty">Text (124)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Owner</span><code class="capi">Data_Migration_Owner__c</code><span class="cty">Lookup</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Owner Name</span><code class="capi">Data_Migration_Owner_Name__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Status</span><code class="capi">Data_Migration_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Data Migration Tier</span><code class="capi">Data_Migration_Tier__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Dealroom Link</span><code class="capi">Dealroom_Link__c</code><span class="cty">URL</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Delivered</span><code class="capi">Delivered__c</code><span class="cty">Checkbox</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Does your business accept EBT (SNAP)?</span><code class="capi">Does_your_business_accept_EBT_SNAP__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Done Date</span><code class="capi">Done_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag sbu">SBU</span><span class="cfl">External Project ID</span><code class="capi">External_Project_ID__c</code><span class="cty">Text (36)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">First Processing Date ($100)</span><code class="capi">First_Processing_Date_100__c</code><span class="cty">Date/Time</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Fulfillment Case</span><code class="capi">Fulfillment_Case__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Fulfillment Case Status</span><code class="capi">Fulfillment_Case_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Fulfillment Case URL</span><code class="capi">Fulfillment_Case_URL__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Go Live Notes</span><code class="capi">Go_Live_Notes__c</code><span class="cty">Long Text Area (20,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Go-Live</span><code class="capi">Go_Live__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Hardware</span><code class="capi">Hardware__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Hardware NOT Setup</span><code class="capi">Hardware_NOT_Setup__c</code><span class="cty">Long Text Area (1,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Hardware Setup</span><code class="capi">Hardware_Setup__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Hardware Setup Date</span><code class="capi">Hardware_Setup_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Industry</span><code class="capi">Industry__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">IS Note</span><code class="capi">IS_Note__c</code><span class="cty">Long Text Area (20,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Limited Payments</span><code class="capi">Limited_Payments__c</code><span class="cty">Checkbox</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Modules Completed</span><code class="capi">Modules_Completed__c</code><span class="cty">Number</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Modules Remaining</span><code class="capi">Modules_Remaining__c</code><span class="cty">Number</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag sbu">SBU</span><span class="cfl">Old Record ID</span><code class="capi">Old_Record_ID__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 20, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Onboarding Kick Off Call</span><code class="capi">Onboarding_Kick_Off_Call__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Onramp Project ID</span><code class="capi">Onramp_Project_ID__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">OnRamp Status</span><code class="capi">OnRamp_Status__c</code><span class="cty">Text (32)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Opportunity</span><code class="capi">Opportunity__c</code><span class="cty">Lookup</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Opportunity Notes</span><code class="capi">Opportunity_Notes__c</code><span class="cty">Long Text Area (20,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Opportunity Type</span><code class="capi">Opportunity_Type__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Payment Processing</span><code class="capi">Payment_Processing__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Payments Onboarding Case</span><code class="capi">Payments_Onboarding_Case__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Payments Onboarding Case Status</span><code class="capi">Payments_Onboarding_Case_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Payments Onboarding Case URL</span><code class="capi">Payments_Onboarding_Case_URL__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Planned End Date</span><code class="capi">Planned_End_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Playbook</span><code class="capi">Playbook__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">PM Note</span><code class="capi">PM_Note__c</code><span class="cty">Long Text Area (5,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">POS Software</span><code class="capi">POS_Software__c</code><span class="cty">Lookup</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Post-Go Live</span><code class="capi">Post_Go_Live__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Post-Live Notes</span><code class="capi">Post_Live_Notes__c</code><span class="cty">Long Text Area (1,000)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Pre-Migration Software</span><code class="capi">Pre_Migration_Software__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Primary Contact</span><code class="capi">Primary_Contact__c</code><span class="cty">Lookup</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Primary Contact Name</span><code class="capi">Primary_Contact_Name2__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Processor</span><code class="capi">Processor__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Product List</span><code class="capi">Product_List__c</code><span class="cty">Long Text Area (32,768)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Products</span><code class="capi">Products__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Age</span><code class="capi">Project_Age__c</code><span class="cty">Number</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Cancellation Reason</span><code class="capi">Project_Cancellation_Reason__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Link</span><code class="capi">Project_Link__c</code><span class="cty">URL</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Manager</span><code class="capi">Project_Manager__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Name</span><code class="capi">Project_Name__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Status</span><code class="capi">Project_Status__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Type</span><code class="capi">Project_Type__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Project Value</span><code class="capi">Project_Value__c</code><span class="cty">Currency</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Rate Type</span><code class="capi">Rate_Type__c</code><span class="cty">Picklist</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Retail Dashboard URL</span><code class="capi">Retail_Dashboard_URL__c</code><span class="cty">URL</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Software Training Date</span><code class="capi">Software_Training_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Source Object Id</span><code class="capi">Source_Object_Id__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Staff and Training</span><code class="capi">Staff_and_Training__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Start Date</span><code class="capi">Start_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Tags</span><code class="capi">Tags__c</code><span class="cty">Text Area (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Tenant ID</span><code class="capi">Tenant_ID__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Time to Value</span><code class="capi">Time_to_Value__c</code><span class="cty">Formula (Number)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Total Modules</span><code class="capi">Total_Modules__c</code><span class="cty">Formula (Number)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Tracking Numbers</span><code class="capi">Tracking_Numbers__c</code><span class="cty">Long Text Area (32,768)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Training Date</span><code class="capi">Training_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Training Participants</span><code class="capi">Training_Participants__c</code><span class="cty">Text Area (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Case</span><code class="capi">Website_Onboarding_Case__c</code><span class="cty">Text (18)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Case Owner</span><code class="capi">Website_Onboarding_Case_Owner__c</code><span class="cty">Lookup</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Case Owner Name</span><code class="capi">Website_Onboarding_Case_Owner_Name__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Case Status</span><code class="capi">Website_Onboarding_Case_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Case URL</span><code class="capi">Website_Onboarding_Case_URL__c</code><span class="cty">Formula (Text)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Onboarding Tier</span><code class="capi">Website_Onboarding_Tier__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Website Status</span><code class="capi">Website_Status__c</code><span class="cty">Text (24)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">What features do they need most?</span><code class="capi">What_features_do_they_need_most__c</code><span class="cty">Text Area (255)</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">What is the Target Go-Live Date?</span><code class="capi">What_is_the_Target_Go_Live_Date__c</code><span class="cty">Date</span><span class="cwhen">created Aug 19, 2026</span></li><li><span class="orgtag both" title="In both SBU and XBU">Both</span><span class="cfl">Workflow Gaps</span><code class="capi">Workflow_Gaps__c</code><span class="cty">Text (255)</span><span class="cwhen">created Aug 19, 2026</span></li></ul></div></details>
+    <details class="cmore"><summary>The dictionary&rsquo;s coverage changed &mdash; not a Salesforce change</summary><p>The set of objects the dictionary scans was updated. It now includes 137 more objects in SBU and 133 in XBU, and no longer lists 20 SBU and 19 XBU platform-event objects. These objects were already in Salesforce, so they are not counted as changes.</p></details>
   </div>
 </div>
 
@@ -318,52 +288,91 @@ ul.clist li code{font-family:var(--mono);color:var(--ink)}
 
   <aside>
     <div class="search">
-      <input id="q" type="search" placeholder="Search objects &amp; fields…" autocomplete="off" spellcheck="false" aria-label="Search objects and fields">
+      <input id="q" type="search" placeholder="Search by label, API name or description…" autocomplete="off" spellcheck="false" aria-label="Search objects and fields">
 
       <div class="fld">
-        <label for="fBu">Business Unit</label>
+        <label for="fBu">Org</label>
         <select class="ctl" id="fBu">
-          <option value="both" selected>SBU / XBU</option>
-          <option value="sbu">SBU only</option>
-          <option value="xbu">XBU only</option>
+          <option value="both" selected>Both orgs (SBU + XBU)</option>
+          <option value="sbu">SBU only — POS Nation</option>
+          <option value="xbu">XBU only — Rain POS</option>
         </select>
       </div>
 
       <div class="fld">
-        <label for="fObj">Object Selection</label>
+        <label for="fObj">Object</label>
         <select class="ctl" id="fObj">
-          <option value="both" selected>Both</option>
-          <option value="standard">Standard</option>
-          <option value="custom">Custom</option>
+          <option value="both" selected>All objects</option>
         </select>
       </div>
 
       <div class="fld">
-        <span class="lbl" id="lblType">Type of Field</span>
+        <label for="fOrigin">Fields</label>
+        <select class="ctl" id="fOrigin">
+          <option value="all" selected>Custom and standard fields</option>
+          <option value="custom">Custom fields only</option>
+          <option value="standard">Standard fields only</option>
+        </select>
+      </div>
+
+      <div class="fld sub">
+        <span class="lbl" id="lblType">Show</span>
         <div class="multi" id="mType" data-open="false">
           <button class="ctl" type="button" id="btnType" aria-haspopup="true" aria-expanded="false" aria-labelledby="lblType btnType">
-            <span id="typeSummary">All Fields</span><span class="caret" aria-hidden="true">▾</span>
+            <span id="typeSummary">All fields</span><span class="caret" aria-hidden="true">▾</span>
           </button>
           <div class="pop" id="popType" hidden role="group" aria-label="Type of field">
-            <label class="opt"><input type="checkbox" id="cbAll" value="__all" checked> All Fields</label>
+            <label class="opt"><input type="checkbox" id="cbAll" value="__all" checked> All fields</label>
             <div class="popsep"></div>
-            <div class="opthead">Limit to</div>
-            <label class="opt"><input type="checkbox" value="formula"> Formula</label>
-            <label class="opt"><input type="checkbox" value="required"> Required</label>
-            <label class="opt"><input type="checkbox" value="picklist"> Picklist</label>
-            <label class="opt"><input type="checkbox" value="lookup"> Lookup</label>
+            <div class="opthead">Only show</div>
+            <label class="opt"><input type="checkbox" value="formula"> Formula fields</label>
+            <label class="opt"><input type="checkbox" value="required"> Required fields</label>
+            <label class="opt"><input type="checkbox" value="picklist"> Picklists</label>
+            <label class="opt"><input type="checkbox" value="lookup"> Lookups</label>
             <div class="popfoot">
               <span class="lbl2">Match</span>
               <div class="seg" role="group" aria-label="Match mode">
-                <button type="button" data-mode="any" aria-pressed="true">Any</button>
-                <button type="button" data-mode="all" aria-pressed="false">All</button>
+                <button type="button" data-mode="any" aria-pressed="true" title="Fields matching any ticked option">Any</button>
+                <button type="button" data-mode="all" aria-pressed="false" title="Fields matching every ticked option">All</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="fld">
+        <label for="fLabel">Field label contains</label>
+        <input class="ctl" id="fLabel" type="search" placeholder="e.g. status" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="fld">
+        <span class="lbl" id="lblBadges">Badges</span>
+        <div class="badgefilter" id="fBadges" role="group" aria-labelledby="lblBadges">
+          <label class="bopt"><input type="checkbox" value="both"><span class="orgtag both">Both</span></label>
+          <label class="bopt"><input type="checkbox" value="sbuonly"><span class="orgtag sbu">SBU only</span></label>
+          <label class="bopt"><input type="checkbox" value="xbuonly"><span class="orgtag xbu">XBU only</span></label>
+          <label class="bopt"><input type="checkbox" value="differs"><span class="diffchip">Differs</span></label>
+          <label class="bopt"><input type="checkbox" value="required"><span class="attr req">Required</span></label>
+          <label class="bopt"><input type="checkbox" value="managed"><span class="mgdchip">Managed</span></label>
+        </div>
+      </div>
+
       <button class="clearall" type="button" id="clearAll" hidden>Clear filters</button>
+
+      <details class="legend">
+        <summary>What do the labels mean?</summary>
+        <dl>
+          <dt><span class="orgtag both">Both</span></dt><dd>Exists in both SBU and XBU</dd>
+          <dt><span class="orgtag sbu">SBU</span><span class="orgtag xbu">XBU</span></dt><dd>Exists in that org only</dd>
+          <dt><span class="tag custom">Custom</span></dt><dd>Custom object built in-house (no badge = standard Salesforce object)</dd>
+          <dt><span class="diffchip">3 differ</span></dt><dd>Fields set up differently in SBU and XBU</dd>
+          <dt><span class="count">42</span></dt><dd>Number of fields (or matches while searching)</dd>
+          <dt><span class="attr req">Required</span></dt><dd>Must have a value before the record can be saved (card is highlighted pink)</dd>
+          <dt><span class="mgdchip">Managed</span></dt><dd>Installed by a managed package (an AppExchange app), named in the Package row. Cannot be deleted</dd>
+          <dt><span class="attr uniq">Unique</span></dt><dd>No two records can share the same value</dd>
+          <dt><span class="attr ext">External Id</span></dt><dd>Used to match records from imports and integrations</dd>
+        </dl>
+      </details>
     </div>
     <div class="objlist" id="objlist"></div>
   </aside>
@@ -444,6 +453,7 @@ const COMBINED=(function(){
 // ---- state ----
 let bu='both', objScope='both', typeSel=new Set(), typeMode='any';
 let pinnedObj=null, query='';
+let badgeSel=new Set(), labelQ='', originSel='all';
 const CAP=500;
 
 const main=document.getElementById('main'), list=document.getElementById('objlist'), q=document.getElementById('q');
@@ -452,10 +462,26 @@ const selBu=document.getElementById('fBu'), selObj=document.getElementById('fObj
 const mType=document.getElementById('mType'), btnType=document.getElementById('btnType'),
       popType=document.getElementById('popType'), typeSummary=document.getElementById('typeSummary'),
       clearAll=document.getElementById('clearAll'), cbAll=document.getElementById('cbAll');
+const fLabel=document.getElementById('fLabel'), fBadges=document.getElementById('fBadges'), fOrigin=document.getElementById('fOrigin');
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>n.toLocaleString();
-const TYPE_LABEL={formula:'Formula',required:'Required',picklist:'Picklist',lookup:'Lookup'};
+const TYPE_LABEL={formula:'Formula fields',required:'Required fields',picklist:'Picklists',lookup:'Lookups'};
+// Salesforce describe types -> the names people see in Setup.
+const TYPE_NAME={string:'Text',textarea:'Text Area',reference:'Lookup',boolean:'Checkbox',picklist:'Picklist',
+  multipicklist:'Multi-Select Picklist',combobox:'Picklist (editable)',double:'Number',int:'Number',long:'Number',
+  currency:'Currency',percent:'Percent',datetime:'Date/Time',date:'Date',time:'Time',id:'Record ID',url:'URL',
+  phone:'Phone',email:'Email',address:'Address',location:'Geolocation',encryptedstring:'Text (Encrypted)',base64:'File'};
+function friendlyType(f){
+  const t=(f.type||'').toLowerCase();
+  let n=TYPE_NAME[t]||(f.type||'—');
+  if(t==='textarea'&&Number(f.len)>255)n='Long Text Area';
+  if(f.formula)return 'Formula ('+n+')';
+  if((t==='string'||t==='textarea'||t==='encryptedstring')&&Number(f.len))n+=' ('+nf(Number(f.len))+')';
+  return n;}
+// A checkbox is never blank, so Salesforce marks every one required; that reads as wrong to a business user.
+const isReq=f=>!!f.req&&f.type!=='boolean';
+const byLabel=(a,b)=>(a.label||a.name||a.api).localeCompare(b.label||b.name||b.api,undefined,{sensitivity:'base'});
 const uid=()=>'x'+Math.random().toString(36).slice(2);
 
 function typeClass(t){t=(t||'').toLowerCase();
@@ -481,20 +507,50 @@ function view(){
       if(rb===undefined)return -1;
       return ra-rb;
     }
-    return a.o.api.localeCompare(b.o.api);
+    return byLabel(a.o,b.o);
   });
 }
 let VIEW=view(), VISIBLE=[];
 
 function fieldMatches(f,ql){if(!ql)return true;
-  return (f.name+' '+f.label+' '+f.type+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
+  return (f.name+' '+f.label+' '+f.type+' '+friendlyType(f)+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
 function testType(f,t){
   if(t==='formula')return !!f.formula;
-  if(t==='required')return !!f.req;
+  if(t==='required')return isReq(f);
   if(t==='picklist')return (f.pick&&f.pick.length>0)||!!f.gvs;
   if(t==='lookup')return !!(f.ref&&f.ref.length);
   return true;}
+// Badge filter. Org boxes are OR'd with each other; Differs and Required each narrow further.
+// Org and Differs only mean something in the merged view, so single-org views ignore them.
+function passBadges(f){
+  if(!badgeSel.size)return true;
+  if(bu==='both'){
+    const orgPick=['both','sbuonly','xbuonly'].filter(k=>badgeSel.has(k));
+    const orgs=f._orgs||[];
+    if(orgPick.length&&!orgPick.includes(orgs.length>1?'both':orgs[0]+'only'))return false;
+    if(badgeSel.has('differs')&&!(f._diffs&&f._diffs.length))return false;
+  }
+  if(badgeSel.has('required')&&!isReq(f))return false;
+  if(badgeSel.has('managed')&&!packageOf(f))return false;
+  return true;}
+function passLabel(f){return !labelQ||(f.label||'').toLowerCase().includes(labelQ);}
+// Custom = API name with a custom suffix: __c (incl. managed packages), __s (custom address parts), __pc (person account).
+const isCustomField=f=>/__(c|s|pc)$/i.test(f.name||'');
+// Managed-package fields carry a namespace prefix: ns__Field__c (or __pc), and ns__Field__Part__s for
+// address parts. Plain custom address parts (Business__City__s) have one separator fewer, so they don't match.
+function packageOf(f){
+  const p=(f.name||'').split('__'), suf=p.length>1?p[p.length-1].toLowerCase():'';
+  const need=suf==='s'?4:(suf==='c'||suf==='pc')?3:Infinity;
+  return p.length>=need?p[0]:'';}
+function passOrigin(f){return originSel==='all'||(originSel==='custom')===isCustomField(f);}
+function anyFieldFilter(){return typeSel.size>0||badgeSel.size>0||!!labelQ||originSel!=='all';}
+function syncBadgeFilter(){
+  fBadges.querySelectorAll('input').forEach(cb=>{
+    const off=bu!=='both'&&cb.value!=='required'&&cb.value!=='managed';
+    cb.disabled=off; cb.parentNode.classList.toggle('off',off);
+    cb.parentNode.title=off?'Only applies when Org is Both orgs':'';});}
 function passTypes(f){
+  if(!passOrigin(f)||!passBadges(f)||!passLabel(f))return false;
   if(!typeSel.size)return true;
   // in merged mode a field qualifies if either org's version qualifies
   const variants=f._v?Object.keys(f._v).map(k=>f._v[k]):[f];
@@ -502,21 +558,37 @@ function passTypes(f){
   return typeMode==='all'
     ? sel.every(t=>variants.some(v=>testType(v,t)))
     : sel.some(t=>variants.some(v=>testType(v,t)));}
-function objPassesScope(o){
-  if(objScope==='custom'&&!o.custom)return false;
-  if(objScope==='standard'&&o.custom)return false;
-  return true;}
+function objPassesScope(o){return objScope==='both'||o.api===objScope;}
+// Object picker: every object in the current org view, listed by label. The API name
+// is shown only where two objects share a label, so the choices stay distinguishable.
+// Rebuilt only when the org changes, not on every keystroke.
+let pickerFor=null;
+function fillObjPicker(){
+  const rows=VIEW.map(r=>r.o);
+  if(objScope!=='both'&&!rows.some(o=>o.api===objScope))objScope='both';
+  if(pickerFor!==bu){
+    const seen={};
+    rows.forEach(o=>{const k=(o.label||o.api).toLowerCase();seen[k]=(seen[k]||0)+1;});
+    const opt=o=>{const l=o.label||o.api;
+      return '<option value="'+esc(o.api)+'">'+esc(seen[l.toLowerCase()]>1?l+' ('+o.api+')':l)+'</option>';};
+    const key=rows.filter(o=>PIN_RANK[o.api]!==undefined), rest=rows.filter(o=>PIN_RANK[o.api]===undefined);
+    selObj.innerHTML='<option value="both">All objects</option>'
+      +(key.length?'<optgroup label="Key objects">'+key.map(opt).join('')+'</optgroup>':'')
+      +'<optgroup label="All objects">'+rest.map(opt).join('')+'</optgroup>';
+    pickerFor=bu;
+  }
+  selObj.value=objScope;}
 function objMatchCount(o,ql){let n=0;for(const f of o.fields){if(passTypes(f)&&fieldMatches(f,ql))n++;}return n;}
 function hl(text,ql){text=esc(text);if(!ql)return text;
   const i=text.toLowerCase().indexOf(ql);if(i<0)return text;
   return text.slice(0,i)+'<mark>'+text.slice(i,i+ql.length)+'</mark>'+text.slice(i+ql.length);}
 function orgBadge(orgs){
-  if(orgs.length>1) return '<span class="orgtag both">SBU/XBU</span>';
-  return '<span class="orgtag '+orgs[0]+'">'+orgs[0].toUpperCase()+'</span>';
+  if(orgs.length>1) return '<span class="orgtag both" title="Exists in both SBU and XBU">Both</span>';
+  return '<span class="orgtag '+orgs[0]+'" title="Exists in '+orgs[0].toUpperCase()+' only">'+orgs[0].toUpperCase()+'</span>';
 }
 
 function computeVisible(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const out=[];
   for(const r of VIEW){
     if(!objPassesScope(r.o))continue;
@@ -533,7 +605,7 @@ function renderHeader(){
   subEl.textContent = ids.length>1
     ? 'SBU + XBU Production · merged view · generated '+ORGS[ids[0]].meta.gen
     : ORGS[ids[0]].meta.name+' · '+ORGS[ids[0]].meta.sub+' · generated '+ORGS[ids[0]].meta.gen;
-  const ql=query.toLowerCase(), filtering=!!ql||typeSel.size>0;
+  const ql=query.toLowerCase(), filtering=!!ql||anyFieldFilter();
   let objs=0,cust=0,flds=0,dif=0;
   for(const {o} of VISIBLE){
     objs++; if(o.custom)cust++;
@@ -544,10 +616,10 @@ function renderHeader(){
   }
   statsEl.innerHTML=
     '<div class="stat"><b>'+nf(objs)+'</b><span>Objects</span></div>'+
-    '<div class="stat"><b>'+nf(cust)+'</b><span>Custom</span></div>'+
+    '<div class="stat"><b>'+nf(cust)+'</b><span>Custom objects</span></div>'+
     '<div class="stat"><b>'+nf(flds)+'</b><span>Fields</span></div>'+
-    (bu==='both'?'<div class="stat"><b>'+nf(dif)+'</b><span>Differing</span></div>':'');
-  clearAll.hidden=!(bu!=='both'||objScope!=='both'||typeSel.size>0||!!query);
+    (bu==='both'?'<div class="stat" title="Fields set up differently in SBU and XBU"><b>'+nf(dif)+'</b><span>Differ SBU vs XBU</span></div>':'');
+  clearAll.hidden=!(bu!=='both'||objScope!=='both'||anyFieldFilter()||!!query);
 }
 
 function objRow(r,ql,anyFilter){
@@ -556,14 +628,14 @@ function objRow(r,ql,anyFilter){
   const isMatch=(ql||anyFilter)&&mc>0;
   return '<button class="obj" role="listitem" aria-current="'+cur+'" data-api="'+esc(o.api)+'" data-org="'+(r.org||'')+'">'
     +(bu==='both'?orgBadge(o.orgs):'')
-    +'<span class="tag '+(o.custom?'custom':'std')+'">'+(o.custom?'C':'S')+'</span>'
-    +'<span class="otext"><span class="oapi">'+hl(o.api,ql)+'</span><span class="olabel">'+hl(o.label,ql)+'</span></span>'
-    +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' fields differ between SBU and XBU">Δ'+o.nDiff+'</span>':'')
-    +'<span class="count'+(isMatch?' match':'')+'">'+mc+'</span></button>';
+    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span>'+(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span>'
+    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'')
+    +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' field'+(o.nDiff===1?'':'s')+' set up differently in SBU and XBU">'+o.nDiff+' differ</span>':'')
+    +'<span class="count'+(isMatch?' match':'')+'" title="'+mc+((ql||anyFilter)?' matching':'')+' field'+(mc===1?'':'s')+'">'+mc+'</span></button>';
 }
 
 function renderList(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const pin=VISIBLE.filter(r=>PIN_RANK[r.o.api]!==undefined);
   const rest=VISIBLE.filter(r=>PIN_RANK[r.o.api]===undefined);
   let html='';
@@ -574,7 +646,9 @@ function renderList(){
 
 function dval(f,attr){
   if(!f)return '—';
-  if(attr==='req'||attr==='uniq'||attr==='extId')return f[attr]?'Yes':'No';
+  if(attr==='req')return isReq(f)?'Yes':'No';
+  if(attr==='uniq'||attr==='extId')return f[attr]?'Yes':'No';
+  if(attr==='type')return friendlyType(f);
   if(attr==='ref')return (f.ref&&f.ref.length)?f.ref.join(', '):'—';
   if(attr==='pick')return (f.pick?f.pick.length:0)+' values';
   if(attr==='formula')return 'see below';
@@ -607,59 +681,66 @@ function diffBlock(f){
     }
     rows+='</div>';
   }
-  return '<div class="kv"><span class="k">Differs</span><span class="v diffs">'+rows+'</span></div>';
+  return '<div class="kv"><span class="k">SBU vs XBU</span><span class="v diffs">'+rows+'</span></div>';
 }
 
-function fieldCard(f,ql,withObj,objApi){
-  const tc=typeClass(f.type);
+function fieldCard(f,ql,withObj,objApi,objLabel){
+  const tc=f.formula?'--c-formula':typeClass(f.type);
   const merged=!!f._orgs;
   const differs=merged&&f._diffs.length>0;
   let attrs='';
-  if(f.req)attrs+='<span class="attr req">Required</span>';
-  if(f.uniq)attrs+='<span class="attr uniq">Unique</span>';
-  if(f.extId)attrs+='<span class="attr ext">External Id</span>';
+  if(f.uniq)attrs+='<span class="attr uniq" title="No two records can share the same value">Unique</span>';
+  if(f.extId)attrs+='<span class="attr ext" title="Used to match records from imports and integrations">External Id</span>';
   let det='';
   if(differs)det+=diffBlock(f);
-  if(f.ref&&f.ref.length)det+='<div class="kv"><span class="k">Lookup to</span><span class="v reflist">'+f.ref.map(r=>'<span>'+esc(r)+'</span>').join('')+'</span></div>';
+  if(f.ref&&f.ref.length)det+='<div class="kv"><span class="k">Looks up to</span><span class="v reflist">'+f.ref.map(r=>'<span>'+esc(r)+'</span>').join('')+'</span></div>';
   if(f.pick&&f.pick.length){const id=uid();
-    det+='<div class="kv"><span class="k">Picklist</span><span class="v"><button class="toggle" type="button" onclick="var e=document.getElementById(\''+id+'\');e.classList.toggle(\'hidden\')">'+f.pick.length+' values</button>'
+    det+='<div class="kv"><span class="k">Values</span><span class="v"><button class="toggle" type="button" onclick="var e=document.getElementById(\''+id+'\');e.classList.toggle(\'hidden\')">'+f.pick.length+' values</button>'
       +(f.gvs?' <span style="color:var(--faint)">· global value set <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span>':'')
       +'<div id="'+id+'" class="pills hidden" style="margin-top:5px">'+f.pick.map(p=>'<span class="pill">'+esc(p)+'</span>').join('')+'</div></span></div>';}
-  else if(f.gvs)det+='<div class="kv"><span class="k">Picklist</span><span class="v">Global value set: <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span></div>';
+  else if(f.gvs)det+='<div class="kv"><span class="k">Values</span><span class="v">Global value set: <span style="font-family:var(--mono)">'+esc(f.gvs)+'</span></span></div>';
   if(f.formula){const id=uid();
     det+='<div class="kv"><span class="k">Formula</span><span class="v" style="flex:1"><button class="toggle" type="button" onclick="var e=document.getElementById(\''+id+'\');e.classList.toggle(\'hidden\')">show</button>'
       +'<div id="'+id+'" class="formula hidden" style="margin-top:5px">'+esc(f.formula)+'</div></span></div>';}
   if(f.desc)det+='<div class="kv"><span class="k">Description</span><span class="v desc">'+hl(f.desc,ql)+'</span></div>';
-  if(f.help)det+='<div class="kv"><span class="k">Help text</span><span class="v help">'+hl(f.help,ql)+'</span></div>';
-  const lenTxt=f.len?' ('+esc(f.len)+')':'';
-  return '<div class="field'+(differs?' differs':'')+'"><div class="frow">'
-    +(merged?orgBadge(f._orgs):'')
-    +(differs?'<span class="diffchip">differs</span>':'')
-    +(withObj?'<span class="fnameobj">'+esc(objApi)+'.</span>':'')
-    +'<span class="fname">'+hl(f.name,ql)+'</span>'
-    +'<span class="type" style="color:var('+tc+');border-color:var('+tc+')">'+esc(f.type||'—')+lenTxt+'</span>'
-    +'<span class="flabel">'+hl(f.label,ql)+'</span>'
-    +'<span class="attrs">'+attrs+'</span></div>'
-    +(det?'<div class="fdetail">'+det+'</div>':'')+'</div>';
+  if(f.help)det+='<div class="kv"><span class="k">Help Text</span><span class="v help">'+hl(f.help,ql)+'</span></div>';
+  // every value is labelled, so a reader never has to guess which name is the label and which the API name
+  const kv=(k,v)=>'<div class="kv"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';
+  const pkg=packageOf(f);
+  // left rail: which org(s) the field is in, and whether SBU and XBU set it up differently
+  const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
+    +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
+    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>':'')
+    +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
+  return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
+    +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')
+    +'<div class="kv"><span class="k">Field Label</span><span class="v frow"><span class="flabel">'+hl(f.label||f.name,ql)+'</span>'
+      +'<span class="fbadges">'+attrs+'</span></span></div>'
+    +kv('API Name','<span class="fapi">'+hl(f.name,ql)+'</span>')
+    +(pkg?kv('Package','<span class="fapi">'+esc(pkg)+'</span>'):'')
+    +kv('Type','<span class="type" title="Salesforce type: '+esc(f.type||'—')+'" style="color:var('+tc+');border-color:var('+tc+')">'+esc(friendlyType(f))+'</span>')
+    +det+'</div></div>';
 }
 
 function renderMain(){
-  const ql=query.toLowerCase(), anyFilter=typeSel.size>0;
+  const ql=query.toLowerCase(), anyFilter=anyFieldFilter();
   const totalFieldsN=VIEW.reduce((a,r)=>a+r.o.fields.length,0);
   if(pinnedObj){
     const row=VISIBLE.find(r=>r.o.api===pinnedObj.api&&r.org===pinnedObj.org);
-    if(!row){main.innerHTML='<div class="empty">That object isn’t in the current filter.</div>';return;}
+    if(!row){main.innerHTML='<div class="empty">'+(objScope!=='both'
+      ?'No fields in this object match the current search or filter.'
+      :'That object isn’t in the current filter.')+'</div>';return;}
     const o=row.o;
-    const fields=o.fields.filter(f=>passTypes(f)&&fieldMatches(f,ql));
+    const fields=o.fields.filter(f=>passTypes(f)&&fieldMatches(f,ql)).sort(byLabel);
     let meta=fields.length+' of '+o.fields.length+' fields'+(ql?' matching “'+esc(query)+'”':'');
     if(bu==='both'){
       meta+= ' · '+(o.orgs.length>1?'in SBU and XBU':'only in '+o.orgs[0].toUpperCase());
       if(o.nDiff)meta+=' · '+o.nDiff+' field'+(o.nDiff===1?'':'s')+' differ';
     }
-    let h='<div class="mhead">'+(bu==='both'?orgBadge(o.orgs):'')+'<h2>'+esc(o.api)+'</h2><span class="mlabel">'+esc(o.label)+'</span>'
+    let h='<div class="mhead">'+(bu==='both'?orgBadge(o.orgs):'')+'<h2>'+esc(o.label||o.api)+'</h2>'+(o.label&&o.label!==o.api?'<span class="mapi">'+esc(o.api)+'</span>':'')
       +'<span class="tag '+(o.custom?'custom':'std')+'">'+(o.custom?'Custom':'Standard')+'</span></div>'
       +'<div class="mmeta">'+meta+'</div>';
-    h+=fields.length?fields.map(f=>fieldCard(f,ql,false,o.api)).join(''):'<div class="empty">No fields match the current filter.</div>';
+    h+=fields.length?fields.map(f=>fieldCard(f,ql,false,o.api,o.label)).join(''):'<div class="empty">No fields match the current filter.</div>';
     main.innerHTML=h;main.scrollTop=0;return;
   }
   if(!ql&&!anyFilter){
@@ -673,18 +754,21 @@ function renderMain(){
   let h='<div class="mhead"><h2 style="font-family:var(--sans)">Field results</h2></div>'
     +'<div class="mmeta">'+rows.length+(truncated?'+':'')+' fields'+(query?' matching “'+esc(query)+'”':'')+' · '+esc(scopeTxt)+'</div>';
   if(truncated)h+='<div class="note">Showing first '+CAP+'. Refine the search or open a single object for the full list.</div>';
-  h+=rows.length?rows.map(([o,f])=>fieldCard(f,ql,true,o.api)).join(''):'<div class="empty">No fields match.</div>';
+  h+=rows.length?rows.map(([o,f])=>fieldCard(f,ql,true,o.api,o.label)).join(''):'<div class="empty">No fields match.</div>';
   main.innerHTML=h;main.scrollTop=0;
 }
 
 function syncTypeSummary(){
   const sel=[...typeSel];
   cbAll.checked=sel.length===0;
-  typeSummary.textContent = !sel.length ? 'All Fields'
+  typeSummary.textContent = !sel.length ? 'All fields'
     : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(typeMode==='all'?' + ':', ')
-    : sel.length+' selected ('+typeMode+')';
+    : sel.length+' selected · match '+typeMode;
 }
-function render(){VIEW=view();VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
+function render(){VIEW=view();fillObjPicker();syncBadgeFilter();
+  // a picked object stays open, so search and field filters apply within it
+  if(objScope!=='both')pinnedObj={api:objScope,org:bu==='both'?null:bu};
+  VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
 
 list.addEventListener('click',e=>{const b=e.target.closest('.obj');if(!b)return;
   pinnedObj={api:b.dataset.api,org:b.dataset.org||null};render();});
@@ -711,10 +795,17 @@ popType.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()
   syncTypeSummary();pinnedObj=null;render();}));
 clearAll.addEventListener('click',()=>{
   bu='both';objScope='both';typeSel.clear();typeMode='any';query='';pinnedObj=null;
+  badgeSel.clear();labelQ='';fLabel.value='';originSel='all';fOrigin.value='all';fBadges.querySelectorAll('input').forEach(c=>c.checked=false);
   selBu.value='both';selObj.value='both';q.value='';
   popType.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=(c===cbAll));
   popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode==='any'?'true':'false'));
   syncTypeSummary();render();list.scrollTop=0;});
+
+// these two keep the open object open, so they filter within it
+fLabel.addEventListener('input',()=>{labelQ=fLabel.value.trim().toLowerCase();render();});
+fOrigin.addEventListener('change',()=>{originSel=fOrigin.value;render();});
+fBadges.querySelectorAll('input').forEach(cb=>cb.addEventListener('change',()=>{
+  cb.checked?badgeSel.add(cb.value):badgeSel.delete(cb.value);render();}));
 
 const root=document.documentElement,tb=document.getElementById('themeBtn');
 tb.addEventListener('click',()=>{const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
@@ -759,6 +850,16 @@ syncTypeSummary();render();
   document.getElementById('themeBtn2').addEventListener('click',function(){
     var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
     root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  });
+  // View in dictionary: open the field's object, then search for the field inside it
+  cv.addEventListener('click',function(e){
+    var b=e.target.closest('.cview'); if(!b)return;
+    show(true);
+    var o=document.getElementById('fObj'), q=document.getElementById('q'), fl=document.getElementById('fLabel');
+    // API name alone also matches formulas that reference the field, so pin the label too
+    if(fl){fl.value=b.dataset.label||'';fl.dispatchEvent(new Event('input'));}
+    if(o&&[].some.call(o.options,function(x){return x.value===b.dataset.obj;})){o.value=b.dataset.obj;o.dispatchEvent(new Event('change'));}
+    if(q){q.value=b.dataset.field;q.dispatchEvent(new Event('input'));}
   });
   if(location.hash==='#dictionary')show(true);
 })();
