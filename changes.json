@@ -1,2094 +1,1825 @@
 {
  "sbu": {
-  "prevObjects": 429,
-  "curObjects": 546,
-  "prevFields": 12206,
-  "curFields": 14766,
-  "objAdded": [],
-  "objRemoved": [],
-  "churnAdded": [
-   "AccountContactRelation",
-   "ActionPlan",
-   "ActiveScratchOrg",
-   "Address",
-   "AgentWork",
-   "ApprovalSubmission",
-   "ApprovalSubmissionDetail",
-   "ApprovalWorkItem",
-   "AssetRelationship",
-   "AssociatedLocation",
-   "AsyncOperationTracker",
-   "AttributeCategory",
-   "AttributeCategoryAttribute",
-   "AttributeDefinition",
-   "AttributePicklist",
-   "AttributePicklistValue",
-   "AttrPicklistExcludedValue",
-   "AuthorizationForm",
-   "AuthorizationFormConsent",
-   "AuthorizationFormDataUse",
-   "AuthorizationFormText",
-   "BroadcastTopic",
-   "BroadcastTopicCollabRoom",
-   "BroadcastTopicUserRole",
-   "BusinessBrand",
-   "CalcMatrixColumnRange",
-   "CalcProcStepRelationship",
-   "CalculationMatrix",
-   "CalculationMatrixColumn",
-   "CalculationMatrixRow",
-   "CalculationMatrixVersion",
-   "CalculationProcedure",
-   "CalculationProcedureStep",
-   "CalculationProcedureVariable",
-   "CalculationProcedureVersion",
-   "CaseRelatedIssue",
-   "ChangeRequest",
-   "ChangeRequestRelatedIssue",
-   "ChangeRequestRelatedItem",
-   "CommSubscription",
-   "CommSubscriptionChannelType",
-   "CommSubscriptionConsent",
-   "CommSubscriptionTiming",
-   "ContactPointAddress",
-   "ContactPointConsent",
-   "ContactPointEmail",
-   "ContactPointPhone",
-   "ContactPointTypeConsent",
-   "ContactRequest",
-   "ContentVersion",
-   "ContractLineItem",
-   "Customer",
-   "DataUseLegalBasis",
-   "DataUsePurpose",
-   "DelegatedAccount",
-   "DuplicateRecordItem",
-   "DuplicateRecordSet",
-   "EngagementChannelType",
-   "EntityMilestone",
-   "ExpressionSet",
-   "ExpressionSetVersion",
-   "FlowOrchestrationInstance",
-   "FlowOrchestrationLog",
-   "FlowOrchestrationStageInstance",
-   "FlowOrchestrationStepInstance",
-   "FlowOrchestrationWorkItem",
-   "Idea",
-   "Image",
-   "Incident",
-   "IncidentRelatedItem",
-   "Individual",
-   "LinkedArticle",
-   "Location",
-   "LocationTrustMeasure",
-   "Macro",
+  "prevObjects": 546,
+  "curObjects": 566,
+  "prevFields": 14766,
+  "curFields": 16039,
+  "objAdded": [
+   "Case_Email_Suppression__mdt",
+   "Survey_Invitation_Queue__c",
+   "zkmulti__CommercialInvoice__c",
+   "zkmulti__DangerousGoodsDetails__c",
+   "zkmulti__Detail_Field__c",
+   "zkmulti__EEIForm__c",
+   "zkmulti__ExportDetails__c",
+   "zkmulti__FedExSmartPostDetails__c",
+   "zkmulti__HazMatCommodity__c",
+   "zkmulti__HazMatContainer__c",
+   "zkmulti__HazMatDetails__c",
+   "zkmulti__MCBulk_Shipment__c",
+   "zkmulti__MCBulk_Shipment_Status__c",
+   "zkmulti__MCCheckpoint__c",
+   "zkmulti__MCCustom_Address_Source__c",
+   "zkmulti__MCCustom_Address_Source_Field__c",
+   "zkmulti__MCCustom_Address_Source_Package__c",
+   "zkmulti__MCCustoms_Item__c",
+   "zkmulti__MCPackage__c",
+   "zkmulti__MCPackageCheckpoint__c",
+   "zkmulti__MCPickup__c",
+   "zkmulti__MCPrintServiceSettings__c",
+   "zkmulti__MCQueued_Customs_Item__c",
+   "zkmulti__MCQueued_Package__c",
+   "zkmulti__MCQueued_Shipment__c",
+   "zkmulti__MCQueued_Shipment_Special_Services__c",
+   "zkmulti__MCQueued_Shipment_Status__c",
+   "zkmulti__MCShipmate_Preference__c",
+   "zkmulti__MCShipmateScheduledJobsSettings__c",
+   "zkmulti__MCShipment__c",
+   "zkmulti__MCShipment_Special_Services__c",
+   "zkmulti__MCShipmentInfo__c",
+   "zkmulti__MCUser_Printer__c",
+   "zkmulti__MultiPackageShipment__c",
+   "zkmulti__NaftaCo__c",
+   "zkmulti__OtherSetting__c",
+   "zkmulti__PermissionSetting__c",
+   "zkmulti__Pickup_Custom_Address_Source__c",
+   "zkmulti__PrintHistory__c",
+   "zkmulti__ProFormaInvoice__c",
+   "zkmulti__RequestedShipmentDocuments__c",
+   "zkmulti__Shipmate_Preference_Info__c",
+   "zkmulti__ShipmateGeneralSettings__c",
+   "zkmulti__Shipment_Field__c",
+   "zkmulti__Shipment_Status__c",
+   "zkmulti__Visibility_Suite__c"
+  ],
+  "objRemoved": [
+   "diplopia__App_Config__mdt",
+   "diplopia__Skip_Related_Object__c",
+   "Gong__Agenda__c",
+   "Gong__Call_Invitee__c",
+   "Gong__Call_Participant__c",
+   "Gong__Call_Stat__c",
+   "Gong__Gong_Call__c",
+   "Gong__Gong_Custom_Settings__c",
+   "Gong__Gong_Scorecard__c",
+   "Gong__Note__c",
+   "Gong__Related_Account__c",
+   "Gong__Related_Contact__c",
+   "Gong__Related_Lead__c",
+   "Gong__Related_Opportunity__c",
+   "Gong__Topic__c",
+   "Gong__Tracker__c",
+   "SFSSDupeCatcher__Application_Properties__c",
+   "SFSSDupeCatcher__Application_Settings__c",
+   "SFSSDupeCatcher__DcIn__c",
+   "SFSSDupeCatcher__Duplicate_Warning__c",
+   "SFSSDupeCatcher__Override_Cache__c",
+   "SFSSDupeCatcher__Potential_Duplicate__c",
+   "SFSSDupeCatcher__RequiredFieldSupport__c",
+   "SFSSDupeCatcher__Scenario__c",
+   "SFSSDupeCatcher__Scenario_Rule__c",
+   "SFSSDupeCatcher__Web_To_Lead_Sources__c"
+  ],
+  "churnAdded": [],
+  "churnRemoved": [],
+  "fAdded": [
+   {
+    "obj": "Asset",
+    "field": "Shipment_ID__c",
+    "label": "Shipment ID",
+    "type": "reference",
+    "created": "2024-04-13",
+    "newInWindow": false
+   },
+   {
+    "obj": "ChargentBase__Chargent_Settings__c",
+    "field": "ChargentBase__Default_Charge_Usage__c",
+    "label": "Default Charge Usage",
+    "type": "string",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentBase__Log__c",
+    "field": "ChargentBase__Payment_Initiator__c",
+    "label": "Payment Initiator",
+    "type": "picklist",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentBase__Log__c",
+    "field": "ChargentBase__Payment_Type__c",
+    "label": "Payment Type",
+    "type": "picklist",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentBase__Token__c",
+    "field": "ChargentBase__Payment_Intent__c",
+    "label": "Payment Intent",
+    "type": "picklist",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentBase__Token__c",
+    "field": "ChargentBase__Stored_Credential_Reference__c",
+    "label": "Stored Credential Reference",
+    "type": "string",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentOrders__Transaction__c",
+    "field": "ChargentOrders__Origin__c",
+    "label": "Origin",
+    "type": "picklist",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentOrders__Transaction__c",
+    "field": "ChargentOrders__Payment_Initiator__c",
+    "label": "Payment Initiator",
+    "type": "picklist",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "ChargentOrders__Transaction__c",
+    "field": "ChargentOrders__Stored_Credential_Reference__c",
+    "label": "Stored Credential Reference",
+    "type": "string",
+    "created": "2026-09-15",
+    "newInWindow": true
+   },
+   {
+    "obj": "Contact",
+    "field": "Account_Name__c",
+    "label": "Account Name",
+    "type": "string",
+    "created": "2026-09-28",
+    "newInWindow": true
+   },
+   {
+    "obj": "fpro__FieldPro__c",
+    "field": "fpro__Add_to_Deprecation_Plan__c",
+    "label": "Add to Deprecation Plan",
+    "type": "boolean",
+    "created": "2026-09-25",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "South_Asian_Last_Name__c",
+    "label": "South Asian Last Name",
+    "type": "boolean",
+    "created": "2022-03-01",
+    "newInWindow": false
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "Case__c",
+    "label": "Case",
+    "type": "reference",
+    "created": "2026-08-26",
+    "newInWindow": false
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "Contact__c",
+    "label": "Contact",
+    "type": "reference",
+    "created": "2026-08-26",
+    "newInWindow": false
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Case_Brand__c",
+    "label": "RC - Case Brand",
+    "type": "picklist",
+    "created": "2026-08-26",
+    "newInWindow": false
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Contact_Brand__c",
+    "label": "RC - Contact Brand",
+    "type": "picklist",
+    "created": "2026-08-26",
+    "newInWindow": false
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Opportunity_Brand__c",
+    "label": "RC - Opportunity Brand",
+    "type": "picklist",
+    "created": "2026-08-26",
+    "newInWindow": false
+   },
+   {
+    "obj": "stripeGC__Setup_Data__c",
+    "field": "stripeGC__Log_Api_Errors__c",
+    "label": "Log API Errors",
+    "type": "boolean",
+    "created": "2026-09-25",
+    "newInWindow": true
+   },
+   {
+    "obj": "stripeGC__Stripe_Connected_Account__c",
+    "field": "Account__c",
+    "label": "Account",
+    "type": "reference",
+    "created": "2026-09-29",
+    "newInWindow": true
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__EncryptedFedExEndUserKey__c",
+    "label": "Encrypted FedEx End User Key",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__EncryptedFedExEndUserPassword__c",
+    "label": "Encrypted FedEx End User Password",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__FedExEndUserKey__c",
+    "label": "FedEx End User Key",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__FedExEndUserPassword__c",
+    "label": "FedEx End User Password",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__FedExRegisteredPreference__c",
+    "label": "FedEx Registered Preference",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__Registered_Preference__c",
+    "label": "Registered Preference",
+    "type": "string",
+    "created": "2023-10-30",
+    "newInWindow": false
+   },
+   {
+    "obj": "User",
+    "field": "zkmulti__UserCredentialsEncrypted__c",
+    "label": "User Credentials Encrypted",
+    "type": "boolean",
+    "created": "2023-10-30",
+    "newInWindow": false
+   }
+  ],
+  "fRemoved": [
+   {
+    "obj": "Account",
+    "field": "SFSSDupeCatcher__Override_DupeCatcher__c",
+    "label": "Account Override DupeCatcher",
+    "type": "boolean"
+   },
+   {
+    "obj": "Account",
+    "field": "Gong__Gong_Count__c",
+    "label": "Gong Count",
+    "type": "double"
+   },
+   {
+    "obj": "Case",
+    "field": "Moving_Server__c",
+    "label": "Check if Moving Database",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "License_Being_Reset__c",
+    "label": "License Being Reset",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Peripheral_5__c",
+    "label": "Peripheral 5",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Peripheral_6__c",
+    "label": "Peripheral 6",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_1__c",
+    "label": "Connection 1",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_2__c",
+    "label": "Connection 2",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_3__c",
+    "label": "Connection 3",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_4__c",
+    "label": "Connection 4",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_5__c",
+    "label": "Connection 5",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Connection_6__c",
+    "label": "Connection 6",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "New_TID__c",
+    "label": "New TID",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Consumer_Affairs_Eligible__c",
+    "label": "Consumer Affairs Eligible",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Inventory_Import_2__c",
+    "label": "Inventory Import",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Credit_Card_Integration__c",
+    "label": "Credit Card Integration",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "HPS_Welcome_Package__c",
+    "label": "HPS Welcome Package?",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Equipment_Received__c",
+    "label": "Equipment Received?",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Existing_POS_System__c",
+    "label": "Existing POS System",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Equipment_Received_PL__c",
+    "label": "Equipment Received?",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Dataprise_Ticket__c",
+    "label": "Dataprise Ticket",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Worldpay_Approval__c",
+    "label": "POSN Processing Approval Required - OLD",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Credit_Approved__c",
+    "label": "Credit Approved?",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Trainsact__c",
+    "label": "Trainsact #",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Device_ID__c",
+    "label": "Device ID",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Exclude_from_In_House_Commission__c",
+    "label": "Exclude from In-House Commission",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Creator_Role_del__c",
+    "label": "Case Creator Role",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Authorized_By__c",
+    "label": "Authorized By:",
+    "type": "reference"
+   },
+   {
+    "obj": "Case",
+    "field": "Date_Billed__c",
+    "label": "Date Billed",
+    "type": "date"
+   },
+   {
+    "obj": "Case",
+    "field": "Payments_Portal_ID__c",
+    "label": "Payments Portal ID",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Next_Step_Date__c",
+    "label": "Next Step Date",
+    "type": "date"
+   },
+   {
+    "obj": "Case",
+    "field": "Date_Payments_was_Enabled__c",
+    "label": "Date Payments was Enabled",
+    "type": "date"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Actively_Being_in_a_Flow__c",
+    "label": "Currently in Engage Flow",
+    "type": "boolean"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_ID__c",
+    "label": "Engage Flow ID",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_Name__c",
+    "label": "Engage Flow Name",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_Step_Number__c",
+    "label": "Engage Step Number",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_Step_Type__c",
+    "label": "Engage Step Type",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_Task_Due_Date__c",
+    "label": "Engage Step Completion Date",
+    "type": "date"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Current_Flow_User_Name__c",
+    "label": "Added to Engage Flow By",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Flow_Execution_ID__c",
+    "label": "Engage Step Attempt ID",
+    "type": "string"
+   },
+   {
+    "obj": "Contact",
+    "field": "Gong__Flow_Status__c",
+    "label": "Engage Flow Status",
+    "type": "picklist"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Gong_Selected_Process__c",
+    "label": "Gong Selected Process",
+    "type": "boolean"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong_Conversation__c",
+    "label": "Gong Conversation",
+    "type": "reference"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Activity_Source__c",
+    "label": "Activity Source",
+    "type": "string"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Associated_Accounts__c",
+    "label": "Associated Accounts",
+    "type": "textarea"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Associated_Opportunities__c",
+    "label": "Associated Opportunities",
+    "type": "textarea"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Current_Flow_ID__c",
+    "label": "Engage Flow ID",
+    "type": "string"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Current_Flow_Name__c",
+    "label": "Engage Flow Name",
+    "type": "string"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Current_Flow_Step_Number__c",
+    "label": "Engage Step Number",
+    "type": "string"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Flow_Execution_ID__c",
+    "label": "Engage Step Attempt ID",
+    "type": "string"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Gong_Participants_Emails__c",
+    "label": "Gong Participants Emails",
+    "type": "textarea"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Meeting_Prospect_Canceled__c",
+    "label": "Meeting Canceled by Prospect",
+    "type": "boolean"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Meeting_Reschedule_Count__c",
+    "label": "# of Times Meeting Rescheduled",
+    "type": "double"
+   },
+   {
+    "obj": "Event",
+    "field": "Gong__Call_Outcome__c",
+    "label": "Call Outcome (AI)",
+    "type": "textarea"
+   },
+   {
+    "obj": "Lead",
+    "field": "Indian_Last_Name__c",
+    "label": "Indian Last Name",
+    "type": "boolean"
+   },
+   {
+    "obj": "Lead",
+    "field": "SFSSDupeCatcher__Override_DupeCatcher__c",
+    "label": "Lead Override DupeCatcher",
+    "type": "boolean"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Actively_Being_in_a_Flow__c",
+    "label": "Currently in Engage Flow",
+    "type": "boolean"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_ID__c",
+    "label": "Engage Flow ID",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_Name__c",
+    "label": "Engage Flow Name",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_Step_Number__c",
+    "label": "Engage Step Number",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_Step_Type__c",
+    "label": "Engage Step Type",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_Task_Due_Date__c",
+    "label": "Engage Step Completion Date",
+    "type": "date"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Current_Flow_User_Name__c",
+    "label": "Added to Engage Flow By",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Flow_Execution_ID__c",
+    "label": "Engage Step Attempt ID",
+    "type": "string"
+   },
+   {
+    "obj": "Lead",
+    "field": "Gong__Flow_Status__c",
+    "label": "Engage Flow Status",
+    "type": "picklist"
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Gong__Gong_Count__c",
+    "label": "Gong Count",
+    "type": "double"
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Gong__MainCompetitors__c",
+    "label": "Main Competitor(s)",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Gong_Selected_Process__c",
+    "label": "Gong Selected Process",
+    "type": "boolean"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong_Conversation__c",
+    "label": "Gong Conversation",
+    "type": "reference"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Activity_Source__c",
+    "label": "Activity Source",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Associated_Accounts__c",
+    "label": "Associated Accounts",
+    "type": "textarea"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Associated_Opportunities__c",
+    "label": "Associated Opportunities",
+    "type": "textarea"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Current_Flow_ID__c",
+    "label": "Engage Flow ID",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Current_Flow_Name__c",
+    "label": "Engage Flow Name",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Current_Flow_Step_Number__c",
+    "label": "Engage Step Number",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Flow_Execution_ID__c",
+    "label": "Engage Step Attempt ID",
+    "type": "string"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Gong_Participants_Emails__c",
+    "label": "Gong Participants Emails",
+    "type": "textarea"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Meeting_Prospect_Canceled__c",
+    "label": "Meeting Canceled by Prospect",
+    "type": "boolean"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Meeting_Reschedule_Count__c",
+    "label": "# of Times Meeting Rescheduled",
+    "type": "double"
+   },
+   {
+    "obj": "Task",
+    "field": "Gong__Call_Outcome__c",
+    "label": "Call Outcome (AI)",
+    "type": "textarea"
+   }
+  ],
+  "fChanged": [
+   {
+    "obj": "AccountContactRelation",
+    "field": "Roles",
+    "label": "Roles",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Owner"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Address",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Reason",
+    "label": "Case Reason",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Low Health Score"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Status_Reason__c",
+    "label": "Status Reason",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Bug Fix",
+       "Configuration/Setup",
+       "Feature Request",
+       "Incident Related",
+       "Technical Fix",
+       "Third Party Issue",
+       "User Error/Education"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointAddress",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointEmail",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointPhone",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Event",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "Strategy__c",
+    "label": "Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "Do_you_sell_any_THC_or_Kratom_products__c",
+    "label": "Do you sell any THC or Kratom products?",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Yes, but not a lot of products and not actively promoting/advertising it",
+       "Yes and actively promoting/advertising it"
+      ],
+      "removed": [
+       "Yes"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Macro",
+    "field": "StartingContext",
+    "label": "Apply To",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Survey_Invitation_Queue__c"
+      ],
+      "removed": [
+       "Gong__Gong_Call__c",
+       "SFSSDupeCatcher__DcIn__c",
+       "SFSSDupeCatcher__Duplicate_Warning__c",
+       "SFSSDupeCatcher__Scenario__c",
+       "SFSSDupeCatcher__Scenario_Rule__c",
+       "SFSSDupeCatcher__Potential_Duplicate__c",
+       "SFSSDupeCatcher__RequiredFieldSupport__c",
+       "Gong__Related_Account__c",
+       "Gong__Related_Contact__c",
+       "Gong__Related_Lead__c",
+       "Gong__Related_Opportunity__c",
+       "Gong__Gong_Scorecard__c",
+       "Gong__Call_Stat__c",
+       "Gong__Call_Invitee__c",
+       "Gong__Note__c",
+       "SFSSDupeCatcher__Application_Settings__c",
+       "SFSSDupeCatcher__Override_Cache__c",
+       "Gong__Call_Participant__c",
+       "Gong__Agenda__c",
+       "Gong__Topic__c",
+       "Gong__Tracker__c"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "OperatingHours",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Strategy__c",
+    "label": "Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "SA_Rate_Type__c",
+    "label": "SA - Rate Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Surcharge"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Do_you_sell_any_THC_or_Kratom_products__c",
+    "label": "Do you sell any THC or Kratom products?",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Yes, but not a lot of products and not actively promoting/advertising it",
+       "Yes and actively promoting/advertising it"
+      ],
+      "removed": [
+       "Yes"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "FlowDefinition",
+    "label": "Flow Definition ID",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Inherit_Support_Contract_from_Parent",
+       "Account_Sync_Support_Contract_to_Billed_Children",
+       "Case_Create_Clawback_Opportunity",
+       "Case_Send_Survey_Invitation_Queued",
+       "Project_Create_Clawback_Opportunity",
+       "Project_Create_Done_Cases",
+       "Shipment_Post_Delivered_Feed_Item_to_Case",
+       "Shipment_Post_In_Transit_Feed_Item_to_Case",
+       "Survey_Invitation_Queue_Post_Case_Comment",
+       "TEST_Shipment_Delivered_Feed_Logic"
+      ],
+      "removed": [
+       "Gong__Gong_for_Salesforce_Create_Contact_Role",
+       "Gong__Gong_for_Salesforce_Create_Event_from_Gong_Conversation",
+       "Gong__Gong_for_Salesforce_Enrich_Contacts_and_Leads",
+       "Gong__Gong_for_Salesforce_Update_main_competitors",
+       "Gong__Gong_for_Salesforce_Update_Participant_Contact_Role",
+       "Gong_Call_Send_Outbound_Message_to_Make",
+       "Gong_Create_Event_from_Conversation",
+       "Gong_Update_Task",
+       "Gong_Update_Task_to_Completed",
+       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Inherit_Support_Contract_from_Parent",
+       "Account_Sync_Support_Contract_to_Billed_Children",
+       "Case_Create_Clawback_Opportunity",
+       "Case_Send_Survey_Invitation_Queued",
+       "Project_Create_Clawback_Opportunity",
+       "Project_Create_Done_Cases",
+       "QuickActionDefinition.Case.Create_Clawback_Opportunity",
+       "QuickActionDefinition.Project__c.Create_Clawback_Oppty",
+       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__EndiciaAccountStatusBuyPostageLWC",
+       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__Manifest",
+       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__Setup_Signature_and_Letter_Head",
+       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Email_Label",
+       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Track_Shipment",
+       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Void_Shipment",
+       "Shipment_Post_Delivered_Feed_Item_to_Case",
+       "Shipment_Post_In_Transit_Feed_Item_to_Case",
+       "Survey_Invitation_Queue_Post_Case_Comment",
+       "TEST_Shipment_Delivered_Feed_Logic"
+      ],
+      "removed": [
+       "Gong__Gong_for_Salesforce_Create_Contact_Role",
+       "Gong__Gong_for_Salesforce_Create_Event_from_Gong_Conversation",
+       "Gong__Gong_for_Salesforce_Enrich_Contacts_and_Leads",
+       "Gong__Gong_for_Salesforce_Update_main_competitors",
+       "Gong__Gong_for_Salesforce_Update_Participant_Contact_Role",
+       "Gong_Call_Send_Outbound_Message_to_Make",
+       "Gong_Create_Event_from_Conversation",
+       "Gong_Update_Task",
+       "Gong_Update_Task_to_Completed",
+       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU",
+       "QuickActionDefinition.Gong__Gong_Call__c.Gong_Conversation"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Opportunity_Strategy__c",
+    "label": "RC - Opportunity Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Task",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "TimeZoneSidKey",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "WorkStep",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Project_Create_Clawback_Opportunity"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Project_Create_Clawback_Opportunity"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   }
+  ],
+  "addedCreatedInWindow": 12,
+  "addedPreexisting": 14,
+  "addedUnknownCreated": 0
+ },
+ "xbu": {
+  "prevObjects": 546,
+  "curObjects": 562,
+  "prevFields": 14983,
+  "curFields": 15647,
+  "objAdded": [
+   "ActOnIt__Activity__c",
+   "ActOnIt__ActivityMapping__c",
+   "ActOnIt__ActOnItObjectSettings__mdt",
+   "ActOnIt__ActOnItSettings__c",
+   "ActOnIt__APIRequest__c",
+   "ActOnIt__BlockedMessage__c",
+   "ActOnIt__CalloutConfiguration__c",
+   "ActOnIt__Condition__c",
+   "ActOnIt__Connections__mdt",
+   "ActOnIt__MacroAction__c",
+   "ActOnIt__MessageAction__c",
+   "ActOnIt__MessageActionField__c",
+   "ActOnIt__MessageErrorLog__c",
+   "ActOnIt__MessageLog__c",
+   "ActOnIt__MessageRecipient__c",
+   "ActOnIt__MessageRecipientAction__c",
+   "ActOnIt__MessageRequest__c",
+   "ActOnIt__MessageRequestRecipient__c",
+   "ActOnIt__MessageType__c",
+   "ActOnIt__MessageTypeAction__c",
+   "ActOnIt__MessageTypeCallout__c",
+   "ActOnIt__ObjectSettings__c",
+   "ActOnIt__PersonalizationSettings__c",
+   "ActOnIt__Prompt__c",
+   "ActOnIt__PromptAction__c",
+   "ActOnIt__ScheduledMessage__c",
+   "ActOnIt__SnoozeOption__mdt",
+   "ActOnIt__TriggerBrokerEventSettings__mdt",
+   "ActOnIt__TriggerSettings__mdt",
+   "ActOnIt__UserSettings__c",
+   "Case_Email_Suppression__mdt",
+   "Survey_Invitation_Queue__c"
+  ],
+  "objRemoved": [
+   "diplopia__App_Config__mdt",
+   "diplopia__Skip_Related_Object__c",
+   "dupcheck__dc3Duplicate__c",
+   "dupcheck__dc3GenericStorage__c",
+   "dupcheck__dc3Log__c",
+   "dupcheck__dc3ObjectMeta__c",
+   "dupcheck__dcAnalytics__c",
+   "dupcheck__dcAudit__c",
+   "dupcheck__dcDelta__c",
+   "dupcheck__dcDiscard__c",
+   "dupcheck__dcFrequent__c",
+   "dupcheck__dcGroup__c",
+   "dupcheck__dcIndex__c",
+   "dupcheck__dcJob__c",
+   "dupcheck__dcLayout__c",
+   "dupcheck__dcQueue__c",
+   "dupcheck__dcTelemetry__c",
+   "dupcheck__dcTemp__c",
+   "dupcheck__dcTrigger__c",
    "MessagingEndUser",
-   "MessagingSession",
-   "NamespaceRegistry",
-   "OperatingHours",
-   "OperatingHoursHoliday",
-   "OpportunityContactRole",
-   "OpportunityTeamMember",
-   "PartyConsent",
-   "Problem",
-   "ProblemIncident",
-   "ProblemRelatedItem",
-   "ProcessException",
-   "ProductAttributeDefinition",
-   "ProductCatalog",
-   "ProductCategory",
-   "ProductCategoryDisqual",
-   "ProductCategoryProduct",
-   "ProductCategoryQualification",
-   "ProductClassification",
-   "ProductClassificationAttr",
-   "ProductComponentGroup",
-   "ProductComponentGrpOverride",
-   "ProductConfigFlowAssignment",
-   "ProductConfigurationFlow",
-   "ProductDisqualification",
-   "ProductQualification",
-   "ProductRelatedComponent",
-   "ProductRelationshipType",
-   "ProductRelComponentOverride",
-   "ProductSellingModel",
-   "QuickText",
-   "Recommendation",
-   "RecordAction",
-   "RevenueAsyncOperation",
-   "RevenueTransactionErrorLog",
-   "Scorecard",
-   "ScorecardAssociation",
-   "ScorecardMetric",
-   "ScratchOrgInfo",
-   "Seller",
-   "ServiceResource",
-   "ServiceResourceSkill",
-   "SharingRecordCollection",
-   "SkillRequirement",
-   "SocialPersona",
-   "SocialPost",
-   "Solution",
-   "SurveyInvitation",
-   "SurveySubject",
-   "Swarm",
-   "TimeSlot",
-   "UnitOfMeasure",
-   "UserProvisioningRequest",
-   "UserServicePresence",
-   "VideoCall",
-   "VideoCallParticipant",
-   "VoiceCall",
+   "MessagingSession"
+  ],
+  "churnAdded": [
    "WorkPlan",
    "WorkPlanTemplate",
    "WorkPlanTemplateEntry",
    "WorkStep",
    "WorkStepTemplate"
   ],
-  "churnRemoved": [
-   "beynd__GuideCX_Create_Project__e",
-   "cases_Deleted__e",
-   "ChargentBase__Aggregation_After_Commit__e",
-   "ChargentBase__Aggregation_Immediate__e",
-   "ChargentBase__Chargent_Event__e",
-   "dlrs__UserNotification__e",
-   "RDNACadence__Custom_Call_Notification__e",
-   "RDNACadence__Dml__e",
-   "RDNACadence__Email__e",
-   "RDNACadence__Email_Action_Event__e",
-   "RDNACadence__Sequence_Action_Event__e",
-   "RDNACadence__Sequence_Action_Field_Update__e",
-   "RDNACadence__Sequence_Error__e",
-   "RDNACadence__Sequence_History_Event__e",
-   "ringcx_sf__Record_Changed_Event__e",
-   "ringdna100__Dml__e",
-   "ringdna100__Email_Action_Event__e",
-   "ringdna100__Error__e",
-   "slackv2__Subscription_Error__e",
-   "slackv2__Subscription_Event__e"
-  ],
+  "churnRemoved": [],
   "fAdded": [
    {
-    "obj": "Billing_Case_Request__c",
-    "field": "Account_Name_frml__c",
-    "label": "Account Name",
-    "type": "string",
-    "created": "2026-08-25",
-    "newInWindow": false
+    "obj": "ApprovalWorkItem",
+    "field": "OwnerId",
+    "label": "Owner ID",
+    "type": "reference",
+    "created": null
    },
    {
     "obj": "Case",
-    "field": "Case_Age_Mins__c",
-    "label": "Case Age (Mins)",
-    "type": "double",
-    "created": "2026-08-26",
+    "field": "Automation_Bypass__c",
+    "label": "Automation Bypass",
+    "type": "boolean",
+    "created": "2026-08-30",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__ContactFullName__c",
+    "label": "Contact Full Name",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__DiaryDateTime__c",
+    "label": "Diary Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__DiaryNote__c",
+    "label": "Diary Note",
+    "type": "textarea",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__EmailThreadId__c",
+    "label": "Email Thread Id",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__LastAssignmentDateTime__c",
+    "label": "Last Assignment Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__OwnerType__c",
+    "label": "Owner Type",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "ActOnIt__CaseOwnerName__c",
+    "label": "Case Owner Name",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Contract",
+    "field": "ActOnIt__ExpiryNoticeDate__c",
+    "label": "Expiry Notice Date",
+    "type": "date",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Event",
+    "field": "ActOnIt__OwnerType__c",
+    "label": "Owner Type",
+    "type": "string",
+    "created": null
+   },
+   {
+    "obj": "Event",
+    "field": "ActOnIt__ActivityOwnerName__c",
+    "label": "Activity Owner Name",
+    "type": "string",
+    "created": null
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__DiaryDateTime__c",
+    "label": "Diary Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__DiaryNote__c",
+    "label": "Diary Note",
+    "type": "textarea",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__EmailThreadId__c",
+    "label": "Email Thread Id",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__LastAssignmentDateTime__c",
+    "label": "Last Assignment Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__OpenTaskActivityDate__c",
+    "label": "Open Task Activity Date",
+    "type": "date",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__OwnerType__c",
+    "label": "Owner Type",
+    "type": "string",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__HasOverdueTask__c",
+    "label": "Has Overdue Task",
+    "type": "boolean",
+    "created": "2026-10-01",
+    "newInWindow": true
+   },
+   {
+    "obj": "Lead",
+    "field": "ActOnIt__LeadOwnerName__c",
+    "label": "Lead Owner Name",
+    "type": "string",
+    "created": "2026-10-01",
     "newInWindow": true
    },
    {
     "obj": "Opportunity",
-    "field": "Billing_Notes__c",
-    "label": "Billing Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "OpportunityLineItem",
-    "field": "Opportunity_Product_Names__c",
-    "label": "Opportunity Product Names",
+    "field": "Phase_Name__c",
+    "label": "Phase Name",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-09-23",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "AI_Summary_Notes__c",
-    "label": "AI Summary Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Admin_Training_Date__c",
-    "label": "Admin Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Archived__c",
-    "label": "Archived",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Asset_List__c",
-    "label": "Asset List",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "At_Risk__c",
-    "label": "At Risk",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Brand_Opportunity__c",
-    "label": "Brand - Opportunity",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Cancellation_Date__c",
-    "label": "Cancellation Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Cashier_Training_Date__c",
-    "label": "Cashier Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Confidence__c",
-    "label": "Confidence",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Customer_Team_Members__c",
-    "label": "Customer Team Members",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case_Status__c",
-    "label": "Data Migration Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case__c",
-    "label": "Data Migration Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Completed__c",
-    "label": "Data Migration Completed",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Confirmed_Tested_By__c",
-    "label": "Data Migration Confirmed/Tested By",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Owner__c",
-    "label": "Data Migration Owner",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Status__c",
-    "label": "Data Migration Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Tier__c",
-    "label": "Data Migration Tier",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration__c",
-    "label": "Data Migration",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Dealroom_Link__c",
-    "label": "Dealroom Link",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Delivered__c",
-    "label": "Delivered",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Does_your_business_accept_EBT_SNAP__c",
-    "label": "Does your business accept EBT (SNAP)?",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Done_Date__c",
-    "label": "Done Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "External_Project_ID__c",
-    "label": "External Project ID",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "First_Processing_Date_100__c",
-    "label": "First Processing Date ($100)",
+    "obj": "Opportunity",
+    "field": "ActOnIt__DiaryDateTime__c",
+    "label": "Diary Date/Time",
     "type": "datetime",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case_Status__c",
-    "label": "Fulfillment Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case__c",
-    "label": "Fulfillment Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Go_Live_Notes__c",
-    "label": "Go Live Notes",
+    "obj": "Opportunity",
+    "field": "ActOnIt__DiaryNote__c",
+    "label": "Diary Note",
     "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Go_Live__c",
-    "label": "Go-Live",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_NOT_Setup__c",
-    "label": "Hardware NOT Setup",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_Setup_Date__c",
-    "label": "Hardware Setup Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_Setup__c",
-    "label": "Hardware Setup",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware__c",
-    "label": "Hardware",
+    "obj": "Opportunity",
+    "field": "ActOnIt__EmailThreadId__c",
+    "label": "Email Thread Id",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "IS_Note__c",
-    "label": "IS Note",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "obj": "Opportunity",
+    "field": "ActOnIt__LastAssignmentDateTime__c",
+    "label": "Last Assignment Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Industry__c",
-    "label": "Industry",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "obj": "Opportunity",
+    "field": "ActOnIt__LastStageChangeDateTime__c",
+    "label": "Last Stage Change Date/Time",
+    "type": "datetime",
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Limited_Payments__c",
-    "label": "Limited Payments",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Modules_Completed__c",
-    "label": "Modules Completed",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Modules_Remaining__c",
-    "label": "Modules Remaining",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "OnRamp_Status__c",
-    "label": "OnRamp Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Onboarding_Kick_Off_Call__c",
-    "label": "Onboarding Kick Off Call",
+    "obj": "Opportunity",
+    "field": "ActOnIt__OpenTaskActivityDate__c",
+    "label": "Open Task Activity Date",
     "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Onramp_Project_ID__c",
-    "label": "Onramp Project ID",
+    "obj": "Opportunity",
+    "field": "ActOnIt__OwnerFullName__c",
+    "label": "Owner Full Name",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Opportunity_Notes__c",
-    "label": "Opportunity Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Opportunity__c",
-    "label": "Opportunity",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "PM_Note__c",
-    "label": "PM Note",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "POS_Software__c",
-    "label": "POS Software",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payment_Processing__c",
-    "label": "Payment Processing",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case_Status__c",
-    "label": "Payments Onboarding Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case__c",
-    "label": "Payments Onboarding Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Planned_End_Date__c",
-    "label": "Planned End Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Playbook__c",
-    "label": "Playbook",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Post_Go_Live__c",
-    "label": "Post-Go Live",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Post_Live_Notes__c",
-    "label": "Post-Live Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Primary_Contact__c",
+    "obj": "Opportunity",
+    "field": "ActOnIt__PrimaryContact__c",
     "label": "Primary Contact",
     "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Processor__c",
-    "label": "Processor",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Product_List__c",
-    "label": "Product List",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Products__c",
-    "label": "Products",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Age__c",
-    "label": "Project Age",
+    "obj": "Opportunity",
+    "field": "ActOnIt__PushCount__c",
+    "label": "PushCount",
     "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Project_Cancellation_Reason__c",
-    "label": "Project Cancellation Reason",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Link__c",
-    "label": "Project Link",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Manager__c",
-    "label": "Project Manager",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Name__c",
-    "label": "Project Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Status__c",
-    "label": "Project Status",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Value__c",
-    "label": "Project Value",
-    "type": "currency",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Rate_Type__c",
-    "label": "Rate Type",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Retail_Dashboard_URL__c",
-    "label": "Retail Dashboard URL",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Software_Training_Date__c",
-    "label": "Software Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Source_Object_Id__c",
-    "label": "Source Object Id",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Staff_and_Training__c",
-    "label": "Staff and Training",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Start_Date__c",
-    "label": "Start Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Tags__c",
-    "label": "Tags",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Tracking_Numbers__c",
-    "label": "Tracking Numbers",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Training_Date__c",
-    "label": "Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Training_Participants__c",
-    "label": "Training Participants",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Owner__c",
-    "label": "Website Onboarding Case Owner",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Status__c",
-    "label": "Website Onboarding Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case__c",
-    "label": "Website Onboarding Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Tier__c",
-    "label": "Website Onboarding Tier",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Status__c",
-    "label": "Website Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "What_features_do_they_need_most__c",
-    "label": "What features do they need most?",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "What_is_the_Target_Go_Live_Date__c",
-    "label": "What is the Target Go-Live Date?",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Workflow_Gaps__c",
-    "label": "Workflow Gaps",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "X35_Days_Orientation__c",
-    "label": "35 Days Orientation",
+    "obj": "Opportunity",
+    "field": "ActOnIt__HasOverdueTask__c",
+    "label": "Has Overdue Task",
     "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Age__c",
-    "label": "Age",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Contact_Email__c",
-    "label": "Contact Email",
+    "obj": "Opportunity",
+    "field": "ActOnIt__PrimaryContactEmail__c",
+    "label": "Primary Contact Email",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Contact_Phone__c",
-    "label": "Contact Phone",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case_URL__c",
-    "label": "Data Migration Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Owner_Name__c",
-    "label": "Data Migration Owner Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case_URL__c",
-    "label": "Fulfillment Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Opportunity_Type__c",
-    "label": "Opportunity Type",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case_URL__c",
-    "label": "Payments Onboarding Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Pre_Migration_Software__c",
-    "label": "Pre-Migration Software",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Primary_Contact_Name2__c",
+    "obj": "Opportunity",
+    "field": "ActOnIt__PrimaryContactName__c",
     "label": "Primary Contact Name",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": "2026-10-01",
+    "newInWindow": true
    },
    {
-    "obj": "Project__c",
-    "field": "Project_Type__c",
-    "label": "Project Type",
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Case_Brand__c",
+    "label": "RC - Case Brand",
+    "type": "picklist",
+    "created": "2026-09-09",
+    "newInWindow": true
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Contact_Brand__c",
+    "label": "RC - Contact Brand",
+    "type": "picklist",
+    "created": "2026-09-09",
+    "newInWindow": true
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Opportunity_Brand__c",
+    "label": "RC - Opportunity Brand",
+    "type": "picklist",
+    "created": "2026-09-09",
+    "newInWindow": true
+   },
+   {
+    "obj": "Task",
+    "field": "ActOnIt__OwnerType__c",
+    "label": "Owner Type",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "created": null
    },
    {
-    "obj": "Project__c",
-    "field": "Tenant_ID__c",
-    "label": "Tenant ID",
+    "obj": "Task",
+    "field": "ActOnIt__ActivityOwnerName__c",
+    "label": "Activity Owner Name",
     "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Time_to_Value__c",
-    "label": "Time to Value",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Total_Modules__c",
-    "label": "Total Modules",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Owner_Name__c",
-    "label": "Website Onboarding Case Owner Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_URL__c",
-    "label": "Website Onboarding Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Old_Record_ID__c",
-    "label": "Old Record ID",
-    "type": "string",
-    "created": "2026-08-20",
-    "newInWindow": false
+    "created": null
    },
    {
     "obj": "User",
-    "field": "Profile_Last_Confirmed__c",
-    "label": "Profile Last Confirmed",
-    "type": "date",
-    "created": "2026-08-26",
+    "field": "ActOnIt__ActonitUserType__c",
+    "label": "Act On It User Type",
+    "type": "picklist",
+    "created": "2026-10-01",
     "newInWindow": true
    }
   ],
   "fRemoved": [
    {
+    "obj": "Account",
+    "field": "dupcheck__dc3DisableDuplicateCheck__c",
+    "label": "Disable Deduplicate",
+    "type": "boolean"
+   },
+   {
+    "obj": "Account",
+    "field": "dupcheck__dc3Index__c",
+    "label": "Deduplicate Index",
+    "type": "textarea"
+   },
+   {
+    "obj": "Account",
+    "field": "dupcheck__dc3UltimateParent__c",
+    "label": "Ultimate Parent",
+    "type": "reference"
+   },
+   {
     "obj": "Case",
-    "field": "Upsell__c",
-    "label": "Upsell?",
+    "field": "Zendesk_Support_Ticket_Assignee_Name__c",
+    "label": "Zendesk Support Ticket Assignee Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Brand_Name__c",
+    "label": "Zendesk Support Ticket Brand Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Created_At__c",
+    "label": "Zendesk Support Ticket Created At",
+    "type": "datetime"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Form_Name__c",
+    "label": "Zendesk Support Ticket Form Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Group_Name__c",
+    "label": "Zendesk Support Ticket Group Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_ID__c",
+    "label": "Zendesk Support Ticket ID",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Initial_Assigned__c",
+    "label": "Zendesk Support Ticket Initial Assigned",
+    "type": "datetime"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Organization_Name__c",
+    "label": "Zendesk Support Ticket Organization Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Requester_As_Lead__c",
+    "label": "Zendesk Support Ticket Requester As Lead",
+    "type": "reference"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Requester_Email__c",
+    "label": "Zendesk Support Ticket Requester Email",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Requester_Name__c",
+    "label": "Zendesk Support Ticket Requester Name",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Resolution_Bus__c",
+    "label": "Zendesk Support Ticket Resolution (Bus)",
+    "type": "double"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Resolution_Cal__c",
+    "label": "Zendesk Support Ticket Resolution (Cal)",
+    "type": "double"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Solved_At__c",
+    "label": "Zendesk Support Ticket Solved At",
+    "type": "datetime"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Tags__c",
+    "label": "Zendesk Support Ticket Tag",
+    "type": "textarea"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_URL__c",
+    "label": "Zendesk Support Ticket URL",
+    "type": "url"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_Support_Ticket_Updated_At__c",
+    "label": "Zendesk Support Ticket Updated At",
+    "type": "datetime"
+   },
+   {
+    "obj": "Case",
+    "field": "Zendesk_ID_migrated__c",
+    "label": "Zendesk ID (migrated)",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Status_Change__c",
+    "label": "Case Status Change",
+    "type": "datetime"
+   },
+   {
+    "obj": "Case",
+    "field": "External_Address__c",
+    "label": "External Address",
+    "type": "email"
+   },
+   {
+    "obj": "Case",
+    "field": "Ethernet_Cradle__c",
+    "label": "Ethernet Cradle",
     "type": "boolean"
    },
    {
     "obj": "Case",
-    "field": "Testing_Completion_Date__c",
-    "label": "Testing Completion Date",
-    "type": "datetime"
-   }
-  ],
-  "fChanged": [
-   {
-    "obj": "User",
-    "field": "Department__c",
-    "label": "Department",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Business Operations",
-       "IT",
-       "Other"
-      ],
-      "removed": [
-       "Information Technology",
-       "Legal"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "User",
-    "field": "Location_Country__c",
-    "label": "Location - Country",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Other"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "User",
-    "field": "Role__c",
-    "label": "Role",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Coordinator",
-       "Accountant",
-       "Analyst",
-       "Rev Operations Analyst",
-       "Specialist",
-       "Sr. Specialist",
-       "Engineer",
-       "QA",
-       "Architect",
-       "Team Lead",
-       "Director",
-       "Sr Director",
-       "Vice President",
-       "Sr. Vice President",
-       "Executive Vice President",
-       "C-Suite/President",
-       "Other"
-      ],
-      "removed": [
-       "Quality Analyst",
-       "Implementation Specialist",
-       "Sr. Implementation Specialist",
-       "Leadership"
-      ],
-      "reordered": false
-     }
-    ]
-   }
-  ],
-  "addedCreatedInWindow": 2,
-  "addedPreexisting": 101,
-  "addedUnknownCreated": 0
- },
- "xbu": {
-  "prevObjects": 432,
-  "curObjects": 546,
-  "prevFields": 12375,
-  "curFields": 14983,
-  "objAdded": [],
-  "objRemoved": [],
-  "churnAdded": [
-   "AccountContactRelation",
-   "ActionPlan",
-   "ActiveScratchOrg",
-   "Address",
-   "AgentWork",
-   "ApprovalSubmission",
-   "ApprovalSubmissionDetail",
-   "ApprovalWorkItem",
-   "AssetRelationship",
-   "AssociatedLocation",
-   "AsyncOperationTracker",
-   "AttributeCategory",
-   "AttributeCategoryAttribute",
-   "AttributeDefinition",
-   "AttributePicklist",
-   "AttributePicklistValue",
-   "AttrPicklistExcludedValue",
-   "AuthorizationForm",
-   "AuthorizationFormConsent",
-   "AuthorizationFormDataUse",
-   "AuthorizationFormText",
-   "BroadcastTopic",
-   "BroadcastTopicCollabRoom",
-   "BroadcastTopicUserRole",
-   "BusinessBrand",
-   "CalcMatrixColumnRange",
-   "CalcProcStepRelationship",
-   "CalculationMatrix",
-   "CalculationMatrixColumn",
-   "CalculationMatrixRow",
-   "CalculationMatrixVersion",
-   "CalculationProcedure",
-   "CalculationProcedureStep",
-   "CalculationProcedureVariable",
-   "CalculationProcedureVersion",
-   "CommSubscription",
-   "CommSubscriptionChannelType",
-   "CommSubscriptionConsent",
-   "CommSubscriptionTiming",
-   "ContactPointAddress",
-   "ContactPointConsent",
-   "ContactPointEmail",
-   "ContactPointPhone",
-   "ContactPointTypeConsent",
-   "ContactRequest",
-   "ContentVersion",
-   "ContractLineItem",
-   "Customer",
-   "DataUseLegalBasis",
-   "DataUsePurpose",
-   "DelegatedAccount",
-   "DuplicateRecordItem",
-   "DuplicateRecordSet",
-   "EngagementAttendee",
-   "EngagementChannelType",
-   "EngagementInteraction",
-   "EngagementTopic",
-   "ExpressionSet",
-   "ExpressionSetVersion",
-   "FlowOrchestrationInstance",
-   "FlowOrchestrationLog",
-   "FlowOrchestrationStageInstance",
-   "FlowOrchestrationStepInstance",
-   "FlowOrchestrationWorkItem",
-   "ForecastingCustomData",
-   "Idea",
-   "Image",
-   "Individual",
-   "LinkedArticle",
-   "Location",
-   "LocationTrustMeasure",
-   "Macro",
-   "MessagingEndUser",
-   "MessagingSession",
-   "NamespaceRegistry",
-   "OperatingHours",
-   "OperatingHoursHoliday",
-   "OpportunityContactRole",
-   "OpportunityLineItemSplit",
-   "OpportunitySplit",
-   "OpportunityTeamMember",
-   "PartyConsent",
-   "ProcessException",
-   "ProductAttributeDefinition",
-   "ProductCatalog",
-   "ProductCategory",
-   "ProductCategoryDisqual",
-   "ProductCategoryProduct",
-   "ProductCategoryQualification",
-   "ProductClassification",
-   "ProductClassificationAttr",
-   "ProductComponentGroup",
-   "ProductComponentGrpOverride",
-   "ProductConfigFlowAssignment",
-   "ProductConfigurationFlow",
-   "ProductDisqualification",
-   "ProductQualification",
-   "ProductRelatedComponent",
-   "ProductRelationshipType",
-   "ProductRelComponentOverride",
-   "ProductSellingModel",
-   "ProfileSkill",
-   "ProfileSkillEndorsement",
-   "ProfileSkillUser",
-   "QuickText",
-   "Recommendation",
-   "RecordAction",
-   "RecordAlert",
-   "RevenueAsyncOperation",
-   "RevenueTransactionErrorLog",
-   "Scorecard",
-   "ScorecardAssociation",
-   "ScorecardMetric",
-   "ScratchOrgInfo",
-   "Seller",
-   "ServiceResource",
-   "SharingRecordCollection",
-   "SocialPersona",
-   "SocialPost",
-   "Solution",
-   "SurveyInvitation",
-   "SurveySubject",
-   "Swarm",
-   "TimeSlot",
-   "UnitOfMeasure",
-   "UserProvisioningRequest",
-   "UserServicePresence",
-   "VideoCall",
-   "VideoCallParticipant",
-   "VoiceCall",
-   "WorkBadge",
-   "WorkBadgeDefinition",
-   "WorkThanks"
-  ],
-  "churnRemoved": [
-   "beynd__GuideCX_Create_Project__e",
-   "Case_Deleted__e",
-   "cases_Deleted__e",
-   "dlrs__UserNotification__e",
-   "RDNACadence__Custom_Call_Notification__e",
-   "RDNACadence__Dml__e",
-   "RDNACadence__Email__e",
-   "RDNACadence__Email_Action_Event__e",
-   "RDNACadence__Sequence_Action_Event__e",
-   "RDNACadence__Sequence_Action_Field_Update__e",
-   "RDNACadence__Sequence_Error__e",
-   "RDNACadence__Sequence_History_Event__e",
-   "ringcx_sf__Record_Changed_Event__e",
-   "ringdna100__Dml__e",
-   "ringdna100__Email_Action_Event__e",
-   "ringdna100__Error__e",
-   "slackv2__Subscription_Error__e",
-   "slackv2__Subscription_Event__e",
-   "zkmulti__Shipment_Event__e"
-  ],
-  "fAdded": [
-   {
-    "obj": "Account",
-    "field": "Software_Migration_Date__c",
-    "label": "Software Migration Date",
-    "type": "date",
-    "created": "2026-08-27",
-    "newInWindow": true
+    "field": "Dock__c",
+    "label": "Dock",
+    "type": "boolean"
    },
    {
     "obj": "Case",
-    "field": "Case_Age_Mins__c",
-    "label": "Case Age (Mins)",
-    "type": "double",
-    "created": "2026-08-26",
-    "newInWindow": true
+    "field": "P5_Terminal__c",
+    "label": "P5 Terminal",
+    "type": "boolean"
+   },
+   {
+    "obj": "Case",
+    "field": "Backend_Processor__c",
+    "label": "Backend Processor",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Escalation_Counter__c",
+    "label": "Escalation Counter",
+    "type": "double"
+   },
+   {
+    "obj": "Case",
+    "field": "Payments_Portal_ID__c",
+    "label": "Payments Portal ID",
+    "type": "string"
+   },
+   {
+    "obj": "Case",
+    "field": "RMA_Issue__c",
+    "label": "RMA Issue",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Next_Action_Date__c",
+    "label": "Next Action Date",
+    "type": "date"
+   },
+   {
+    "obj": "Case",
+    "field": "Date_Payments_was_Enabled__c",
+    "label": "Date Payments was Enabled",
+    "type": "date"
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Opportunity_Type__c",
+    "label": "Case - Opportunity Type",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Onboarding_Type__c",
+    "label": "Case - Onboarding Type",
+    "type": "picklist"
+   },
+   {
+    "obj": "Case",
+    "field": "Case_Primary_Processor__c",
+    "label": "Case - Primary Processor",
+    "type": "textarea"
    },
    {
     "obj": "Contact",
-    "field": "Account_Type__c",
-    "label": "Account Type",
-    "type": "string",
-    "created": "2026-08-26",
-    "newInWindow": true
+    "field": "dupcheck__dc3DisableDuplicateCheck__c",
+    "label": "Disable Deduplicate",
+    "type": "boolean"
    },
    {
-    "obj": "Opportunity",
-    "field": "Onboarding_Project_Created__c",
-    "label": "Onboarding Project Created",
-    "type": "boolean",
-    "created": "2026-08-27",
-    "newInWindow": true
+    "obj": "Contact",
+    "field": "dupcheck__dc3Index__c",
+    "label": "Deduplicate Index",
+    "type": "textarea"
    },
    {
-    "obj": "Project__c",
-    "field": "AI_Summary_Notes__c",
-    "label": "AI Summary Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "obj": "Lead",
+    "field": "dupcheck__dc3DisableDuplicateCheck__c",
+    "label": "Disable Deduplicate",
+    "type": "boolean"
    },
    {
-    "obj": "Project__c",
-    "field": "Admin_Training_Date__c",
-    "label": "Admin Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "obj": "Lead",
+    "field": "dupcheck__dc3Index__c",
+    "label": "Deduplicate Index",
+    "type": "textarea"
    },
    {
-    "obj": "Project__c",
-    "field": "Archived__c",
-    "label": "Archived",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Asset_List__c",
-    "label": "Asset List",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "At_Risk__c",
-    "label": "At Risk",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Brand_Opportunity__c",
-    "label": "Brand - Opportunity",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Cancellation_Date__c",
-    "label": "Cancellation Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Cashier_Training_Date__c",
-    "label": "Cashier Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Confidence__c",
-    "label": "Confidence",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Customer_Team_Members__c",
-    "label": "Customer Team Members",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case_Status__c",
-    "label": "Data Migration Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case__c",
-    "label": "Data Migration Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Completed__c",
-    "label": "Data Migration Completed",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Confirmed_Tested_By__c",
-    "label": "Data Migration Confirmed/Tested By",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Owner__c",
-    "label": "Data Migration Owner",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Status__c",
-    "label": "Data Migration Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Tier__c",
-    "label": "Data Migration Tier",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration__c",
-    "label": "Data Migration",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Dealroom_Link__c",
-    "label": "Dealroom Link",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Delivered__c",
-    "label": "Delivered",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Does_your_business_accept_EBT_SNAP__c",
-    "label": "Does your business accept EBT (SNAP)?",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Done_Date__c",
-    "label": "Done Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "First_Processing_Date_100__c",
-    "label": "First Processing Date ($100)",
-    "type": "datetime",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case_Status__c",
-    "label": "Fulfillment Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case__c",
-    "label": "Fulfillment Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Go_Live_Notes__c",
-    "label": "Go Live Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Go_Live__c",
-    "label": "Go-Live",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_NOT_Setup__c",
-    "label": "Hardware NOT Setup",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_Setup_Date__c",
-    "label": "Hardware Setup Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware_Setup__c",
-    "label": "Hardware Setup",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Hardware__c",
-    "label": "Hardware",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "IS_Note__c",
-    "label": "IS Note",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Industry__c",
-    "label": "Industry",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Limited_Payments__c",
-    "label": "Limited Payments",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Modules_Completed__c",
-    "label": "Modules Completed",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Modules_Remaining__c",
-    "label": "Modules Remaining",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "OnRamp_Status__c",
-    "label": "OnRamp Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Onboarding_Kick_Off_Call__c",
-    "label": "Onboarding Kick Off Call",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Onramp_Project_ID__c",
-    "label": "Onramp Project ID",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Opportunity_Notes__c",
-    "label": "Opportunity Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Opportunity__c",
-    "label": "Opportunity",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "PM_Note__c",
-    "label": "PM Note",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "POS_Software__c",
-    "label": "POS Software",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payment_Processing__c",
-    "label": "Payment Processing",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case_Status__c",
-    "label": "Payments Onboarding Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case__c",
-    "label": "Payments Onboarding Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Planned_End_Date__c",
-    "label": "Planned End Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Playbook__c",
-    "label": "Playbook",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Post_Go_Live__c",
-    "label": "Post-Go Live",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Post_Live_Notes__c",
-    "label": "Post-Live Notes",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Primary_Contact__c",
-    "label": "Primary Contact",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Processor__c",
-    "label": "Processor",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Product_List__c",
-    "label": "Product List",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Products__c",
-    "label": "Products",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Age__c",
-    "label": "Project Age",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Cancellation_Reason__c",
-    "label": "Project Cancellation Reason",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Link__c",
-    "label": "Project Link",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Manager__c",
-    "label": "Project Manager",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Name__c",
-    "label": "Project Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Status__c",
-    "label": "Project Status",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Value__c",
-    "label": "Project Value",
-    "type": "currency",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Rate_Type__c",
-    "label": "Rate Type",
-    "type": "picklist",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Retail_Dashboard_URL__c",
-    "label": "Retail Dashboard URL",
-    "type": "url",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Software_Training_Date__c",
-    "label": "Software Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Source_Object_Id__c",
-    "label": "Source Object Id",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Staff_and_Training__c",
-    "label": "Staff and Training",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Start_Date__c",
-    "label": "Start Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Tags__c",
-    "label": "Tags",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Tracking_Numbers__c",
-    "label": "Tracking Numbers",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Training_Date__c",
-    "label": "Training Date",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Training_Participants__c",
-    "label": "Training Participants",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Owner__c",
-    "label": "Website Onboarding Case Owner",
-    "type": "reference",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Status__c",
-    "label": "Website Onboarding Case Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case__c",
-    "label": "Website Onboarding Case",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Tier__c",
-    "label": "Website Onboarding Tier",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Status__c",
-    "label": "Website Status",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "What_features_do_they_need_most__c",
-    "label": "What features do they need most?",
-    "type": "textarea",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "What_is_the_Target_Go_Live_Date__c",
-    "label": "What is the Target Go-Live Date?",
-    "type": "date",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Workflow_Gaps__c",
-    "label": "Workflow Gaps",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "X35_Days_Orientation__c",
-    "label": "35 Days Orientation",
-    "type": "boolean",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Age__c",
-    "label": "Age",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Contact_Email__c",
-    "label": "Contact Email",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Contact_Phone__c",
-    "label": "Contact Phone",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Case_URL__c",
-    "label": "Data Migration Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Data_Migration_Owner_Name__c",
-    "label": "Data Migration Owner Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Fulfillment_Case_URL__c",
-    "label": "Fulfillment Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Opportunity_Type__c",
-    "label": "Opportunity Type",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Payments_Onboarding_Case_URL__c",
-    "label": "Payments Onboarding Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Pre_Migration_Software__c",
-    "label": "Pre-Migration Software",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Primary_Contact_Name2__c",
-    "label": "Primary Contact Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Project_Type__c",
-    "label": "Project Type",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Tenant_ID__c",
-    "label": "Tenant ID",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Time_to_Value__c",
-    "label": "Time to Value",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Total_Modules__c",
-    "label": "Total Modules",
-    "type": "double",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_Owner_Name__c",
-    "label": "Website Onboarding Case Owner Name",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
-   },
-   {
-    "obj": "Project__c",
-    "field": "Website_Onboarding_Case_URL__c",
-    "label": "Website Onboarding Case URL",
-    "type": "string",
-    "created": "2026-08-19",
-    "newInWindow": false
+    "obj": "Lead",
+    "field": "dupcheck__dc3Web2Lead__c",
+    "label": "is Web2Lead",
+    "type": "boolean"
    },
    {
     "obj": "User",
-    "field": "Profile_Last_Confirmed__c",
-    "label": "Profile Last Confirmed",
-    "type": "date",
-    "created": "2026-08-26",
-    "newInWindow": true
+    "field": "dupcheck__dc3DisableDCTriggers__c",
+    "label": "Disable All Deduplicate triggers",
+    "type": "boolean"
+   },
+   {
+    "obj": "User",
+    "field": "dupcheck__dc3DisableDuplicateCheck__c",
+    "label": "Disable Deduplicate",
+    "type": "boolean"
    }
   ],
-  "fRemoved": [],
   "fChanged": [
    {
-    "obj": "User",
-    "field": "Department__c",
-    "label": "Department",
+    "obj": "Account",
+    "field": "Brand__c",
+    "label": "Brand - Account",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Business Operations",
-       "Product",
-       "Leadership",
-       "IT",
-       "Other"
-      ],
-      "removed": [
-       "Legal"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "User",
-    "field": "Location_Country__c",
-    "label": "Location - Country",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Other"
+       "iGov"
       ],
       "removed": [],
       "reordered": false
@@ -2096,46 +1827,849 @@
     ]
    },
    {
-    "obj": "User",
-    "field": "Role__c",
-    "label": "Role",
+    "obj": "Account",
+    "field": "Cohort_Brand__c",
+    "label": "Account - Cohort Brand",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Coordinator",
-       "Accountant",
-       "Analyst",
-       "Rev Operations Analyst",
-       "Specialist",
-       "Sr. Specialist",
-       "Engineer",
-       "QA",
-       "Architect",
-       "Team Lead",
-       "Director",
-       "Sr Director",
-       "Vice President",
-       "Sr. Vice President",
-       "Executive Vice President",
-       "C-Suite/President",
-       "Other"
+       "iGov"
       ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Address",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "AgentWork",
+    "field": "Status",
+    "label": "Status",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Abandoned",
+       "Failed"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ApprovalSubmissionDetail",
+    "field": "ActionChannelName",
+    "label": "Action Channel Name",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "MCP"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "AsyncOperationTracker",
+    "field": "JobType",
+    "label": "Job Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "QuoteToOpportunitySync",
+       "QuoteToEnergyAgreement",
+       "ComputeRecipientPrices",
+       "ExternalPricingBulk",
+       "EUSubmitOrderEnrollment",
+       "CouponCodeIngestion",
+       "ASMBulkEditLineItemTargeting",
+       "ASMBulkCreateLineItem",
+       "BulkCreateTimesheet",
+       "PSTARC",
+       "RlmBillingScheduleAsync",
+       "CheckoutAsync",
+       "Clone"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "AsyncOperationTracker",
+    "field": "StepName",
+    "label": "Step Name",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "QuoteToOpportunitySync",
+       "QuoteToEnergyAgreement",
+       "ComputeRecipientPrices",
+       "ExternalPricingBulk",
+       "EUSubmitOrderEnrollment",
+       "CouponCodeIngestion",
+       "ASMBulkEditLineItemTargeting",
+       "ASMBulkCreateLineItem",
+       "BulkCreateTimesheet",
+       "PSTARC",
+       "RlmBillingScheduleAsync",
+       "CheckoutAsync",
+       "Clone"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "AuthorizationFormConsent",
+    "field": "Status",
+    "label": "Status",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Revoked"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "CalculationProcedureStep",
+    "field": "StepType",
+    "label": "Step Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
       "removed": [
-       "Quality Analyst",
-       "Implementation Specialist",
-       "Sr. Implementation Specialist",
-       "Leadership"
+       "PredictiveAI",
+       "ListBranch"
       ],
       "reordered": false
      }
     ]
+   },
+   {
+    "obj": "Case",
+    "field": "Reason",
+    "label": "Case Reason",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Low Health Score"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Status_Reason__c",
+    "label": "Status Reason",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Bug Fix",
+       "Configuration/Setup",
+       "Feature Request",
+       "Incident Related",
+       "Technical Fix",
+       "Third Party Issue",
+       "User Error/Education"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "CommSubscriptionTiming",
+    "field": "PreferredTimeZone",
+    "label": "Preferred Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Contact",
+    "field": "Brand__c",
+    "label": "Brand",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointAddress",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointEmail",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointPhone",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Event",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ExpressionSet",
+    "field": "InterfaceSourceType",
+    "label": "Interface Source Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "PricingCalculationSchema",
+       "PricingSpecification",
+       "PricingSearchStrategy",
+       "PricingKeyType",
+       "PolicyEngine"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationInstance",
+    "field": "FlowType",
+    "label": "Flow Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Cadence",
+       "AutoApprovalEvalAutolnch",
+       "AgxOverview"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationInstance",
+    "field": "FlowDefinitionVersionName",
+    "label": "Flow Definition Version Name",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "revcloud_self_serve__Create_Quote-1",
+       "revcloud_self_serve__findPrdctsPricing-1",
+       "revcloud_self_serve__getPartnerOpps-1",
+       "revcloud_self_serve__GetProductInfo-1",
+       "runtime_appointmentbooking__GuestAuth-1",
+       "setup_se__InitiateIdV-1",
+       "setup_se__ValidateIdV-1",
+       "sfdc_fieldservice__DcInspectionForm-1",
+       "sfpl__CreateProductLimitAlert-1"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationLog",
+    "field": "Kind",
+    "label": "Milestone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "AutoApproveStep"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationWorkItem",
+    "field": "ScreenFlow",
+    "label": "Screen Flow ID",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "revcloud_self_serve__Create_Quote",
+       "revcloud_self_serve__findPrdctsPricing",
+       "revcloud_self_serve__getPartnerOpps",
+       "revcloud_self_serve__GetProductInfo",
+       "runtime_appointmentbooking__GuestAuth",
+       "setup_se__InitiateIdV",
+       "setup_se__ValidateIdV",
+       "sfdc_fieldservice__DcInspectionForm",
+       "sfpl__CreateProductLimitAlert"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationWorkItem",
+    "field": "FlowType",
+    "label": "Flow Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Cadence",
+       "AutoApprovalEvalAutolnch",
+       "AgxOverview"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "Brand__c",
+    "label": "Brand - Lead",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "Original_company_Generating_Lead__c",
+    "label": "Original Company Generating Lead",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "New_Company_to_Follow_Up__c",
+    "label": "New Company to Follow-Up",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Lead",
+    "field": "Strategy__c",
+    "label": "Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Location",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Macro",
+    "field": "StartingContext",
+    "label": "Apply To",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "ActOnIt__Activity__c",
+       "ActOnIt__ActivityMapping__c",
+       "ActOnIt__APIRequest__c",
+       "ActOnIt__CalloutConfiguration__c",
+       "ActOnIt__Condition__c",
+       "ContactPointOttSvc",
+       "ActOnIt__MessageRecipientAction__c",
+       "DevopsPipelineEnvironment",
+       "DevopsPipelineStage",
+       "DevopsPipelnStgProm",
+       "DevopsPipelnStgPromWkItem",
+       "DevopsProjectEnvironment",
+       "DevopsProjectPipeline",
+       "ActOnIt__MessageErrorLog__c",
+       "ActOnIt__MacroAction__c",
+       "ActOnIt__MessageAction__c",
+       "ActOnIt__MessageActionField__c",
+       "ActOnIt__BlockedMessage__c",
+       "ActOnIt__MessageType__c",
+       "ActOnIt__MessageTypeAction__c",
+       "ActOnIt__MessageTypeCallout__c",
+       "ActOnIt__MessageRequest__c",
+       "ActOnIt__MessageRequestRecipient__c",
+       "ActOnIt__ObjectSettings__c",
+       "ActOnIt__MessageLog__c",
+       "ActOnIt__PersonalizationSettings__c",
+       "DevopsPipeline",
+       "DevopsProject",
+       "ActOnIt__PromptAction__c",
+       "ActOnIt__Prompt__c",
+       "ActOnIt__ScheduledMessage__c",
+       "ActOnIt__MessageRecipient__c",
+       "SourceCodeRepository",
+       "SourceCodeRepositoryBranch",
+       "SourceCodeRepoProvider",
+       "Survey_Invitation_Queue__c",
+       "ActOnIt__UserSettings__c",
+       "WorkItem",
+       "WorkItemComponent",
+       "WorkItemComponentList",
+       "WorkPlan",
+       "WorkPlanTemplate",
+       "WorkPlanTemplateEntry",
+       "WorkStep",
+       "WorkStepTemplate"
+      ],
+      "removed": [
+       "dupcheck__dcAnalytics__c",
+       "dupcheck__dcAudit__c",
+       "dupcheck__dcDelta__c",
+       "dupcheck__dcDiscard__c",
+       "dupcheck__dc3Duplicate__c",
+       "dupcheck__dcFrequent__c",
+       "dupcheck__dc3GenericStorage__c",
+       "dupcheck__dcGroup__c",
+       "dupcheck__dcIndex__c",
+       "dupcheck__dcJob__c",
+       "dupcheck__dcLayout__c",
+       "dupcheck__dc3Log__c",
+       "dupcheck__dc3ObjectMeta__c",
+       "dupcheck__dcQueue__c",
+       "dupcheck__dcTelemetry__c",
+       "dupcheck__dcTemp__c"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "OperatingHours",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Strategy__c",
+    "label": "Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Cohort_Brand__c",
+    "label": "Opportunity - Cohort Brand",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "Brand__c",
+    "label": "Brand - Opportunity",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Opportunity",
+    "field": "SA_Rate_Type__c",
+    "label": "SA - Rate Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Surcharge"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ProcessException",
+    "field": "Category",
+    "label": "Category",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Cart"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "FlowDefinition",
+    "label": "Flow Definition ID",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Create_Low_Health_Score_Case_Single_Run",
+       "ActOnIt__Act_On_It_Change_Owner",
+       "ActOnIt__Act_On_It_Notify_Case_Owner_On_File_Attachment_Template",
+       "ActOnIt__Act_On_It_Template_Feed_Comment_Trigger_Flow",
+       "ActOnIt__Act_On_It_Template_Notify_Users_Mentioned_in_Chatter",
+       "ActOnIt__ActOnIt_Auto_Launch_Flow_Message_Action_Template",
+       "ActOnIt__ActOnIt_Email_Preview_Send",
+       "ActOnIt__ActOnIt_Give_Feedback_Flow",
+       "ActOnIt__ActOnIt_Message_Recipient_After_Insert_Flow",
+       "ActOnIt__ActOnIt_Personalized_Message_Flow",
+       "ActOnIt__ActOnIt_Screen_Flow_Message_Action_Template",
+       "ActOnIt__ActOnItRecordEditForm",
+       "ActOnIt__FeedCommentTriggerFlow",
+       "ActOnIt__Notify_Users_Mentioned_In_Chatter",
+       "Case_Send_Survey_Invitation_Queued",
+       "Case_Stamp_Last_Note_Date",
+       "Lead_Set_Field_Defaults",
+       "Make_XBU_Opp_Web_Processing_Only",
+       "Make_XBU_Quote_DealHub_Payments_Approval",
+       "Merchant_ID_Deactivate_Stale_MIDs",
+       "revcloud_self_serve__Create_Quote",
+       "revcloud_self_serve__findPrdctsPricing",
+       "revcloud_self_serve__getPartnerOpps",
+       "revcloud_self_serve__GetProductInfo",
+       "setup_se__InitiateIdV",
+       "setup_se__ValidateIdV",
+       "sfpl__CreateProductLimitAlert",
+       "Shipment_Post_Delivered_Feed_Item_to_Case",
+       "Shipment_Post_In_Transit_Feed_Item_to_Case",
+       "Survey_Invitation_Queue_Post_Case_Comment",
+       "TEST_Shipment_Delivered_Feed_Logic"
+      ],
+      "removed": [
+       "Case_Case_Closed_for_Not_Live_Merchant",
+       "Case_Case_Created_for_Not_Live_Merchant",
+       "Case_Order_Fulfillment_was_shipped"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Create_Low_Health_Score_Case_Single_Run",
+       "ActOnIt__Act_On_It_Change_Owner",
+       "ActOnIt__Act_On_It_Notify_Case_Owner_On_File_Attachment_Template",
+       "ActOnIt__Act_On_It_Template_Feed_Comment_Trigger_Flow",
+       "ActOnIt__Act_On_It_Template_Notify_Users_Mentioned_in_Chatter",
+       "ActOnIt__ActOnIt_Auto_Launch_Flow_Message_Action_Template",
+       "ActOnIt__ActOnIt_Email_Preview_Send",
+       "ActOnIt__ActOnIt_Give_Feedback_Flow",
+       "ActOnIt__ActOnIt_Message_Recipient_After_Insert_Flow",
+       "ActOnIt__ActOnIt_Personalized_Message_Flow",
+       "ActOnIt__ActOnIt_Screen_Flow_Message_Action_Template",
+       "ActOnIt__ActOnItRecordEditForm",
+       "ActOnIt__FeedCommentTriggerFlow",
+       "ActOnIt__Notify_Users_Mentioned_In_Chatter",
+       "Case_Send_Survey_Invitation_Queued",
+       "Case_Stamp_Last_Note_Date",
+       "Lead_Set_Field_Defaults",
+       "Make_XBU_Opp_Web_Processing_Only",
+       "Make_XBU_Quote_DealHub_Payments_Approval",
+       "Merchant_ID_Deactivate_Stale_MIDs",
+       "QuickActionDefinition.ActOnIt__MessageRequest__c.ActOnIt__Quick_Clone",
+       "QuickActionDefinition.ActOnIt__MessageType__c.ActOnIt__Quick_Clone",
+       "QuickActionDefinition.ActOnIt__UserSettings__c.ActOnIt__GeneralSettings",
+       "revcloud_self_serve__Create_Quote",
+       "revcloud_self_serve__findPrdctsPricing",
+       "revcloud_self_serve__getPartnerOpps",
+       "revcloud_self_serve__GetProductInfo",
+       "setup_se__InitiateIdV",
+       "setup_se__ValidateIdV",
+       "sfpl__CreateProductLimitAlert",
+       "Shipment_Post_Delivered_Feed_Item_to_Case",
+       "Shipment_Post_In_Transit_Feed_Item_to_Case",
+       "Survey_Invitation_Queue_Post_Case_Comment",
+       "TEST_Shipment_Delivered_Feed_Logic"
+      ],
+      "removed": [
+       "Case_Case_Closed_for_Not_Live_Merchant",
+       "Case_Case_Created_for_Not_Live_Merchant",
+       "Case_Order_Fulfillment_was_shipped",
+       "QuickActionDefinition.Lead.dupcheck__DCConvert"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RevenueAsyncOperation",
+    "field": "JobType",
+    "label": "Job Type",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "QuoteToOpportunitySync",
+       "QuoteToEnergyAgreement",
+       "ComputeRecipientPrices",
+       "ExternalPricingBulk",
+       "EUSubmitOrderEnrollment",
+       "CouponCodeIngestion",
+       "ASMBulkEditLineItemTargeting",
+       "ASMBulkCreateLineItem",
+       "BulkCreateTimesheet",
+       "PSTARC",
+       "RlmBillingScheduleAsync",
+       "CheckoutAsync",
+       "Clone"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "ringdna__Disposition__c",
+    "label": "Disposition",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Lead_Brand__c",
+    "label": "RC - Lead Brand",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Opportunity_Strategy__c",
+    "label": "RC - Opportunity Strategy",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Free Support"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Account_Cohort_Brand__c",
+    "label": "RC - Account Cohort Brand",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "ringdna__Conversation__c",
+    "field": "RC_Account_Brand__c",
+    "label": "RC - Account Brand",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "iGov"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Task",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "TimeZoneSidKey",
+    "label": "Time Zone",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
    }
   ],
-  "addedCreatedInWindow": 5,
-  "addedPreexisting": 96,
-  "addedUnknownCreated": 0
+  "addedCreatedInWindow": 34,
+  "addedPreexisting": 0,
+  "addedUnknownCreated": 5
  },
- "prevDate": "2026-08-25",
- "genDate": "2026-08-28"
+ "prevDate": "2026-08-28",
+ "genDate": "2026-10-08"
 }
