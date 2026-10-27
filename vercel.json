@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    { "src": "salesforce-data-dictionary.html", "use": "@vercel/static" },
+    { "src": "changes.json", "use": "@vercel/static" },
+    { "src": "sbu_data.json", "use": "@vercel/static" },
+    { "src": "xbu_data.json", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/salesforce-data-dictionary.html" }
+  ]
+}
