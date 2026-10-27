@@ -128,10 +128,14 @@ const remHTML = removed.length
 function changeText(c) {
   if (c.attr === 'picklist') {
     if (!c.added.length && !c.removed.length) return '<span class="cchg">Picklist values were re-ordered.</span>';
-    return '<span class="cchg">' +
-      (c.added.length ? '<span class="ck">Values added</span>' + c.added.map(v => '<span class="pv add">' + esc(v) + '</span>').join('') : '') +
-      (c.removed.length ? '<span class="ck">Values removed</span>' + c.removed.map(v => '<span class="pv rem">' + esc(v) + '</span>').join('') : '') +
-      '</span>';
+    // added and removed each get their own coloured line, so the two are never read as one list
+    const line = (cls, sign, word, vals) => '<div class="cpl ' + cls + '"><span class="cpk">' + sign + ' ' +
+      plural(vals.length, 'value') + ' ' + word + '</span><span class="cpv">' +
+      vals.map(v => '<span class="pv ' + cls + '">' + esc(v) + '</span>').join('') + '</span></div>';
+    return '<div class="cpick">' +
+      (c.added.length ? line('add', '+', 'added', c.added) : '') +
+      (c.removed.length ? line('rem', '&minus;', 'removed', c.removed) : '') +
+      '</div>';
   }
   if (c.attr === 'required') return '<span class="cchg">' + (c.to ? 'Now <b>required</b>' : 'No longer required') + '</span>';
   if (c.attr === 'type') return '<span class="cchg">Type changed from <span class="pv rem">' + esc(friendlyType(c.from)) +
@@ -465,6 +469,14 @@ ul.clist .orgtag{color:var(--surface)}
 .cmore{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;margin-top:18px}
 .cmore summary{cursor:pointer;font-weight:650;font-size:14px;color:var(--ink2)}
 .cmore p{font-size:13px;color:var(--ink2);max-width:82ch;margin:10px 0}
+.cpick{flex-basis:100%;display:flex;flex-direction:column;gap:6px;margin-top:2px}
+.cpl{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px 12px;padding:7px 10px;border-radius:6px;background:var(--surface2);border-left:4px solid}
+.cpl.add{border-left-color:var(--uniq)}
+.cpl.rem{border-left-color:var(--reqhl)}
+.cpk{font-size:12.5px;font-weight:700;min-width:150px;white-space:nowrap;padding-top:1px}
+.cpl.add .cpk{color:var(--uniq)}
+.cpl.rem .cpk{color:var(--reqhl)}
+.cpv{display:flex;flex-wrap:wrap;gap:5px;flex:1;min-width:0}
 .cdesc{flex-basis:100%;font-size:12.5px;color:var(--ink2);background:var(--surface2);border-left:3px solid var(--line);border-radius:4px;padding:4px 10px}
 .cfilt{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;align-items:end;margin-top:18px;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow)}
