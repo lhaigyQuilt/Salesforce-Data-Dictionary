@@ -358,6 +358,7 @@ main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .srcchip.custom{color:var(--c-num);border-color:var(--c-num)}
 .srcchip.std{color:var(--muted);border-color:var(--line)}
 .frail .orgtag,.frail .diffchip,.frail .attr,.frail .mgdchip,.frail .srcchip{display:block;text-align:center;font-size:11px;padding:5px 0;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.frail .srcchip{white-space:normal;line-height:1.25;padding:4px 2px}
 .field.isreq{background:var(--req-bg);border-color:var(--reqhl);box-shadow:inset 4px 0 0 var(--reqhl),var(--shadow)}
 .field.differs{border-left:3px solid var(--diff)}
 .frow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -611,7 +612,7 @@ ul.clist li[hidden],.cobj[hidden],.csec[hidden],.cmore[hidden],.csum[hidden]{dis
           <dt><span class="orgtag both">Both</span></dt><dd>Exists in both SBU and XBU</dd>
           <dt><span class="orgtag sbu">SBU</span><span class="orgtag xbu">XBU</span></dt><dd>Exists in that org only</dd>
           <dt><span class="tag custom">Custom</span><span class="tag std">Standard</span></dt><dd>Object list: a custom object, or one that comes with Salesforce</dd>
-          <dt><span class="srcchip custom">Custom</span><span class="srcchip std">Standard</span></dt><dd>Field card: a custom field built in-house, or one that comes with Salesforce</dd>
+          <dt><span class="srcchip custom">Custom Field</span><span class="srcchip std">Standard Field</span></dt><dd>Field card: a custom field built in-house, or one that comes with Salesforce</dd>
           <dt><span class="diffchip">3 differ</span></dt><dd>Fields set up differently in SBU and XBU</dd>
           <dt><span class="count">42</span></dt><dd>Number of fields (or matches while searching)</dd>
           <dt><span class="attr req">Required</span></dt><dd>Must have a value before the record can be saved (card is highlighted pink)</dd>
@@ -983,8 +984,8 @@ function fieldCard(f,ql,withObj,objApi,objLabel){
   const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
     +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
     +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>'
-      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom</span>'
-      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard</span>')
+      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom Field</span>'
+      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard Field</span>')
     +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
   return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
     +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')

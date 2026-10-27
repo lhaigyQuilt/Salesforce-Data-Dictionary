@@ -658,8 +658,8 @@ function fieldCard(f,ql,withObj,objApi,objLabel){
   const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
     +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
     +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>'
-      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom</span>'
-      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard</span>')
+      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom Field</span>'
+      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard Field</span>')
     +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
   return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
     +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')
