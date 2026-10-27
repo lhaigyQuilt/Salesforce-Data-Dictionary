@@ -938,7 +938,28 @@ syncTypeSummary();render();
   // sections and the "newly visible" block carry data-kind.
   var fOrg=document.getElementById('chOrg'), fKind=document.getElementById('chKind'),
       fObj=document.getElementById('chObj'), fClr=document.getElementById('chClear');
+  // Object choices follow the Org + Type picks: only objects with a matching change, field
+  // changes first, whole objects added/deleted (mostly package installs) in their own group.
+  var objText={};
+  [].forEach.call(fObj.options,function(o){if(o.value!=='all')objText[o.value]=o.textContent;});
+  function fillObjFilter(){
+    var org=fOrg.value, kind=fKind.value, cur=fObj.value, fld={}, whole={};
+    [].forEach.call(cv.querySelectorAll('[data-kind] li[data-obj]'),function(r){
+      var k=r.closest('[data-kind]').dataset.kind;
+      if(kind!=='all'&&k!==kind)return;
+      if(org!=='all'&&r.dataset.orgs.split(' ').indexOf(org)<0)return;
+      var m=k==='objects'?whole:fld; m[r.dataset.obj]=(m[r.dataset.obj]||0)+1;});
+    var byText=function(a,b){return objText[a].localeCompare(objText[b]);};
+    var f=Object.keys(fld).sort(byText), w=Object.keys(whole).filter(function(a){return !fld[a];}).sort(byText);
+    var opt=function(a,n){return '<option value="'+a.replace(/"/g,'&quot;')+'">'+objText[a].replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      +(n?' — '+n+(n===1?' change':' changes'):'')+'</option>';};
+    fObj.innerHTML='<option value="all">All objects ('+(f.length+w.length)+')</option>'
+      +(f.length?'<optgroup label="Objects with field changes">'+f.map(function(a){return opt(a,fld[a]);}).join('')+'</optgroup>':'')
+      +(w.length?'<optgroup label="Objects added or deleted">'+w.map(function(a){return opt(a,0);}).join('')+'</optgroup>':'');
+    fObj.value=(fld[cur]||whole[cur])?cur:'all';
+  }
   function applyChanges(){
+    fillObjFilter();
     var org=fOrg.value, kind=fKind.value, obj=fObj.value, any=org!=='all'||kind!=='all'||obj!=='all';
     [].forEach.call(cv.querySelectorAll('[data-kind]'),function(sec){
       var kindOk=kind==='all'||sec.dataset.kind===kind;
@@ -959,6 +980,7 @@ syncTypeSummary();render();
   }
   [fOrg,fKind,fObj].forEach(function(s){s.addEventListener('change',applyChanges);});
   fClr.addEventListener('click',function(){fOrg.value='all';fKind.value='all';fObj.value='all';applyChanges();});
+  fillObjFilter();
   if(location.hash==='#dictionary')show(true);
 })();
 </script>
