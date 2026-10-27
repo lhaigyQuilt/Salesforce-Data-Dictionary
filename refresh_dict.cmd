@@ -1,11 +1,11 @@
 @echo off
 rem Regenerate the SBU + XBU Salesforce data dictionary and commit the result.
 rem Read-only against both production orgs: sobject describes + Tooling queries.
-rem Run by Windows Task Scheduler on the last day of each month (install_task.cmd).
+rem Run by Windows Task Scheduler ("SF Data Dictionary Refresh") on the 1st of each month, 07:00.
 rem
-rem Deliberately does NOT push. A background push that fails on an expired
-rem credential fails silently into the log; the commit is what preserves the
-rem baseline, so push by hand when convenient.
+rem Commits, then pushes so Railway/Vercel redeploy from main. The commit is what
+rem preserves the baseline; if the push fails (e.g. expired credential) the commit
+rem stays local, the log says so, and the run exits 2 - push by hand.
 setlocal
 set R=%~dp0
 set R=%R:~0,-1%
@@ -14,6 +14,10 @@ set LOG=%R%\refresh.log
 echo. >> "%LOG%"
 echo ==== start %DATE% %TIME% ==== >> "%LOG%"
 cd /d "%R%" || exit /b 1
+
+rem Pick up anything committed on GitHub since the last run (e.g. edits made on the
+rem website) before this run changes files, so the push at the end fast-forwards.
+git -C "%R%" pull --ff-only >> "%LOG%" 2>&1 || echo WARNING: git pull failed - the push at the end may be rejected >> "%LOG%"
 
 rem Today, and the date of the previous run (from the changes file this run
 rem is about to replace). Both read before anything is overwritten.
@@ -47,9 +51,14 @@ node validate_merged.js    >> "%LOG%" 2>&1 || goto :fail
 
 git -C "%R%" add -A                                 >> "%LOG%" 2>&1
 git -C "%R%" commit -m "dictionary refresh %TODAY%" >> "%LOG%" 2>&1
+git -C "%R%" push                                  >> "%LOG%" 2>&1 || goto :pushfail
 
 echo ==== ok %DATE% %TIME% ==== >> "%LOG%"
 exit /b 0
+
+:pushfail
+echo ==== COMMITTED BUT PUSH FAILED at %DATE% %TIME% - run git push by hand ==== >> "%LOG%"
+exit /b 2
 
 :fail
 echo ==== FAILED errorlevel %errorlevel% at %DATE% %TIME% ==== >> "%LOG%"

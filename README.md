@@ -32,7 +32,10 @@ snapshot for free.
 
 ## Refreshing
 
-`refresh_dict.cmd` runs the whole chain and commits. It does **not** push — push by hand:
+`refresh_dict.cmd` runs the whole chain, commits and pushes (Railway and Vercel redeploy
+from `main`). It starts with `git pull --ff-only` so edits made on GitHub since the last
+run don't make the push bounce. If the push still fails, the commit stays local, the log
+ends `COMMITTED BUT PUSH FAILED` and the task exits 2 — then push by hand:
 
 ```
 git push
@@ -46,10 +49,10 @@ To run it by hand: `refresh_dict.cmd`
 
 ### Scheduled run
 
-A Windows Task Scheduler job ("SF Data Dictionary Refresh") fires this at 18:00 local on
-the last day of each month. If the task still points at the old `C:\tmp\acctscan`
-location it must be repointed at this directory, otherwise it will regenerate the
-dictionary with the superseded object rule and overwrite the snapshot here.
+A Windows Task Scheduler job ("SF Data Dictionary Refresh") fires this at 07:00 local on
+the 1st of each month (it runs late if the PC was off). It runs as the signed-in user, so
+the sf CLI logins for `production`/`xbu` and the Git Credential Manager login must both
+still be valid.
 
 ## Two things that will bite you
 
