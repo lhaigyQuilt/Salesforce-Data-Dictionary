@@ -5,6 +5,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const kindOf = require('./field_kind');
+const { redact } = require('./redact');
 const OUT = __dirname.split(String.fromCharCode(92)).join('/');
 const API = 'v62.0';
 const BATCH = 25;
@@ -139,8 +140,9 @@ const EXCL = /(Share|History|Feed|ChangeEvent|Tag|Rule|RuleShare)$|__e$/;
         return {
           name: f.name, label: f.label, type: f.type, len: len(f),
           req: !f.nillable, uniq: !!f.unique, extId: !!f.externalId,
-          formula: f.calculatedFormula || '', desc: dm.desc || '',
-          help: f.inlineHelpText || dm.help || '',
+          // credentials hardcoded in metadata are blanked before anything is written
+          formula: redact(f.calculatedFormula).text, desc: redact(dm.desc).text,
+          help: redact(f.inlineHelpText || dm.help).text,
           ref: f.referenceTo || [], pick, gvs, kind: kindOf(f)
         };
       })
