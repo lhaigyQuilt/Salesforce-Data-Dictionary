@@ -45,8 +45,9 @@ for (const prefix of ['sbu', 'xbu']) {
     if (!po) continue;
     const pf = new Map(po.fields.map(f => [f.name, f]));
     const cf = new Map(co.fields.map(f => [f.name, f]));
-    for (const [n, f] of cf) if (!pf.has(n)) fAdded.push({ obj: api, field: n, label: f.label, type: f.type });
-    for (const [n, f] of pf) if (!cf.has(n)) fRemoved.push({ obj: api, field: n, label: f.label, type: f.type });
+    // desc travels with the row: a deleted field's description exists only in the old snapshot
+    for (const [n, f] of cf) if (!pf.has(n)) fAdded.push({ obj: api, field: n, label: f.label, type: f.type, desc: f.desc || '' });
+    for (const [n, f] of pf) if (!cf.has(n)) fRemoved.push({ obj: api, field: n, label: f.label, type: f.type, desc: f.desc || '' });
     for (const [n, a] of pf) {
       const b = cf.get(n); if (!b) continue;
       const ch = [];
@@ -59,7 +60,7 @@ for (const prefix of ['sbu', 'xbu']) {
           removed: [...pa].filter(v => !pb.has(v)),
           reordered: [...pb].filter(v => pa.has(v)).length === pa.size && pa.size === pb.size });
       }
-      if (ch.length) fChanged.push({ obj: api, field: n, label: b.label, changes: ch });
+      if (ch.length) fChanged.push({ obj: api, field: n, label: b.label, desc: b.desc || a.desc || '', changes: ch });
     }
   }
 

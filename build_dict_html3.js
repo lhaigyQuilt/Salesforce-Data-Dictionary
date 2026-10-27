@@ -36,16 +36,27 @@ for (const id of ['sbu', 'xbu']) {
   SNAP[id] = { objs, flds };
 }
 const objLabel = api => SNAP.sbu.objs.get(api) || SNAP.xbu.objs.get(api) || api;
+// Deleted fields only exist in the previous snapshot (staged in .prev/ by refresh_dict.cmd).
+const PREVSNAP = {};
+for (const id of ['sbu', 'xbu']) {
+  const flds = new Map(), p = `${OUT}/.prev/${id}_data.json`;
+  if (fs.existsSync(p)) for (const o of JSON.parse(fs.readFileSync(p, 'utf8'))) for (const f of o.fields) flds.set(o.api + '.' + f.name, f);
+  PREVSNAP[id] = flds;
+}
 
 // Same names the dictionary uses (friendlyType in the explorer).
 const TYPE_NAME = { string: 'Text', textarea: 'Text Area', reference: 'Lookup', boolean: 'Checkbox', picklist: 'Picklist',
   multipicklist: 'Multi-Select Picklist', combobox: 'Picklist (editable)', double: 'Number', int: 'Number', long: 'Number',
   currency: 'Currency', percent: 'Percent', datetime: 'Date/Time', date: 'Date', time: 'Time', id: 'Record ID', url: 'URL',
   phone: 'Phone', email: 'Email', address: 'Address', location: 'Geolocation', encryptedstring: 'Text (Encrypted)', base64: 'File' };
+const KIND_NAME = { autonumber: 'Auto Number', masterdetail: 'Master-Detail', externallookup: 'External Lookup',
+  indirectlookup: 'Indirect Lookup', richtext: 'Rich Text Area' };
 function friendlyType(type, f) {
   const t = String(type || '').toLowerCase();
   let n = TYPE_NAME[t] || type || '—';
+  if (f && KIND_NAME[f.kind]) return KIND_NAME[f.kind];
   if (t === 'textarea' && f && Number(f.len) > 255) n = 'Long Text Area';
+  if (f && f.kind === 'rollup') return 'Roll-Up Summary (' + n + ')';
   if (f && f.formula) return 'Formula (' + n + ')';
   if (f && (t === 'string' || t === 'textarea' || t === 'encryptedstring') && Number(f.len)) n += ' (' + nf(Number(f.len)) + ')';
   return n;
@@ -76,6 +87,19 @@ function byObject(rows, rowHtml) {
       '<ul class="clist">' + list.map(rowHtml).join('') + '</ul></div>';
   }).join('');
 }
+// data-* attributes the changes-page filters (Org / Change / Object) read
+const rowAttrs = (orgs, obj) => ' data-orgs="' + orgs.join(' ') + '" data-obj="' + esc(obj) + '"';
+const li = (r, inner) => '<li' + rowAttrs(r.orgs, r.obj) + '>' + inner + '</li>';
+const NOMATCH = '<p class="cnone cfnone" hidden>Nothing here matches the filters.</p>';
+// Description from the change row, else whichever snapshot still holds the field.
+function descOf(r) {
+  for (const id of r.orgs) {
+    const f = SNAP[id].flds.get(r.obj + '.' + r.field) || PREVSNAP[id].get(r.obj + '.' + r.field);
+    const d = r.byOrg[id].desc || (f && f.desc);
+    if (d) return '<div class="cdesc">' + esc(d) + '</div>';
+  }
+  return '';
+}
 const viewBtn = r => '<button class="cview" type="button" data-obj="' + esc(r.obj) + '" data-field="' + esc(r.field) +
   '" data-label="' + esc(r.label || '') + '">View in dictionary</button>';
 const fieldHead = (r, type) => orgBadge(r.orgs) + '<span class="cfl">' + esc(r.label || r.field) + '</span>' +
@@ -91,13 +115,14 @@ const createdOn = r => {
   return ds.length ? 'created ' + ds.map(niceDate).join(' / ') : '';
 };
 const newHTML = newF.length
-  ? byObject(newF, r => '<li>' + fieldHead(r, friendlyType(r.type, snapField(r))) +
-      '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + viewBtn(r) + '</li>')
+  ? byObject(newF, r => li(r, fieldHead(r, friendlyType(r.type, snapField(r))) +
+      '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + viewBtn(r) + descOf(r)))
   : '<p class="cnone">No new fields were created.</p>';
 
 const removed = merge('fRemoved');
+const prevField = r => PREVSNAP[r.orgs[0]].get(r.obj + '.' + r.field);
 const remHTML = removed.length
-  ? byObject(removed, r => '<li>' + fieldHead(r, friendlyType(r.type)) + '</li>')
+  ? byObject(removed, r => li(r, fieldHead(r, friendlyType(r.type, prevField(r))) + descOf(r)))
   : '<p class="cnone">No fields were deleted.</p>';
 
 function changeText(c) {
@@ -121,7 +146,7 @@ const chgHTML = changed.length
       const detail = same
         ? '<div class="corg">' + r.byOrg[r.orgs[0]].changes.map(changeText).join('') + '</div>'
         : r.orgs.map(id => '<div class="corg">' + orgBadge([id]) + r.byOrg[id].changes.map(changeText).join('') + '</div>').join('');
-      return '<li>' + fieldHead(r, friendlyType(snapField(r) ? snapField(r).type : '', snapField(r))) + viewBtn(r) + detail + '</li>';
+      return li(r, fieldHead(r, friendlyType(snapField(r) ? snapField(r).type : '', snapField(r))) + viewBtn(r) + descOf(r) + detail);
     })
   : '<p class="cnone">No existing fields were changed.</p>';
 
@@ -132,23 +157,29 @@ for (const id of ['sbu', 'xbu']) {
   for (const a of CH[id].objRemoved) objRows.push({ id, a, kind: 'Deleted' });
 }
 const objHTML = objRows.length
-  ? '<section class="csec" id="chObjects"><h2>Objects added or deleted <span class="cnt">' + nf(objRows.length) + '</span></h2><ul class="clist">' +
-    objRows.map(o => '<li>' + orgBadge([o.id]) + '<span class="cfl">' + esc(objLabel(o.a)) + '</span><code class="capi">' + esc(o.a) +
-      '</code><span class="cty">' + o.kind + ' object</span></li>').join('') + '</ul></section>'
+  ? '<section class="csec" id="chObjects" data-kind="objects"><h2>Objects added or deleted <span class="cnt">' + nf(objRows.length) + '</span></h2><ul class="clist">' +
+    objRows.map(o => '<li' + rowAttrs([o.id], o.a) + '>' + orgBadge([o.id]) + '<span class="cfl">' + esc(objLabel(o.a)) + '</span><code class="capi">' + esc(o.a) +
+      '</code><span class="cty">' + o.kind + ' object</span></li>').join('') + '</ul>' + NOMATCH + '</section>'
   : '';
 
 const visHTML = visibleF.length
-  ? '<details class="cmore"><summary>' + plural(visibleF.length, 'field') + ' newly visible in the dictionary &mdash; not new in Salesforce</summary>' +
+  ? '<details class="cmore" data-kind="new"><summary><span class="cnt2">' + nf(visibleF.length) + '</span> ' + (visibleF.length === 1 ? 'field' : 'fields') +
+    ' newly visible in the dictionary &mdash; not new in Salesforce</summary>' +
     '<p>These fields already existed in Salesforce before ' + esc(niceDate(PREV)) + ', but the previous scan could not see them ' +
     '(usually because of field-level security on the account that runs the scan). Nothing about them changed in Salesforce, ' +
     'so they are not counted as new above.</p>' +
-    byObject(visibleF, r => '<li>' + fieldHead(r, friendlyType(r.type, snapField(r))) + '<span class="cwhen">' + esc(createdOn(r)) + '</span></li>') +
-    '</details>'
+    byObject(visibleF, r => li(r, fieldHead(r, friendlyType(r.type, snapField(r))) + '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + descOf(r))) +
+    NOMATCH + '</details>'
   : '';
+
+// Change-page filter choices: every object that has at least one change row.
+const chObjs = [...new Set([...newF, ...changed, ...removed, ...visibleF].map(r => r.obj).concat(objRows.map(o => o.a)))]
+  .sort((a, b) => objLabel(a).localeCompare(objLabel(b)));
+const chObjOptions = chObjs.map(a => '<option value="' + esc(a) + '">' + esc(objLabel(a) !== a ? objLabel(a) + ' (' + a + ')' : a) + '</option>').join('');
 
 const cov = id => CH[id].churnAdded.length + CH[id].churnRemoved.length;
 const covHTML = (cov('sbu') || cov('xbu'))
-  ? '<details class="cmore"><summary>The dictionary&rsquo;s coverage changed &mdash; not a Salesforce change</summary>' +
+  ? '<details class="cmore" data-kind="coverage"><summary>The dictionary&rsquo;s coverage changed &mdash; not a Salesforce change</summary>' +
     '<p>The set of objects the dictionary scans was updated. It now includes ' + plural(CH.sbu.churnAdded.length, 'more object') +
     ' in SBU and ' + nf(CH.xbu.churnAdded.length) + ' in XBU, and no longer lists ' + nf(CH.sbu.churnRemoved.length) + ' SBU and ' +
     nf(CH.xbu.churnRemoved.length) + ' XBU platform-event objects. These objects were already in Salesforce, so they are not counted as changes.</p>' +
@@ -159,11 +190,25 @@ function orgSummary(id, name, sub) {
   const r = CH[id];
   const nNew = r.fAdded.filter(f => f.newInWindow !== false).length;
   const stat = (n, cls, word) => '<div><b class="' + cls + '">' + nf(n) + '</b><span>' + word + '</span></div>';
-  return '<div class="csum"><div class="csum-h">' + orgBadge([id]) + '<b>' + esc(name) + '</b><span>' + esc(sub) + '</span></div>' +
+  return '<div class="csum" data-org="' + id + '"><div class="csum-h">' + orgBadge([id]) + '<b>' + esc(name) + '</b><span>' + esc(sub) + '</span></div>' +
     '<div class="csum-n">' + stat(nNew, 'add', nNew === 1 ? 'new field' : 'new fields') +
     stat(r.fRemoved.length, 'rem', 'deleted') + stat(r.fChanged.length, 'chg', 'changed') + '</div>' +
     '<div class="csum-t">' + nf(r.curObjects) + ' objects &middot; ' + nf(r.curFields) + ' fields in the dictionary</div></div>';
 }
+
+// The Show filter: every field type Setup offers, under its Setup name. Keys are what
+// typeKey() in the explorer returns; a field matches exactly one.
+const FIELD_TYPE_GROUPS = [
+  ['Calculated', [['autonumber', 'Auto Number'], ['formula', 'Formula'], ['rollup', 'Roll-Up Summary']]],
+  ['Relationships', [['lookup', 'Lookup Relationship'], ['masterdetail', 'Master-Detail Relationship'],
+    ['externallookup', 'External Lookup Relationship'], ['indirectlookup', 'Indirect Lookup Relationship']]],
+  ['Data types', [['boolean', 'Checkbox'], ['currency', 'Currency'], ['date', 'Date'], ['datetime', 'Date/Time'],
+    ['email', 'Email'], ['location', 'Geolocation'], ['number', 'Number'], ['percent', 'Percent'], ['phone', 'Phone'],
+    ['picklist', 'Picklist'], ['multipicklist', 'Picklist (Multi-Select)'], ['string', 'Text'], ['textarea', 'Text Area'],
+    ['longtextarea', 'Text Area (Long)'], ['richtext', 'Text Area (Rich)'], ['encryptedstring', 'Text (Encrypted)'],
+    ['time', 'Time'], ['url', 'URL']]],
+  ['Standard fields only', [['address', 'Address'], ['id', 'Record ID'], ['base64', 'File / Binary']]],
+];
 
 const HTML = `<title>Salesforce Data Dictionary — SBU &amp; XBU Production</title>
 <style>
@@ -248,6 +293,10 @@ select.ctl{appearance:none;-webkit-appearance:none;
 .pop{position:absolute;z-index:40;top:calc(100% + 5px);left:0;right:0;background:var(--surface);border:1px solid var(--line);
   border-radius:9px;box-shadow:var(--pop);padding:8px;display:flex;flex-direction:column;gap:2px}
 .pop[hidden]{display:none}
+#popType{max-height:min(68vh,560px);overflow-y:auto}
+.optl{flex:1}
+.optn{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+.opt.zero{opacity:.5}
 .opt{display:flex;align-items:center;gap:8px;padding:6px 7px;border-radius:6px;cursor:pointer;font-size:12.5px;color:var(--ink2)}
 .opt:hover{background:var(--surface2)}
 .opt input{accent-color:var(--accent);margin:0;width:14px;height:14px}
@@ -279,6 +328,8 @@ input.ctl{cursor:text}
 .obj .olabel{font-size:12.5px;font-weight:560;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .obj .oapi{font-family:var(--mono);font-size:10.5px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .obj .otext{min-width:0;flex:1;display:flex;flex-direction:column;line-height:1.25}
+.obj .osub{display:flex;align-items:center;gap:5px;min-width:0;margin-top:2px}
+.obj .osub .tag{font-size:8.5px;padding:0 4px}
 .count{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums;background:var(--surface2);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;flex-shrink:0}
 .count.match{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
 .tag{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:5px;flex-shrink:0;font-weight:650}
@@ -300,10 +351,13 @@ main{overflow-y:auto;min-height:0;padding:20px 24px 60px}
 .mmeta{font-size:14px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
 .field{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
 .field{display:flex;gap:14px;align-items:flex-start}
-.frail{display:flex;flex-direction:column;gap:6px;width:66px;flex-shrink:0}
+.frail{display:flex;flex-direction:column;gap:6px;width:74px;flex-shrink:0}
 .mgdchip{font-size:9px;letter-spacing:.04em;text-transform:uppercase;font-weight:800;color:var(--surface);background:var(--managed);
   border:1px solid var(--managed);border-radius:5px;padding:2px 6px;flex-shrink:0;white-space:nowrap}
-.frail .orgtag,.frail .diffchip,.frail .attr,.frail .mgdchip{display:block;text-align:center;font-size:11px;padding:5px 0;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.srcchip{font-size:9px;letter-spacing:.03em;text-transform:uppercase;font-weight:800;border:1px solid;border-radius:5px;padding:2px 6px;white-space:nowrap;background:var(--surface)}
+.srcchip.custom{color:var(--c-num);border-color:var(--c-num)}
+.srcchip.std{color:var(--muted);border-color:var(--line)}
+.frail .orgtag,.frail .diffchip,.frail .attr,.frail .mgdchip,.frail .srcchip{display:block;text-align:center;font-size:11px;padding:5px 0;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
 .field.isreq{background:var(--req-bg);border-color:var(--reqhl);box-shadow:inset 4px 0 0 var(--reqhl),var(--shadow)}
 .field.differs{border-left:3px solid var(--diff)}
 .frow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -410,6 +464,11 @@ ul.clist .orgtag{color:var(--surface)}
 .cmore{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;margin-top:18px}
 .cmore summary{cursor:pointer;font-weight:650;font-size:14px;color:var(--ink2)}
 .cmore p{font-size:13px;color:var(--ink2);max-width:82ch;margin:10px 0}
+.cdesc{flex-basis:100%;font-size:12.5px;color:var(--ink2);background:var(--surface2);border-left:3px solid var(--line);border-radius:4px;padding:4px 10px}
+.cfilt{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;align-items:end;margin-top:18px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow)}
+.cfilt .clearall{align-self:center}
+ul.clist li[hidden],.cobj[hidden],.csec[hidden],.cmore[hidden],.csum[hidden]{display:none}
 </style>
 
 <div id="changesView">
@@ -433,9 +492,38 @@ ul.clist .orgtag{color:var(--surface)}
       ${orgSummary('xbu', 'XBU Production', 'Rain POS')}
     </div>
 
-    <section class="csec" id="chNew"><h2>New fields <span class="cnt">${nf(newF.length)}</span></h2>${newHTML}</section>
-    <section class="csec" id="chChanged"><h2>Changed fields <span class="cnt">${nf(changed.length)}</span></h2>${chgHTML}</section>
-    <section class="csec" id="chRemoved"><h2>Deleted fields <span class="cnt">${nf(removed.length)}</span></h2>${remHTML}</section>
+    <div class="cfilt" id="chFilters" role="group" aria-label="Filter changes">
+      <div class="fld">
+        <label for="chOrg">Org</label>
+        <select class="ctl" id="chOrg">
+          <option value="all" selected>Both orgs</option>
+          <option value="sbu">SBU only — POS Nation</option>
+          <option value="xbu">XBU only — Rain POS</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="chKind">Type of change</label>
+        <select class="ctl" id="chKind">
+          <option value="all" selected>All changes</option>
+          <option value="new">New fields</option>
+          <option value="changed">Changed fields</option>
+          <option value="removed">Deleted fields</option>
+          ${objRows.length ? '<option value="objects">Objects added or deleted</option>' : ''}
+        </select>
+      </div>
+      <div class="fld">
+        <label for="chObj">Object</label>
+        <select class="ctl" id="chObj">
+          <option value="all" selected>All objects</option>
+          ${chObjOptions}
+        </select>
+      </div>
+      <button class="clearall" type="button" id="chClear" hidden>Clear filters</button>
+    </div>
+
+    <section class="csec" id="chNew" data-kind="new"><h2>New fields <span class="cnt">${nf(newF.length)}</span></h2>${newHTML}${NOMATCH}</section>
+    <section class="csec" id="chChanged" data-kind="changed"><h2>Changed fields <span class="cnt">${nf(changed.length)}</span></h2>${chgHTML}${NOMATCH}</section>
+    <section class="csec" id="chRemoved" data-kind="removed"><h2>Deleted fields <span class="cnt">${nf(removed.length)}</span></h2>${remHTML}${NOMATCH}</section>
     ${objHTML}
     ${visHTML}
     ${covHTML}
@@ -476,8 +564,9 @@ ul.clist .orgtag{color:var(--surface)}
       <div class="fld">
         <label for="fOrigin">Fields</label>
         <select class="ctl" id="fOrigin">
-          <option value="all" selected>Custom and standard fields</option>
-          <option value="custom">Custom fields only</option>
+          <option value="all" selected>All fields</option>
+          <option value="custom">Custom fields only (built in-house)</option>
+          <option value="managed">Managed package fields only</option>
           <option value="standard">Standard fields only</option>
         </select>
       </div>
@@ -490,19 +579,9 @@ ul.clist .orgtag{color:var(--surface)}
           </button>
           <div class="pop" id="popType" hidden role="group" aria-label="Type of field">
             <label class="opt"><input type="checkbox" id="cbAll" value="__all" checked> All fields</label>
-            <div class="popsep"></div>
-            <div class="opthead">Only show</div>
-            <label class="opt"><input type="checkbox" value="formula"> Formula fields</label>
-            <label class="opt"><input type="checkbox" value="required"> Required fields</label>
-            <label class="opt"><input type="checkbox" value="picklist"> Picklists</label>
-            <label class="opt"><input type="checkbox" value="lookup"> Lookups</label>
-            <div class="popfoot">
-              <span class="lbl2">Match</span>
-              <div class="seg" role="group" aria-label="Match mode">
-                <button type="button" data-mode="any" aria-pressed="true" title="Fields matching any ticked option">Any</button>
-                <button type="button" data-mode="all" aria-pressed="false" title="Fields matching every ticked option">All</button>
-              </div>
-            </div>
+            ${FIELD_TYPE_GROUPS.map(([head, types]) => '<div class="popsep"></div><div class="opthead">' + esc(head) + '</div>' +
+              types.map(([k, l]) => '<label class="opt"><input type="checkbox" value="' + k + '"> <span class="optl">' + esc(l) +
+                '</span><span class="optn" data-n="' + k + '"></span></label>').join('')).join('\n            ')}
           </div>
         </div>
       </div>
@@ -531,7 +610,8 @@ ul.clist .orgtag{color:var(--surface)}
         <dl>
           <dt><span class="orgtag both">Both</span></dt><dd>Exists in both SBU and XBU</dd>
           <dt><span class="orgtag sbu">SBU</span><span class="orgtag xbu">XBU</span></dt><dd>Exists in that org only</dd>
-          <dt><span class="tag custom">Custom</span></dt><dd>Custom object built in-house (no badge = standard Salesforce object)</dd>
+          <dt><span class="tag custom">Custom</span><span class="tag std">Standard</span></dt><dd>Object list: a custom object, or one that comes with Salesforce</dd>
+          <dt><span class="srcchip custom">Custom</span><span class="srcchip std">Standard</span></dt><dd>Field card: a custom field built in-house, or one that comes with Salesforce</dd>
           <dt><span class="diffchip">3 differ</span></dt><dd>Fields set up differently in SBU and XBU</dd>
           <dt><span class="count">42</span></dt><dd>Number of fields (or matches while searching)</dd>
           <dt><span class="attr req">Required</span></dt><dd>Must have a value before the record can be saved (card is highlighted pink)</dd>
@@ -564,7 +644,7 @@ function decodeOrg(o){
       name:f[0], label:f[1], type:f[2], len:f[3],
       req:!!(f[4]&1), uniq:!!(f[4]&2), extId:!!(f[4]&4),
       formula:f[5]||'', desc:f[6]||'', help:f[7]||'',
-      ref:POOL_REF[f[8]||0], pick:POOL_PICK[f[9]||0], gvs:f[10]||''
+      ref:POOL_REF[f[8]||0], pick:POOL_PICK[f[9]||0], gvs:f[10]||'', kind:f[11]||''
     }))
   }));
 }
@@ -618,7 +698,7 @@ const COMBINED=(function(){
 })();
 
 // ---- state ----
-let bu='both', objScope='both', typeSel=new Set(), typeMode='any';
+let bu='both', objScope='both', typeSel=new Set();
 let pinnedObj=null, query='';
 let badgeSel=new Set(), labelQ='', originSel='all';
 const CAP=500;
@@ -633,16 +713,22 @@ const fLabel=document.getElementById('fLabel'), fBadges=document.getElementById(
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>n.toLocaleString();
-const TYPE_LABEL={formula:'Formula fields',required:'Required fields',picklist:'Picklists',lookup:'Lookups'};
+// Show-filter names come from the checkboxes themselves, so the list lives in one place.
+const TYPE_LABEL={};
+popType.querySelectorAll('input[type=checkbox]').forEach(c=>{if(c!==cbAll)TYPE_LABEL[c.value]=c.parentNode.querySelector('.optl').textContent;});
 // Salesforce describe types -> the names people see in Setup.
 const TYPE_NAME={string:'Text',textarea:'Text Area',reference:'Lookup',boolean:'Checkbox',picklist:'Picklist',
   multipicklist:'Multi-Select Picklist',combobox:'Picklist (editable)',double:'Number',int:'Number',long:'Number',
   currency:'Currency',percent:'Percent',datetime:'Date/Time',date:'Date',time:'Time',id:'Record ID',url:'URL',
   phone:'Phone',email:'Email',address:'Address',location:'Geolocation',encryptedstring:'Text (Encrypted)',base64:'File'};
+const KIND_NAME={autonumber:'Auto Number',masterdetail:'Master-Detail',externallookup:'External Lookup',
+  indirectlookup:'Indirect Lookup',richtext:'Rich Text Area'};
 function friendlyType(f){
   const t=(f.type||'').toLowerCase();
   let n=TYPE_NAME[t]||(f.type||'—');
+  if(KIND_NAME[f.kind])return KIND_NAME[f.kind];
   if(t==='textarea'&&Number(f.len)>255)n='Long Text Area';
+  if(f.kind==='rollup')return 'Roll-Up Summary ('+n+')';
   if(f.formula)return 'Formula ('+n+')';
   if((t==='string'||t==='textarea'||t==='encryptedstring')&&Number(f.len))n+=' ('+nf(Number(f.len))+')';
   return n;}
@@ -681,12 +767,30 @@ let VIEW=view(), VISIBLE=[];
 
 function fieldMatches(f,ql){if(!ql)return true;
   return (f.name+' '+f.label+' '+f.type+' '+friendlyType(f)+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
-function testType(f,t){
-  if(t==='formula')return !!f.formula;
-  if(t==='required')return isReq(f);
-  if(t==='picklist')return (f.pick&&f.pick.length>0)||!!f.gvs;
-  if(t==='lookup')return !!(f.ref&&f.ref.length);
-  return true;}
+// The one Setup field type a field is (keys match the Show checkboxes). Formula and
+// roll-up win over the result type, as in Setup: a number formula is a Formula field.
+function typeKey(f){
+  const t=(f.type||'').toLowerCase(), k=f.kind||'';
+  if(k==='rollup')return 'rollup';
+  if(f.formula)return 'formula';
+  if(k)return k;
+  if(t==='reference')return 'lookup';
+  if(t==='double'||t==='int'||t==='long')return 'number';
+  if(t==='combobox')return 'picklist';
+  if(t==='textarea')return Number(f.len)>255?'longtextarea':'textarea';
+  return t;}
+// Per-type counts beside each Show option, for the current org view (before other filters).
+let countsFor=null;
+function syncTypeCounts(){
+  if(countsFor===bu)return;
+  const n={};
+  // counted the way passTypes matches: once per type either org's version has
+  for(const r of VIEW)for(const f of r.o.fields){
+    const ks=new Set(f._v?Object.keys(f._v).map(k=>typeKey(f._v[k])):[typeKey(f)]);
+    ks.forEach(k=>{n[k]=(n[k]||0)+1;});}
+  popType.querySelectorAll('.optn').forEach(s=>{const c=n[s.dataset.n]||0;
+    s.textContent=nf(c);s.parentNode.classList.toggle('zero',!c);});
+  countsFor=bu;}
 // Badge filter. Org boxes are OR'd with each other; Differs and Required each narrow further.
 // Org and Differs only mean something in the merged view, so single-org views ignore them.
 function passBadges(f){
@@ -709,7 +813,9 @@ function packageOf(f){
   const p=(f.name||'').split('__'), suf=p.length>1?p[p.length-1].toLowerCase():'';
   const need=suf==='s'?4:(suf==='c'||suf==='pc')?3:Infinity;
   return p.length>=need?p[0]:'';}
-function passOrigin(f){return originSel==='all'||(originSel==='custom')===isCustomField(f);}
+// Exactly one of: managed (from a package), custom (built in-house) or standard.
+const originOf=f=>packageOf(f)?'managed':isCustomField(f)?'custom':'standard';
+function passOrigin(f){return originSel==='all'||originOf(f)===originSel;}
 function anyFieldFilter(){return typeSel.size>0||badgeSel.size>0||!!labelQ||originSel!=='all';}
 function syncBadgeFilter(){
   fBadges.querySelectorAll('input').forEach(cb=>{
@@ -721,10 +827,7 @@ function passTypes(f){
   if(!typeSel.size)return true;
   // in merged mode a field qualifies if either org's version qualifies
   const variants=f._v?Object.keys(f._v).map(k=>f._v[k]):[f];
-  const sel=[...typeSel];
-  return typeMode==='all'
-    ? sel.every(t=>variants.some(v=>testType(v,t)))
-    : sel.some(t=>variants.some(v=>testType(v,t)));}
+  return variants.some(v=>typeSel.has(typeKey(v)));}
 function objPassesScope(o){return objScope==='both'||o.api===objScope;}
 // Object picker: every object in the current org view, listed by label. The API name
 // is shown only where two objects share a label, so the choices stay distinguishable.
@@ -795,8 +898,10 @@ function objRow(r,ql,anyFilter){
   const isMatch=(ql||anyFilter)&&mc>0;
   return '<button class="obj" role="listitem" aria-current="'+cur+'" data-api="'+esc(o.api)+'" data-org="'+(r.org||'')+'">'
     +(bu==='both'?orgBadge(o.orgs):'')
-    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span>'+(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span>'
-    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'')
+    // custom/standard tag sits on the second line so it never squeezes the label
+    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span><span class="osub">'
+    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'<span class="tag std" title="Standard Salesforce object">Standard</span>')
+    +(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span></span>'
     +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' field'+(o.nDiff===1?'':'s')+' set up differently in SBU and XBU">'+o.nDiff+' differ</span>':'')
     +'<span class="count'+(isMatch?' match':'')+'" title="'+mc+((ql||anyFilter)?' matching':'')+' field'+(mc===1?'':'s')+'">'+mc+'</span></button>';
 }
@@ -877,7 +982,9 @@ function fieldCard(f,ql,withObj,objApi,objLabel){
   // left rail: which org(s) the field is in, and whether SBU and XBU set it up differently
   const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
     +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
-    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>':'')
+    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>'
+      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom</span>'
+      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard</span>')
     +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
   return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
     +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')
@@ -929,10 +1036,10 @@ function syncTypeSummary(){
   const sel=[...typeSel];
   cbAll.checked=sel.length===0;
   typeSummary.textContent = !sel.length ? 'All fields'
-    : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(typeMode==='all'?' + ':', ')
-    : sel.length+' selected · match '+typeMode;
+    : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(', ')
+    : sel.length+' types selected';
 }
-function render(){VIEW=view();fillObjPicker();syncBadgeFilter();
+function render(){VIEW=view();fillObjPicker();syncBadgeFilter();syncTypeCounts();
   // a picked object stays open, so search and field filters apply within it
   if(objScope!=='both')pinnedObj={api:objScope,org:bu==='both'?null:bu};
   VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
@@ -956,16 +1063,11 @@ popType.querySelectorAll('input[type=checkbox]').forEach(cb=>{ if(cb===cbAll)ret
   cb.addEventListener('change',()=>{
     cb.checked?typeSel.add(cb.value):typeSel.delete(cb.value);
     syncTypeSummary();pinnedObj=null;render();});});
-popType.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
-  typeMode=b.dataset.mode;
-  popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode===typeMode?'true':'false'));
-  syncTypeSummary();pinnedObj=null;render();}));
 clearAll.addEventListener('click',()=>{
-  bu='both';objScope='both';typeSel.clear();typeMode='any';query='';pinnedObj=null;
+  bu='both';objScope='both';typeSel.clear();query='';pinnedObj=null;
   badgeSel.clear();labelQ='';fLabel.value='';originSel='all';fOrigin.value='all';fBadges.querySelectorAll('input').forEach(c=>c.checked=false);
   selBu.value='both';selObj.value='both';q.value='';
   popType.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=(c===cbAll));
-  popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode==='any'?'true':'false'));
   syncTypeSummary();render();list.scrollTop=0;});
 
 // these two keep the open object open, so they filter within it
@@ -1028,6 +1130,31 @@ syncTypeSummary();render();
     if(o&&[].some.call(o.options,function(x){return x.value===b.dataset.obj;})){o.value=b.dataset.obj;o.dispatchEvent(new Event('change'));}
     if(q){q.value=b.dataset.field;q.dispatchEvent(new Event('input'));}
   });
+  // Changes filters: Org / Type of change / Object. Rows carry data-orgs + data-obj;
+  // sections and the "newly visible" block carry data-kind.
+  var fOrg=document.getElementById('chOrg'), fKind=document.getElementById('chKind'),
+      fObj=document.getElementById('chObj'), fClr=document.getElementById('chClear');
+  function applyChanges(){
+    var org=fOrg.value, kind=fKind.value, obj=fObj.value, any=org!=='all'||kind!=='all'||obj!=='all';
+    [].forEach.call(cv.querySelectorAll('[data-kind]'),function(sec){
+      var kindOk=kind==='all'||sec.dataset.kind===kind;
+      // coverage notes aren't about any one org or object, so only show them unfiltered
+      if(sec.dataset.kind==='coverage'){sec.hidden=any;return;}
+      var rows=sec.querySelectorAll('li[data-obj]'), n=0;
+      [].forEach.call(rows,function(r){
+        var ok=(org==='all'||r.dataset.orgs.split(' ').indexOf(org)>=0)&&(obj==='all'||r.dataset.obj===obj);
+        r.hidden=!ok; if(ok)n++;});
+      [].forEach.call(sec.querySelectorAll('.cobj'),function(g){g.hidden=!g.querySelector('li:not([hidden])');});
+      var c=sec.querySelector('h2 .cnt, summary .cnt2'); if(c)c.textContent=n.toLocaleString('en-US');
+      var none=sec.querySelector('.cfnone'); if(none)none.hidden=!(rows.length&&!n);
+      // the "newly visible" block is extra detail: drop it rather than show it empty
+      sec.hidden=!kindOk||(sec.tagName==='DETAILS'&&!n);
+    });
+    [].forEach.call(cv.querySelectorAll('.csum[data-org]'),function(s){s.hidden=org!=='all'&&s.dataset.org!==org;});
+    fClr.hidden=!any;
+  }
+  [fOrg,fKind,fObj].forEach(function(s){s.addEventListener('change',applyChanges);});
+  fClr.addEventListener('click',function(){fOrg.value='all';fKind.value='all';fObj.value='all';applyChanges();});
   if(location.hash==='#dictionary')show(true);
 })();
 </script>

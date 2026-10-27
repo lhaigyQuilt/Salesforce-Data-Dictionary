@@ -18,6 +18,7 @@ published copy at https://claude.ai/code/artifact/64063eea-24ee-4ce2-8f56-13bd40
 | `sbu_data.json`, `xbu_data.json` | **the snapshot** — this is the diff baseline for next month |
 | `changes.json` | this run's diff, including each run's date |
 | `scan_org2.js` | queries `EntityDefinition`, describes in batches of 25, streams to the data file |
+| `field_kind.js` | tells apart the Setup types a describe `type` hides (Auto Number, Roll-Up Summary, Master-Detail, Rich Text, External/Indirect Lookup) |
 | `diff_snapshot.js` | diffs against the previous snapshot, separating real change from rule churn |
 | `enrich_changes.js` | tags each added field with its real `CustomField.CreatedDate` |
 | `pack.js` | packs both orgs into `packed.json` |
@@ -61,8 +62,10 @@ exactly like a newly created field. This actually happened: the 2026-08-28 run s
 `CustomField.CreatedDate` and labels it `created` or `pre-existing`. An object reporting
 ~13 fields is the tell: that's system fields only.
 
-**The explorer in `build_dict_html.js` is byte-identical to the originally published
-page**, and `validate_merged.js` enforces that on every build. `build_dict_html3.js`
+**The explorer in `build_dict_html.js` is the reference copy of the explorer** (originally
+byte-identical to the first published page; deliberately updated 2026-10-27 for the
+per-type Show filter and Custom/Standard/Managed chips), and `validate_merged.js` enforces
+that the built page matches it on every build. `build_dict_html3.js`
 holds it in a `type="text/plain"` block and executes it verbatim once the gzipped
 payload is inflated — that indirection exists purely so the search behaviour could stay
 untouched while the page got small enough to publish. If you change the explorer, that

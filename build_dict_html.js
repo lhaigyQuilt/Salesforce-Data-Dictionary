@@ -319,7 +319,7 @@ function decodeOrg(o){
       name:f[0], label:f[1], type:f[2], len:f[3],
       req:!!(f[4]&1), uniq:!!(f[4]&2), extId:!!(f[4]&4),
       formula:f[5]||'', desc:f[6]||'', help:f[7]||'',
-      ref:POOL_REF[f[8]||0], pick:POOL_PICK[f[9]||0], gvs:f[10]||''
+      ref:POOL_REF[f[8]||0], pick:POOL_PICK[f[9]||0], gvs:f[10]||'', kind:f[11]||''
     }))
   }));
 }
@@ -373,7 +373,7 @@ const COMBINED=(function(){
 })();
 
 // ---- state ----
-let bu='both', objScope='both', typeSel=new Set(), typeMode='any';
+let bu='both', objScope='both', typeSel=new Set();
 let pinnedObj=null, query='';
 let badgeSel=new Set(), labelQ='', originSel='all';
 const CAP=500;
@@ -388,16 +388,22 @@ const fLabel=document.getElementById('fLabel'), fBadges=document.getElementById(
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>n.toLocaleString();
-const TYPE_LABEL={formula:'Formula fields',required:'Required fields',picklist:'Picklists',lookup:'Lookups'};
+// Show-filter names come from the checkboxes themselves, so the list lives in one place.
+const TYPE_LABEL={};
+popType.querySelectorAll('input[type=checkbox]').forEach(c=>{if(c!==cbAll)TYPE_LABEL[c.value]=c.parentNode.querySelector('.optl').textContent;});
 // Salesforce describe types -> the names people see in Setup.
 const TYPE_NAME={string:'Text',textarea:'Text Area',reference:'Lookup',boolean:'Checkbox',picklist:'Picklist',
   multipicklist:'Multi-Select Picklist',combobox:'Picklist (editable)',double:'Number',int:'Number',long:'Number',
   currency:'Currency',percent:'Percent',datetime:'Date/Time',date:'Date',time:'Time',id:'Record ID',url:'URL',
   phone:'Phone',email:'Email',address:'Address',location:'Geolocation',encryptedstring:'Text (Encrypted)',base64:'File'};
+const KIND_NAME={autonumber:'Auto Number',masterdetail:'Master-Detail',externallookup:'External Lookup',
+  indirectlookup:'Indirect Lookup',richtext:'Rich Text Area'};
 function friendlyType(f){
   const t=(f.type||'').toLowerCase();
   let n=TYPE_NAME[t]||(f.type||'—');
+  if(KIND_NAME[f.kind])return KIND_NAME[f.kind];
   if(t==='textarea'&&Number(f.len)>255)n='Long Text Area';
+  if(f.kind==='rollup')return 'Roll-Up Summary ('+n+')';
   if(f.formula)return 'Formula ('+n+')';
   if((t==='string'||t==='textarea'||t==='encryptedstring')&&Number(f.len))n+=' ('+nf(Number(f.len))+')';
   return n;}
@@ -436,12 +442,30 @@ let VIEW=view(), VISIBLE=[];
 
 function fieldMatches(f,ql){if(!ql)return true;
   return (f.name+' '+f.label+' '+f.type+' '+friendlyType(f)+' '+(f.desc||'')+' '+(f.help||'')+' '+(f.formula||'')+' '+(f.ref||[]).join(' ')+' '+(f.pick||[]).join(' ')).toLowerCase().includes(ql);}
-function testType(f,t){
-  if(t==='formula')return !!f.formula;
-  if(t==='required')return isReq(f);
-  if(t==='picklist')return (f.pick&&f.pick.length>0)||!!f.gvs;
-  if(t==='lookup')return !!(f.ref&&f.ref.length);
-  return true;}
+// The one Setup field type a field is (keys match the Show checkboxes). Formula and
+// roll-up win over the result type, as in Setup: a number formula is a Formula field.
+function typeKey(f){
+  const t=(f.type||'').toLowerCase(), k=f.kind||'';
+  if(k==='rollup')return 'rollup';
+  if(f.formula)return 'formula';
+  if(k)return k;
+  if(t==='reference')return 'lookup';
+  if(t==='double'||t==='int'||t==='long')return 'number';
+  if(t==='combobox')return 'picklist';
+  if(t==='textarea')return Number(f.len)>255?'longtextarea':'textarea';
+  return t;}
+// Per-type counts beside each Show option, for the current org view (before other filters).
+let countsFor=null;
+function syncTypeCounts(){
+  if(countsFor===bu)return;
+  const n={};
+  // counted the way passTypes matches: once per type either org's version has
+  for(const r of VIEW)for(const f of r.o.fields){
+    const ks=new Set(f._v?Object.keys(f._v).map(k=>typeKey(f._v[k])):[typeKey(f)]);
+    ks.forEach(k=>{n[k]=(n[k]||0)+1;});}
+  popType.querySelectorAll('.optn').forEach(s=>{const c=n[s.dataset.n]||0;
+    s.textContent=nf(c);s.parentNode.classList.toggle('zero',!c);});
+  countsFor=bu;}
 // Badge filter. Org boxes are OR'd with each other; Differs and Required each narrow further.
 // Org and Differs only mean something in the merged view, so single-org views ignore them.
 function passBadges(f){
@@ -464,7 +488,9 @@ function packageOf(f){
   const p=(f.name||'').split('__'), suf=p.length>1?p[p.length-1].toLowerCase():'';
   const need=suf==='s'?4:(suf==='c'||suf==='pc')?3:Infinity;
   return p.length>=need?p[0]:'';}
-function passOrigin(f){return originSel==='all'||(originSel==='custom')===isCustomField(f);}
+// Exactly one of: managed (from a package), custom (built in-house) or standard.
+const originOf=f=>packageOf(f)?'managed':isCustomField(f)?'custom':'standard';
+function passOrigin(f){return originSel==='all'||originOf(f)===originSel;}
 function anyFieldFilter(){return typeSel.size>0||badgeSel.size>0||!!labelQ||originSel!=='all';}
 function syncBadgeFilter(){
   fBadges.querySelectorAll('input').forEach(cb=>{
@@ -476,10 +502,7 @@ function passTypes(f){
   if(!typeSel.size)return true;
   // in merged mode a field qualifies if either org's version qualifies
   const variants=f._v?Object.keys(f._v).map(k=>f._v[k]):[f];
-  const sel=[...typeSel];
-  return typeMode==='all'
-    ? sel.every(t=>variants.some(v=>testType(v,t)))
-    : sel.some(t=>variants.some(v=>testType(v,t)));}
+  return variants.some(v=>typeSel.has(typeKey(v)));}
 function objPassesScope(o){return objScope==='both'||o.api===objScope;}
 // Object picker: every object in the current org view, listed by label. The API name
 // is shown only where two objects share a label, so the choices stay distinguishable.
@@ -550,8 +573,10 @@ function objRow(r,ql,anyFilter){
   const isMatch=(ql||anyFilter)&&mc>0;
   return '<button class="obj" role="listitem" aria-current="'+cur+'" data-api="'+esc(o.api)+'" data-org="'+(r.org||'')+'">'
     +(bu==='both'?orgBadge(o.orgs):'')
-    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span>'+(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span>'
-    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'')
+    // custom/standard tag sits on the second line so it never squeezes the label
+    +'<span class="otext"><span class="olabel">'+hl(o.label||o.api,ql)+'</span><span class="osub">'
+    +(o.custom?'<span class="tag custom" title="Custom object">Custom</span>':'<span class="tag std" title="Standard Salesforce object">Standard</span>')
+    +(o.label&&o.label!==o.api?'<span class="oapi">'+hl(o.api,ql)+'</span>':'')+'</span></span>'
     +(bu==='both'&&o.nDiff?'<span class="diffchip" title="'+o.nDiff+' field'+(o.nDiff===1?'':'s')+' set up differently in SBU and XBU">'+o.nDiff+' differ</span>':'')
     +'<span class="count'+(isMatch?' match':'')+'" title="'+mc+((ql||anyFilter)?' matching':'')+' field'+(mc===1?'':'s')+'">'+mc+'</span></button>';
 }
@@ -632,7 +657,9 @@ function fieldCard(f,ql,withObj,objApi,objLabel){
   // left rail: which org(s) the field is in, and whether SBU and XBU set it up differently
   const rail='<div class="frail">'+orgBadge(merged?f._orgs:[bu])
     +(isReq(f)?'<span class="attr req" title="Must have a value before the record can be saved">Required</span>':'')
-    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>':'')
+    +(pkg?'<span class="mgdchip" title="Installed by the '+esc(pkg)+' managed package. It cannot be deleted, and the package controls most of its settings.">Managed</span>'
+      :isCustomField(f)?'<span class="srcchip custom" title="Custom field built in-house">Custom</span>'
+      :'<span class="srcchip std" title="Standard field that comes with Salesforce">Standard</span>')
     +(differs?'<span class="diffchip" title="Set up differently in SBU and XBU — see below">Differs</span>':'')+'</div>';
   return '<div class="field'+(differs?' differs':'')+(isReq(f)?' isreq':'')+'">'+rail+'<div class="fdetail">'
     +(withObj?kv('Object',esc(objLabel||objApi)+(objLabel&&objLabel!==objApi?' <span class="fnameobj">('+esc(objApi)+')</span>':'')):'')
@@ -684,10 +711,10 @@ function syncTypeSummary(){
   const sel=[...typeSel];
   cbAll.checked=sel.length===0;
   typeSummary.textContent = !sel.length ? 'All fields'
-    : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(typeMode==='all'?' + ':', ')
-    : sel.length+' selected · match '+typeMode;
+    : sel.length<=2 ? sel.map(t=>TYPE_LABEL[t]).join(', ')
+    : sel.length+' types selected';
 }
-function render(){VIEW=view();fillObjPicker();syncBadgeFilter();
+function render(){VIEW=view();fillObjPicker();syncBadgeFilter();syncTypeCounts();
   // a picked object stays open, so search and field filters apply within it
   if(objScope!=='both')pinnedObj={api:objScope,org:bu==='both'?null:bu};
   VISIBLE=computeVisible();renderHeader();renderList();renderMain();}
@@ -711,16 +738,11 @@ popType.querySelectorAll('input[type=checkbox]').forEach(cb=>{ if(cb===cbAll)ret
   cb.addEventListener('change',()=>{
     cb.checked?typeSel.add(cb.value):typeSel.delete(cb.value);
     syncTypeSummary();pinnedObj=null;render();});});
-popType.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
-  typeMode=b.dataset.mode;
-  popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode===typeMode?'true':'false'));
-  syncTypeSummary();pinnedObj=null;render();}));
 clearAll.addEventListener('click',()=>{
-  bu='both';objScope='both';typeSel.clear();typeMode='any';query='';pinnedObj=null;
+  bu='both';objScope='both';typeSel.clear();query='';pinnedObj=null;
   badgeSel.clear();labelQ='';fLabel.value='';originSel='all';fOrigin.value='all';fBadges.querySelectorAll('input').forEach(c=>c.checked=false);
   selBu.value='both';selObj.value='both';q.value='';
   popType.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=(c===cbAll));
-  popType.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.mode==='any'?'true':'false'));
   syncTypeSummary();render();list.scrollTop=0;});
 
 // these two keep the open object open, so they filter within it

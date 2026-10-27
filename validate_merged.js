@@ -38,7 +38,8 @@ if (P) {
 // ---- structure ----
 const ids = ['main', 'objlist', 'q', 'stats', 'orgsub', 'fBu', 'fObj', 'mType', 'btnType',
   'popType', 'typeSummary', 'clearAll', 'cbAll', 'themeBtn',
-  'changesView', 'appView', 'toDict', 'toChanges', 'themeBtn2', 'payload', 'explorer'];
+  'changesView', 'appView', 'toDict', 'toChanges', 'themeBtn2', 'payload', 'explorer',
+  'chOrg', 'chKind', 'chObj', 'chClear', 'fOrigin'];
 const dupes = ids.filter(id => (pg.match(new RegExp('id="' + id + '"', 'g')) || []).length !== 1);
 dupes.length ? fail('ids missing or duplicated: ' + dupes.join(', ')) : ok('all ' + ids.length + ' element ids present exactly once');
 /<div class="app" id="appView" hidden>/.test(pg) ? ok('changes page is the landing view') : fail('app is not hidden at load');

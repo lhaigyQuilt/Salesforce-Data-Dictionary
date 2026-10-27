@@ -4,6 +4,7 @@
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const kindOf = require('./field_kind');
 const OUT = __dirname.split(String.fromCharCode(92)).join('/');
 const API = 'v62.0';
 const BATCH = 25;
@@ -140,7 +141,7 @@ const EXCL = /(Share|History|Feed|ChangeEvent|Tag|Rule|RuleShare)$|__e$/;
           req: !f.nillable, uniq: !!f.unique, extId: !!f.externalId,
           formula: f.calculatedFormula || '', desc: dm.desc || '',
           help: f.inlineHelpText || dm.help || '',
-          ref: f.referenceTo || [], pick, gvs
+          ref: f.referenceTo || [], pick, gvs, kind: kindOf(f)
         };
       })
     };

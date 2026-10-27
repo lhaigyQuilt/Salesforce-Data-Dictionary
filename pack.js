@@ -34,7 +34,7 @@ function packOrg(data) {
     const fields = o.fields.map(f => {
       const flags = (f.req ? 1 : 0) | (f.uniq ? 2 : 0) | (f.extId ? 4 : 0);
       const t = [f.name, f.label, f.type, f.len, flags, f.formula || '', f.desc || '', f.help || '',
-                 poolPut(f.ref, refPool, refIdx), poolPut(f.pick, pickPool, pickIdx), f.gvs || ''];
+                 poolPut(f.ref, refPool, refIdx), poolPut(f.pick, pickPool, pickIdx), f.gvs || '', f.kind || ''];
       let n = t.length;
       while (n > 5 && !t[n - 1]) n--;   // drop trailing empties, keep the first 5
       return t.slice(0, n);
