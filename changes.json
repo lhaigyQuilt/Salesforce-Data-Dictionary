@@ -1,1250 +1,30 @@
 {
  "sbu": {
-  "prevObjects": 546,
-  "curObjects": 566,
-  "prevFields": 14766,
-  "curFields": 16039,
+  "prevObjects": 566,
+  "curObjects": 568,
+  "prevFields": 16039,
+  "curFields": 16091,
   "objAdded": [
-   "Case_Email_Suppression__mdt",
-   "Survey_Invitation_Queue__c",
-   "zkmulti__CommercialInvoice__c",
-   "zkmulti__DangerousGoodsDetails__c",
-   "zkmulti__Detail_Field__c",
-   "zkmulti__EEIForm__c",
-   "zkmulti__ExportDetails__c",
-   "zkmulti__FedExSmartPostDetails__c",
-   "zkmulti__HazMatCommodity__c",
-   "zkmulti__HazMatContainer__c",
-   "zkmulti__HazMatDetails__c",
-   "zkmulti__MCBulk_Shipment__c",
-   "zkmulti__MCBulk_Shipment_Status__c",
-   "zkmulti__MCCheckpoint__c",
-   "zkmulti__MCCustom_Address_Source__c",
-   "zkmulti__MCCustom_Address_Source_Field__c",
-   "zkmulti__MCCustom_Address_Source_Package__c",
-   "zkmulti__MCCustoms_Item__c",
-   "zkmulti__MCPackage__c",
-   "zkmulti__MCPackageCheckpoint__c",
-   "zkmulti__MCPickup__c",
-   "zkmulti__MCPrintServiceSettings__c",
-   "zkmulti__MCQueued_Customs_Item__c",
-   "zkmulti__MCQueued_Package__c",
-   "zkmulti__MCQueued_Shipment__c",
-   "zkmulti__MCQueued_Shipment_Special_Services__c",
-   "zkmulti__MCQueued_Shipment_Status__c",
-   "zkmulti__MCShipmate_Preference__c",
-   "zkmulti__MCShipmateScheduledJobsSettings__c",
-   "zkmulti__MCShipment__c",
-   "zkmulti__MCShipment_Special_Services__c",
-   "zkmulti__MCShipmentInfo__c",
-   "zkmulti__MCUser_Printer__c",
-   "zkmulti__MultiPackageShipment__c",
-   "zkmulti__NaftaCo__c",
-   "zkmulti__OtherSetting__c",
-   "zkmulti__PermissionSetting__c",
-   "zkmulti__Pickup_Custom_Address_Source__c",
-   "zkmulti__PrintHistory__c",
-   "zkmulti__ProFormaInvoice__c",
-   "zkmulti__RequestedShipmentDocuments__c",
-   "zkmulti__Shipmate_Preference_Info__c",
-   "zkmulti__ShipmateGeneralSettings__c",
-   "zkmulti__Shipment_Field__c",
-   "zkmulti__Shipment_Status__c",
-   "zkmulti__Visibility_Suite__c"
+   "arbihistora__Histora__c",
+   "arbihistora__History_Tracking_Field__c",
+   "arbihistora__History_Tracking_Setup__c",
+   "Calendly__CalendlyExternalEvent__c",
+   "Calendly__CalendlyMeetingRecap__c"
   ],
   "objRemoved": [
-   "diplopia__App_Config__mdt",
-   "diplopia__Skip_Related_Object__c",
-   "Gong__Agenda__c",
-   "Gong__Call_Invitee__c",
-   "Gong__Call_Participant__c",
-   "Gong__Call_Stat__c",
-   "Gong__Gong_Call__c",
-   "Gong__Gong_Custom_Settings__c",
-   "Gong__Gong_Scorecard__c",
-   "Gong__Note__c",
-   "Gong__Related_Account__c",
-   "Gong__Related_Contact__c",
-   "Gong__Related_Lead__c",
-   "Gong__Related_Opportunity__c",
-   "Gong__Topic__c",
-   "Gong__Tracker__c",
-   "SFSSDupeCatcher__Application_Properties__c",
-   "SFSSDupeCatcher__Application_Settings__c",
-   "SFSSDupeCatcher__DcIn__c",
-   "SFSSDupeCatcher__Duplicate_Warning__c",
-   "SFSSDupeCatcher__Override_Cache__c",
-   "SFSSDupeCatcher__Potential_Duplicate__c",
-   "SFSSDupeCatcher__RequiredFieldSupport__c",
-   "SFSSDupeCatcher__Scenario__c",
-   "SFSSDupeCatcher__Scenario_Rule__c",
-   "SFSSDupeCatcher__Web_To_Lead_Sources__c"
-  ],
-  "churnAdded": [],
-  "churnRemoved": [],
-  "fAdded": [
-   {
-    "obj": "Asset",
-    "field": "Shipment_ID__c",
-    "label": "Shipment ID",
-    "type": "reference",
-    "created": "2024-04-13",
-    "newInWindow": false
-   },
-   {
-    "obj": "ChargentBase__Chargent_Settings__c",
-    "field": "ChargentBase__Default_Charge_Usage__c",
-    "label": "Default Charge Usage",
-    "type": "string",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentBase__Log__c",
-    "field": "ChargentBase__Payment_Initiator__c",
-    "label": "Payment Initiator",
-    "type": "picklist",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentBase__Log__c",
-    "field": "ChargentBase__Payment_Type__c",
-    "label": "Payment Type",
-    "type": "picklist",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentBase__Token__c",
-    "field": "ChargentBase__Payment_Intent__c",
-    "label": "Payment Intent",
-    "type": "picklist",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentBase__Token__c",
-    "field": "ChargentBase__Stored_Credential_Reference__c",
-    "label": "Stored Credential Reference",
-    "type": "string",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentOrders__Transaction__c",
-    "field": "ChargentOrders__Origin__c",
-    "label": "Origin",
-    "type": "picklist",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentOrders__Transaction__c",
-    "field": "ChargentOrders__Payment_Initiator__c",
-    "label": "Payment Initiator",
-    "type": "picklist",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "ChargentOrders__Transaction__c",
-    "field": "ChargentOrders__Stored_Credential_Reference__c",
-    "label": "Stored Credential Reference",
-    "type": "string",
-    "created": "2026-09-15",
-    "newInWindow": true
-   },
-   {
-    "obj": "Contact",
-    "field": "Account_Name__c",
-    "label": "Account Name",
-    "type": "string",
-    "created": "2026-09-28",
-    "newInWindow": true
-   },
-   {
-    "obj": "fpro__FieldPro__c",
-    "field": "fpro__Add_to_Deprecation_Plan__c",
-    "label": "Add to Deprecation Plan",
-    "type": "boolean",
-    "created": "2026-09-25",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "South_Asian_Last_Name__c",
-    "label": "South Asian Last Name",
-    "type": "boolean",
-    "created": "2022-03-01",
-    "newInWindow": false
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "Case__c",
-    "label": "Case",
-    "type": "reference",
-    "created": "2026-08-26",
-    "newInWindow": false
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "Contact__c",
-    "label": "Contact",
-    "type": "reference",
-    "created": "2026-08-26",
-    "newInWindow": false
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Case_Brand__c",
-    "label": "RC - Case Brand",
-    "type": "picklist",
-    "created": "2026-08-26",
-    "newInWindow": false
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Contact_Brand__c",
-    "label": "RC - Contact Brand",
-    "type": "picklist",
-    "created": "2026-08-26",
-    "newInWindow": false
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Opportunity_Brand__c",
-    "label": "RC - Opportunity Brand",
-    "type": "picklist",
-    "created": "2026-08-26",
-    "newInWindow": false
-   },
-   {
-    "obj": "stripeGC__Setup_Data__c",
-    "field": "stripeGC__Log_Api_Errors__c",
-    "label": "Log API Errors",
-    "type": "boolean",
-    "created": "2026-09-25",
-    "newInWindow": true
-   },
-   {
-    "obj": "stripeGC__Stripe_Connected_Account__c",
-    "field": "Account__c",
-    "label": "Account",
-    "type": "reference",
-    "created": "2026-09-29",
-    "newInWindow": true
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__EncryptedFedExEndUserKey__c",
-    "label": "Encrypted FedEx End User Key",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__EncryptedFedExEndUserPassword__c",
-    "label": "Encrypted FedEx End User Password",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__FedExEndUserKey__c",
-    "label": "FedEx End User Key",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__FedExEndUserPassword__c",
-    "label": "FedEx End User Password",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__FedExRegisteredPreference__c",
-    "label": "FedEx Registered Preference",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__Registered_Preference__c",
-    "label": "Registered Preference",
-    "type": "string",
-    "created": "2023-10-30",
-    "newInWindow": false
-   },
-   {
-    "obj": "User",
-    "field": "zkmulti__UserCredentialsEncrypted__c",
-    "label": "User Credentials Encrypted",
-    "type": "boolean",
-    "created": "2023-10-30",
-    "newInWindow": false
-   }
-  ],
-  "fRemoved": [
-   {
-    "obj": "Account",
-    "field": "SFSSDupeCatcher__Override_DupeCatcher__c",
-    "label": "Account Override DupeCatcher",
-    "type": "boolean"
-   },
-   {
-    "obj": "Account",
-    "field": "Gong__Gong_Count__c",
-    "label": "Gong Count",
-    "type": "double"
-   },
-   {
-    "obj": "Case",
-    "field": "Moving_Server__c",
-    "label": "Check if Moving Database",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "License_Being_Reset__c",
-    "label": "License Being Reset",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Peripheral_5__c",
-    "label": "Peripheral 5",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Peripheral_6__c",
-    "label": "Peripheral 6",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_1__c",
-    "label": "Connection 1",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_2__c",
-    "label": "Connection 2",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_3__c",
-    "label": "Connection 3",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_4__c",
-    "label": "Connection 4",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_5__c",
-    "label": "Connection 5",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Connection_6__c",
-    "label": "Connection 6",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "New_TID__c",
-    "label": "New TID",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Consumer_Affairs_Eligible__c",
-    "label": "Consumer Affairs Eligible",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Inventory_Import_2__c",
-    "label": "Inventory Import",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Credit_Card_Integration__c",
-    "label": "Credit Card Integration",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "HPS_Welcome_Package__c",
-    "label": "HPS Welcome Package?",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Equipment_Received__c",
-    "label": "Equipment Received?",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Existing_POS_System__c",
-    "label": "Existing POS System",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Equipment_Received_PL__c",
-    "label": "Equipment Received?",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Dataprise_Ticket__c",
-    "label": "Dataprise Ticket",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Worldpay_Approval__c",
-    "label": "POSN Processing Approval Required - OLD",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Credit_Approved__c",
-    "label": "Credit Approved?",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Trainsact__c",
-    "label": "Trainsact #",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Device_ID__c",
-    "label": "Device ID",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Exclude_from_In_House_Commission__c",
-    "label": "Exclude from In-House Commission",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Case_Creator_Role_del__c",
-    "label": "Case Creator Role",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Authorized_By__c",
-    "label": "Authorized By:",
-    "type": "reference"
-   },
-   {
-    "obj": "Case",
-    "field": "Date_Billed__c",
-    "label": "Date Billed",
-    "type": "date"
-   },
-   {
-    "obj": "Case",
-    "field": "Payments_Portal_ID__c",
-    "label": "Payments Portal ID",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Next_Step_Date__c",
-    "label": "Next Step Date",
-    "type": "date"
-   },
-   {
-    "obj": "Case",
-    "field": "Date_Payments_was_Enabled__c",
-    "label": "Date Payments was Enabled",
-    "type": "date"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Actively_Being_in_a_Flow__c",
-    "label": "Currently in Engage Flow",
-    "type": "boolean"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_ID__c",
-    "label": "Engage Flow ID",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_Name__c",
-    "label": "Engage Flow Name",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_Step_Number__c",
-    "label": "Engage Step Number",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_Step_Type__c",
-    "label": "Engage Step Type",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_Task_Due_Date__c",
-    "label": "Engage Step Completion Date",
-    "type": "date"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Current_Flow_User_Name__c",
-    "label": "Added to Engage Flow By",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Flow_Execution_ID__c",
-    "label": "Engage Step Attempt ID",
-    "type": "string"
-   },
-   {
-    "obj": "Contact",
-    "field": "Gong__Flow_Status__c",
-    "label": "Engage Flow Status",
-    "type": "picklist"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Gong_Selected_Process__c",
-    "label": "Gong Selected Process",
-    "type": "boolean"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong_Conversation__c",
-    "label": "Gong Conversation",
-    "type": "reference"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Activity_Source__c",
-    "label": "Activity Source",
-    "type": "string"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Associated_Accounts__c",
-    "label": "Associated Accounts",
-    "type": "textarea"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Associated_Opportunities__c",
-    "label": "Associated Opportunities",
-    "type": "textarea"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Current_Flow_ID__c",
-    "label": "Engage Flow ID",
-    "type": "string"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Current_Flow_Name__c",
-    "label": "Engage Flow Name",
-    "type": "string"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Current_Flow_Step_Number__c",
-    "label": "Engage Step Number",
-    "type": "string"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Flow_Execution_ID__c",
-    "label": "Engage Step Attempt ID",
-    "type": "string"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Gong_Participants_Emails__c",
-    "label": "Gong Participants Emails",
-    "type": "textarea"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Meeting_Prospect_Canceled__c",
-    "label": "Meeting Canceled by Prospect",
-    "type": "boolean"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Meeting_Reschedule_Count__c",
-    "label": "# of Times Meeting Rescheduled",
-    "type": "double"
-   },
-   {
-    "obj": "Event",
-    "field": "Gong__Call_Outcome__c",
-    "label": "Call Outcome (AI)",
-    "type": "textarea"
-   },
-   {
-    "obj": "Lead",
-    "field": "Indian_Last_Name__c",
-    "label": "Indian Last Name",
-    "type": "boolean"
-   },
-   {
-    "obj": "Lead",
-    "field": "SFSSDupeCatcher__Override_DupeCatcher__c",
-    "label": "Lead Override DupeCatcher",
-    "type": "boolean"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Actively_Being_in_a_Flow__c",
-    "label": "Currently in Engage Flow",
-    "type": "boolean"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_ID__c",
-    "label": "Engage Flow ID",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_Name__c",
-    "label": "Engage Flow Name",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_Step_Number__c",
-    "label": "Engage Step Number",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_Step_Type__c",
-    "label": "Engage Step Type",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_Task_Due_Date__c",
-    "label": "Engage Step Completion Date",
-    "type": "date"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Current_Flow_User_Name__c",
-    "label": "Added to Engage Flow By",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Flow_Execution_ID__c",
-    "label": "Engage Step Attempt ID",
-    "type": "string"
-   },
-   {
-    "obj": "Lead",
-    "field": "Gong__Flow_Status__c",
-    "label": "Engage Flow Status",
-    "type": "picklist"
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Gong__Gong_Count__c",
-    "label": "Gong Count",
-    "type": "double"
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Gong__MainCompetitors__c",
-    "label": "Main Competitor(s)",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Gong_Selected_Process__c",
-    "label": "Gong Selected Process",
-    "type": "boolean"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong_Conversation__c",
-    "label": "Gong Conversation",
-    "type": "reference"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Activity_Source__c",
-    "label": "Activity Source",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Associated_Accounts__c",
-    "label": "Associated Accounts",
-    "type": "textarea"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Associated_Opportunities__c",
-    "label": "Associated Opportunities",
-    "type": "textarea"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Current_Flow_ID__c",
-    "label": "Engage Flow ID",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Current_Flow_Name__c",
-    "label": "Engage Flow Name",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Current_Flow_Step_Number__c",
-    "label": "Engage Step Number",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Flow_Execution_ID__c",
-    "label": "Engage Step Attempt ID",
-    "type": "string"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Gong_Participants_Emails__c",
-    "label": "Gong Participants Emails",
-    "type": "textarea"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Meeting_Prospect_Canceled__c",
-    "label": "Meeting Canceled by Prospect",
-    "type": "boolean"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Meeting_Reschedule_Count__c",
-    "label": "# of Times Meeting Rescheduled",
-    "type": "double"
-   },
-   {
-    "obj": "Task",
-    "field": "Gong__Call_Outcome__c",
-    "label": "Call Outcome (AI)",
-    "type": "textarea"
-   }
-  ],
-  "fChanged": [
-   {
-    "obj": "AccountContactRelation",
-    "field": "Roles",
-    "label": "Roles",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Owner"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Address",
-    "field": "TimeZone",
-    "label": "Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "Case",
-    "field": "Reason",
-    "label": "Case Reason",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Low Health Score"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Case",
-    "field": "Status_Reason__c",
-    "label": "Status Reason",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Bug Fix",
-       "Configuration/Setup",
-       "Feature Request",
-       "Incident Related",
-       "Technical Fix",
-       "Third Party Issue",
-       "User Error/Education"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "ContactPointAddress",
-    "field": "BestTimeToContactTimezone",
-    "label": "Best time to contact time zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "ContactPointEmail",
-    "field": "BestTimeToContactTimezone",
-    "label": "Best time to contact time zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "ContactPointPhone",
-    "field": "BestTimeToContactTimezone",
-    "label": "Best time to contact time zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "Event",
-    "field": "RecurrenceTimeZoneSidKey",
-    "label": "Recurrence Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "Lead",
-    "field": "Strategy__c",
-    "label": "Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Lead",
-    "field": "Do_you_sell_any_THC_or_Kratom_products__c",
-    "label": "Do you sell any THC or Kratom products?",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Yes, but not a lot of products and not actively promoting/advertising it",
-       "Yes and actively promoting/advertising it"
-      ],
-      "removed": [
-       "Yes"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Macro",
-    "field": "StartingContext",
-    "label": "Apply To",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Survey_Invitation_Queue__c"
-      ],
-      "removed": [
-       "Gong__Gong_Call__c",
-       "SFSSDupeCatcher__DcIn__c",
-       "SFSSDupeCatcher__Duplicate_Warning__c",
-       "SFSSDupeCatcher__Scenario__c",
-       "SFSSDupeCatcher__Scenario_Rule__c",
-       "SFSSDupeCatcher__Potential_Duplicate__c",
-       "SFSSDupeCatcher__RequiredFieldSupport__c",
-       "Gong__Related_Account__c",
-       "Gong__Related_Contact__c",
-       "Gong__Related_Lead__c",
-       "Gong__Related_Opportunity__c",
-       "Gong__Gong_Scorecard__c",
-       "Gong__Call_Stat__c",
-       "Gong__Call_Invitee__c",
-       "Gong__Note__c",
-       "SFSSDupeCatcher__Application_Settings__c",
-       "SFSSDupeCatcher__Override_Cache__c",
-       "Gong__Call_Participant__c",
-       "Gong__Agenda__c",
-       "Gong__Topic__c",
-       "Gong__Tracker__c"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "OperatingHours",
-    "field": "TimeZone",
-    "label": "Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Strategy__c",
-    "label": "Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "SA_Rate_Type__c",
-    "label": "SA - Rate Type",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Surcharge"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Do_you_sell_any_THC_or_Kratom_products__c",
-    "label": "Do you sell any THC or Kratom products?",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Yes, but not a lot of products and not actively promoting/advertising it",
-       "Yes and actively promoting/advertising it"
-      ],
-      "removed": [
-       "Yes"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "RecordAction",
-    "field": "FlowDefinition",
-    "label": "Flow Definition ID",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Account_Inherit_Support_Contract_from_Parent",
-       "Account_Sync_Support_Contract_to_Billed_Children",
-       "Case_Create_Clawback_Opportunity",
-       "Case_Send_Survey_Invitation_Queued",
-       "Project_Create_Clawback_Opportunity",
-       "Project_Create_Done_Cases",
-       "Shipment_Post_Delivered_Feed_Item_to_Case",
-       "Shipment_Post_In_Transit_Feed_Item_to_Case",
-       "Survey_Invitation_Queue_Post_Case_Comment",
-       "TEST_Shipment_Delivered_Feed_Logic"
-      ],
-      "removed": [
-       "Gong__Gong_for_Salesforce_Create_Contact_Role",
-       "Gong__Gong_for_Salesforce_Create_Event_from_Gong_Conversation",
-       "Gong__Gong_for_Salesforce_Enrich_Contacts_and_Leads",
-       "Gong__Gong_for_Salesforce_Update_main_competitors",
-       "Gong__Gong_for_Salesforce_Update_Participant_Contact_Role",
-       "Gong_Call_Send_Outbound_Message_to_Make",
-       "Gong_Create_Event_from_Conversation",
-       "Gong_Update_Task",
-       "Gong_Update_Task_to_Completed",
-       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "RecordAction",
-    "field": "ActionDefinition",
-    "label": "Action Definition",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Account_Inherit_Support_Contract_from_Parent",
-       "Account_Sync_Support_Contract_to_Billed_Children",
-       "Case_Create_Clawback_Opportunity",
-       "Case_Send_Survey_Invitation_Queued",
-       "Project_Create_Clawback_Opportunity",
-       "Project_Create_Done_Cases",
-       "QuickActionDefinition.Case.Create_Clawback_Opportunity",
-       "QuickActionDefinition.Project__c.Create_Clawback_Oppty",
-       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__EndiciaAccountStatusBuyPostageLWC",
-       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__Manifest",
-       "QuickActionDefinition.zkmulti__MCShipmate_Preference__c.zkmulti__Setup_Signature_and_Letter_Head",
-       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Email_Label",
-       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Track_Shipment",
-       "QuickActionDefinition.zkmulti__MCShipment__c.zkmulti__Void_Shipment",
-       "Shipment_Post_Delivered_Feed_Item_to_Case",
-       "Shipment_Post_In_Transit_Feed_Item_to_Case",
-       "Survey_Invitation_Queue_Post_Case_Comment",
-       "TEST_Shipment_Delivered_Feed_Logic"
-      ],
-      "removed": [
-       "Gong__Gong_for_Salesforce_Create_Contact_Role",
-       "Gong__Gong_for_Salesforce_Create_Event_from_Gong_Conversation",
-       "Gong__Gong_for_Salesforce_Enrich_Contacts_and_Leads",
-       "Gong__Gong_for_Salesforce_Update_main_competitors",
-       "Gong__Gong_for_Salesforce_Update_Participant_Contact_Role",
-       "Gong_Call_Send_Outbound_Message_to_Make",
-       "Gong_Create_Event_from_Conversation",
-       "Gong_Update_Task",
-       "Gong_Update_Task_to_Completed",
-       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU",
-       "QuickActionDefinition.Gong__Gong_Call__c.Gong_Conversation"
-      ],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Opportunity_Strategy__c",
-    "label": "RC - Opportunity Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Task",
-    "field": "RecurrenceTimeZoneSidKey",
-    "label": "Recurrence Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "User",
-    "field": "TimeZoneSidKey",
-    "label": "Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "WorkStep",
-    "field": "ActionDefinition",
-    "label": "Action Definition",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Project_Create_Clawback_Opportunity"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "WorkStepTemplate",
-    "field": "ActionDefinition",
-    "label": "Action Definition",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Project_Create_Clawback_Opportunity"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   }
-  ],
-  "addedCreatedInWindow": 12,
-  "addedPreexisting": 14,
-  "addedUnknownCreated": 0
- },
- "xbu": {
-  "prevObjects": 546,
-  "curObjects": 562,
-  "prevFields": 14983,
-  "curFields": 15647,
-  "objAdded": [
-   "ActOnIt__Activity__c",
-   "ActOnIt__ActivityMapping__c",
-   "ActOnIt__ActOnItObjectSettings__mdt",
-   "ActOnIt__ActOnItSettings__c",
-   "ActOnIt__APIRequest__c",
-   "ActOnIt__BlockedMessage__c",
-   "ActOnIt__CalloutConfiguration__c",
-   "ActOnIt__Condition__c",
-   "ActOnIt__Connections__mdt",
-   "ActOnIt__MacroAction__c",
-   "ActOnIt__MessageAction__c",
-   "ActOnIt__MessageActionField__c",
-   "ActOnIt__MessageErrorLog__c",
-   "ActOnIt__MessageLog__c",
-   "ActOnIt__MessageRecipient__c",
-   "ActOnIt__MessageRecipientAction__c",
-   "ActOnIt__MessageRequest__c",
-   "ActOnIt__MessageRequestRecipient__c",
-   "ActOnIt__MessageType__c",
-   "ActOnIt__MessageTypeAction__c",
-   "ActOnIt__MessageTypeCallout__c",
-   "ActOnIt__ObjectSettings__c",
-   "ActOnIt__PersonalizationSettings__c",
-   "ActOnIt__Prompt__c",
-   "ActOnIt__PromptAction__c",
-   "ActOnIt__ScheduledMessage__c",
-   "ActOnIt__SnoozeOption__mdt",
-   "ActOnIt__TriggerBrokerEventSettings__mdt",
-   "ActOnIt__TriggerSettings__mdt",
-   "ActOnIt__UserSettings__c",
-   "Case_Email_Suppression__mdt",
-   "Survey_Invitation_Queue__c"
-  ],
-  "objRemoved": [
-   "diplopia__App_Config__mdt",
-   "diplopia__Skip_Related_Object__c",
-   "dupcheck__dc3Duplicate__c",
-   "dupcheck__dc3GenericStorage__c",
-   "dupcheck__dc3Log__c",
-   "dupcheck__dc3ObjectMeta__c",
-   "dupcheck__dcAnalytics__c",
-   "dupcheck__dcAudit__c",
-   "dupcheck__dcDelta__c",
-   "dupcheck__dcDiscard__c",
-   "dupcheck__dcFrequent__c",
-   "dupcheck__dcGroup__c",
-   "dupcheck__dcIndex__c",
-   "dupcheck__dcJob__c",
-   "dupcheck__dcLayout__c",
-   "dupcheck__dcQueue__c",
-   "dupcheck__dcTelemetry__c",
-   "dupcheck__dcTemp__c",
-   "dupcheck__dcTrigger__c",
-   "MessagingEndUser",
-   "MessagingSession"
+   "beynd__BeyndAPIConfig__mdt",
+   "beynd__BeyndAPIMessage__c",
+   "beynd__BeyndMilestone__c",
+   "beynd__BeyndProject__c",
+   "beynd__BeyndSettings__c",
+   "beynd__BeyndTask__c",
+   "beynd__GuideCX_Project_Source__mdt"
   ],
   "churnAdded": [
-   "WorkPlan",
-   "WorkPlanTemplate",
-   "WorkPlanTemplateEntry",
-   "WorkStep",
-   "WorkStepTemplate"
+   "LearningItem",
+   "LiveAgentSession",
+   "LiveChatTranscript",
+   "LiveChatVisitor"
   ],
   "churnRemoved": [],
   "fAdded": [
@@ -1253,598 +33,687 @@
     "field": "OwnerId",
     "label": "Owner ID",
     "type": "reference",
+    "desc": "",
     "created": null
    },
    {
-    "obj": "Case",
-    "field": "Automation_Bypass__c",
-    "label": "Automation Bypass",
+    "obj": "Billing_Case_Request__c",
+    "field": "Create_Software_Lockout_Case__c",
+    "label": "Create Software Lockout Case",
     "type": "boolean",
-    "created": "2026-08-30",
+    "desc": "Set by the Close Case form when the agent chose to create a Software Lockout (Product Support deactivation) case. Read by the billing-case creation flows so the deactivation case is created at the same time as the billing case.",
+    "created": "2026-10-22",
     "newInWindow": true
    },
    {
-    "obj": "Case",
-    "field": "ActOnIt__ContactFullName__c",
-    "label": "Contact Full Name",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__DiaryDateTime__c",
-    "label": "Diary Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__DiaryNote__c",
-    "label": "Diary Note",
-    "type": "textarea",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__EmailThreadId__c",
-    "label": "Email Thread Id",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__LastAssignmentDateTime__c",
-    "label": "Last Assignment Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__OwnerType__c",
-    "label": "Owner Type",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Case",
-    "field": "ActOnIt__CaseOwnerName__c",
-    "label": "Case Owner Name",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Contract",
-    "field": "ActOnIt__ExpiryNoticeDate__c",
-    "label": "Expiry Notice Date",
-    "type": "date",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Event",
-    "field": "ActOnIt__OwnerType__c",
-    "label": "Owner Type",
-    "type": "string",
-    "created": null
-   },
-   {
-    "obj": "Event",
-    "field": "ActOnIt__ActivityOwnerName__c",
-    "label": "Activity Owner Name",
-    "type": "string",
-    "created": null
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__DiaryDateTime__c",
-    "label": "Diary Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__DiaryNote__c",
-    "label": "Diary Note",
-    "type": "textarea",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__EmailThreadId__c",
-    "label": "Email Thread Id",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__LastAssignmentDateTime__c",
-    "label": "Last Assignment Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__OpenTaskActivityDate__c",
-    "label": "Open Task Activity Date",
-    "type": "date",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__OwnerType__c",
-    "label": "Owner Type",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__HasOverdueTask__c",
-    "label": "Has Overdue Task",
-    "type": "boolean",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Lead",
-    "field": "ActOnIt__LeadOwnerName__c",
-    "label": "Lead Owner Name",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Phase_Name__c",
-    "label": "Phase Name",
-    "type": "string",
-    "created": "2026-09-23",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__DiaryDateTime__c",
-    "label": "Diary Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__DiaryNote__c",
-    "label": "Diary Note",
-    "type": "textarea",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__EmailThreadId__c",
-    "label": "Email Thread Id",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__LastAssignmentDateTime__c",
-    "label": "Last Assignment Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__LastStageChangeDateTime__c",
-    "label": "Last Stage Change Date/Time",
-    "type": "datetime",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__OpenTaskActivityDate__c",
-    "label": "Open Task Activity Date",
-    "type": "date",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__OwnerFullName__c",
-    "label": "Owner Full Name",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "Opportunity",
-    "field": "ActOnIt__PrimaryContact__c",
-    "label": "Primary Contact",
+    "obj": "Billing_Case_Request__c",
+    "field": "Software_Deactivation_Case__c",
+    "label": "Software Deactivation Case",
     "type": "reference",
-    "created": "2026-10-01",
+    "desc": "",
+    "created": "2026-10-22",
     "newInWindow": true
    },
    {
-    "obj": "Opportunity",
-    "field": "ActOnIt__PushCount__c",
-    "label": "PushCount",
+    "obj": "Billing_Case_Request__c",
+    "field": "Software_Deactivation_Creation_Date__c",
+    "label": "Software Deactivation Creation Date",
+    "type": "date",
+    "desc": "Scheduled creation date for the Software Deactivation (Product Support) case, captured on the Close Case form (Software Deactivation screen).",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Primary_Incident__c",
+    "label": "Incident",
+    "type": "reference",
+    "desc": "The Incident (bug) this Case is attached to. Set by the Case: Bug Tracking flow. Many Cases can point at one Incident. Gives Case formulas and the Zapier integration a single-hop path to the Dev ticket fields; the standard CaseRelatedIssue junction record is created alongside it for native Incident Management UI.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Projected_Churn_Date__c",
+    "label": "Projected Churn Date",
+    "type": "date",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Original_Processor__c",
+    "label": "Original Processor",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "New_Processor__c",
+    "label": "New Processor",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "CaseRelatedIssue",
+    "field": "Account_Brand__c",
+    "label": "Account - Brand",
+    "type": "string",
+    "desc": "Brand of the linked case's account (Account.Brand__c), so it can be shown in the Case Related Issues related list on Incident.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "CaseRelatedIssue",
+    "field": "Case_Total_Emails_Sent__c",
+    "label": "Case Total Emails Sent",
     "type": "double",
-    "created": "2026-10-01",
+    "desc": "Bug Tracker Phase 2. Surfaces Case.Total_Emails_Sent__c onto the junction so DLRS can SUM it up to the Incident. DLRS aggregates a field on the child record, and cannot traverse CaseRelatedIssue to the Case itself - this formula is that bridge.",
+    "created": "2026-10-21",
     "newInWindow": true
    },
    {
-    "obj": "Opportunity",
-    "field": "ActOnIt__HasOverdueTask__c",
-    "label": "Has Overdue Task",
+    "obj": "CaseRelatedIssue",
+    "field": "Case_Total_Outbound_Calls__c",
+    "label": "Case Total Outbound Calls",
+    "type": "double",
+    "desc": "Bug Tracker Phase 2. Surfaces Case.Total_Outbound_Calls__c onto the junction so DLRS can SUM it up to the Incident. DLRS aggregates a field on the child record, and cannot traverse CaseRelatedIssue to the Case itself - this formula is that bridge.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Create_Type__c",
+    "label": "Case Create Type",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created_Case_Number__c",
+    "label": "Case Created Case Number",
+    "type": "string",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created_URL__c",
+    "label": "Case Created URL",
+    "type": "url",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created__c",
+    "label": "Case Created",
     "type": "boolean",
-    "created": "2026-10-01",
+    "desc": "",
+    "created": "2026-10-31",
     "newInWindow": true
    },
    {
-    "obj": "Opportunity",
-    "field": "ActOnIt__PrimaryContactEmail__c",
-    "label": "Primary Contact Email",
-    "type": "string",
-    "created": "2026-10-01",
+    "obj": "Health_Score__c",
+    "field": "Error_Messages__c",
+    "label": "Error Messages",
+    "type": "textarea",
+    "desc": "",
+    "created": "2026-10-31",
     "newInWindow": true
    },
    {
-    "obj": "Opportunity",
-    "field": "ActOnIt__PrimaryContactName__c",
-    "label": "Primary Contact Name",
-    "type": "string",
-    "created": "2026-10-01",
-    "newInWindow": true
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Case_Brand__c",
-    "label": "RC - Case Brand",
-    "type": "picklist",
-    "created": "2026-09-09",
-    "newInWindow": true
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Contact_Brand__c",
-    "label": "RC - Contact Brand",
-    "type": "picklist",
-    "created": "2026-09-09",
-    "newInWindow": true
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Opportunity_Brand__c",
-    "label": "RC - Opportunity Brand",
-    "type": "picklist",
-    "created": "2026-09-09",
-    "newInWindow": true
-   },
-   {
-    "obj": "Task",
-    "field": "ActOnIt__OwnerType__c",
-    "label": "Owner Type",
-    "type": "string",
+    "obj": "Incident",
+    "field": "RecordTypeId",
+    "label": "Record Type ID",
+    "type": "reference",
+    "desc": "",
     "created": null
    },
    {
-    "obj": "Task",
-    "field": "ActOnIt__ActivityOwnerName__c",
-    "label": "Activity Owner Name",
-    "type": "string",
-    "created": null
+    "obj": "Incident",
+    "field": "Abandoned_Calls__c",
+    "label": "Abandoned Calls",
+    "type": "double",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
    },
    {
-    "obj": "User",
-    "field": "ActOnIt__ActonitUserType__c",
-    "label": "Act On It User Type",
+    "obj": "Incident",
+    "field": "Account_Brand__c",
+    "label": "Account - Brand",
     "type": "picklist",
-    "created": "2026-10-01",
+    "desc": "Bug Tracker Phase 2. Brand of the reporting store, pre-filled by the Case: Bug Tracking flow from Case.Case_Brand__c. Uses the same Brands global value set as the Case field, so any value valid on the Case is valid here.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Affected_Brand__c",
+    "label": "Affected Brand",
+    "type": "textarea",
+    "desc": "Field is populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Affected_Products__c",
+    "label": "Affected Products",
+    "type": "textarea",
+    "desc": "Populated by ICC via API",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Bug_Related_Case_Count__c",
+    "label": "# of Related Cases",
+    "type": "double",
+    "desc": "Bug Tracker Phase 2. Count of Cases attached to this Incident via the CaseRelatedIssue junction, maintained by a DLRS rollup. Deliberately NOT the pre-existing Related_Case_Count__c, which belongs to the ICC process and is FLS-restricted to the ICC permission sets.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Bug_Score__c",
+    "label": "Bug Score",
+    "type": "double",
+    "desc": "Bug Tracker Phase 2. Plain number field with no calculation behind it - intended to be populated by AI scoring at a later date. Not on the screen flow.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Console_Errors__c",
+    "label": "Console Errors",
+    "type": "textarea",
+    "desc": "Verbatim console error output for the bug. Captured on the Case: Bug Tracking flow. Placeholder answers such as \"See Video\" are explicitly discouraged in the help text.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Customers_Impacted__c",
+    "label": "Customers Impacted",
+    "type": "double",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Dev_Ticket_Id__c",
+    "label": "Dev Ticket ID",
+    "type": "string",
+    "desc": "ID of the bug in the Dev System (Jira / Shortcut / Azure). Written back by the Zapier integration. Unique + External ID to enforce the 1:1 relationship between a Dev System bug and a Salesforce Incident.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Dev_Ticket_Link__c",
+    "label": "Dev Ticket Link",
+    "type": "url",
+    "desc": "Raw URL of the bug in the Dev System. Written back by the Zapier integration. Dev Ticket URL renders this as a hyperlink labelled with the Dev Ticket ID.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Devl_URL__c",
+    "label": "Devl URL",
+    "type": "url",
+    "desc": "Bug Tracker Phase 2. URL captured on the Case: Bug Tracking flow. Distinct from Dev Ticket Link, which is the Zapier-written link to the ticket in the Dev System.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Escalated__c",
+    "label": "Escalated?",
+    "type": "picklist",
+    "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Examples__c",
+    "label": "Examples",
+    "type": "textarea",
+    "desc": "Example data that demonstrates the bug - links to pages showing the problem, product IDs, RTO numbers, etc. Captured on the Case: Bug Tracking flow.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "ICC_Products_Impacted__c",
+    "label": "ICC - Products Impacted",
+    "type": "textarea",
+    "desc": "used for ICC incidents only",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Incident_Creation_Date__c",
+    "label": "Incident Creation Date",
+    "type": "datetime",
+    "desc": "Populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Incident_ID__c",
+    "label": "ICC - Incident ID",
+    "type": "textarea",
+    "desc": "This field is populated by ICC \nExample:  inc-002",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Incorrect_Data__c",
+    "label": "Incorrect Data",
+    "type": "picklist",
+    "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Integration_Status__c",
+    "label": "Integration Status",
+    "type": "picklist",
+    "desc": "Handshake flag for the Zapier middleware. The Case: Bug Tracking flow sets this to Pending on newly created bug Incidents; Zapier picks those up, creates the Dev System ticket, then stamps Dev Ticket ID / Dev Ticket Link and sets this to Sent.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Interruption_Type__c",
+    "label": "Interruption Type",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Is_Inventory_Affected__c",
+    "label": "Is Inventory Affected",
+    "type": "picklist",
+    "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Is_Reproducible__c",
+    "label": "Is Reproducible",
+    "type": "picklist",
+    "desc": "Whether the bug is reproducible. Captured on the Case: Bug Tracking flow and mirrored from Case.Is_Reproducible__c.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Money_Collecting_Incorrect_Amounts__c",
+    "label": "Money: Collecting Incorrect Amounts",
+    "type": "picklist",
+    "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Number_of_Calls__c",
+    "label": "# of Calls",
+    "type": "double",
+    "desc": "Number of times a client has called about this bug. Manual entry only - no automation or formula.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Origin_Case_Reason__c",
+    "label": "Origin Case Reason",
+    "type": "string",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Origin_Case_Sub_Reason__c",
+    "label": "Origin Case Sub-Reason",
+    "type": "string",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Origin_Case_URL__c",
+    "label": "Origin Case URL",
+    "type": "url",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Outage_Type__c",
+    "label": "Outage Type",
+    "type": "textarea",
+    "desc": "Populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Prevention_of_Saving_in_Key_Areas__c",
+    "label": "Prevention of Saving in Key Areas",
+    "type": "picklist",
+    "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Product_Artifacts__c",
+    "label": "Product Artifacts",
+    "type": "url",
+    "desc": "ICC Record URL or JIRA URL",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Products_Impacted__c",
+    "label": "Products Impacted",
+    "type": "multipicklist",
+    "desc": "Products impacted by this bug. Captured on the Case: Bug Tracking flow and mirrored from Case.Products_Impacted__c. Values kept in sync with the Case picklist.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Related_Case_Count__c",
+    "label": "ICC - Related Case Count",
+    "type": "double",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Related_Cases_MRR__c",
+    "label": "Related Cases MRR",
+    "type": "currency",
+    "desc": "Sum of the most recent successful Recurly purchase amount across the distinct accounts of the cases linked to this incident. Recalculated when a case is linked or unlinked.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Related_Cases_Residuals__c",
+    "label": "Related Cases Residuals",
+    "type": "currency",
+    "desc": "Sum of Residuals - Avg Residual across the distinct accounts of the cases linked to this incident. Recalculated when a case is linked or unlinked.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Replicable_On__c",
+    "label": "Replicable On Test or Customer Site",
+    "type": "picklist",
+    "desc": "Where the reporting tech was able to reproduce the bug - on an internal Test Site or only on the Customer Site. Captured on the Case: Bug Tracking flow.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "RingCX_Calls__c",
+    "label": "RingCX Calls",
+    "type": "double",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Scope__c",
+    "label": "ICC - Scope",
+    "type": "textarea",
+    "desc": "Populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Screenshot_URLs__c",
+    "label": "Screenshot URLs",
+    "type": "textarea",
+    "desc": "Links to screenshots of the bug, one URL per line. Long Text Area rather than a URL field so many links fit; images are hosted outside Salesforce to avoid file storage consumption.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Severity__c",
+    "label": "ICC - Severity",
+    "type": "textarea",
+    "desc": "Field is populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Software_Version__c",
+    "label": "Software Version",
+    "type": "string",
+    "desc": "Software version the bug was observed on. Captured on the Case: Bug Tracking flow and mirrored from Case.Software_Version__c.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Status_Reason__c",
+    "label": "Status Reason",
+    "type": "picklist",
+    "desc": "Dev Ticket status synchronised hourly from the Dev System by the Zapier integration. Only synced while the related Case Status is not Closed. Does not drive Case Status.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Status__c",
+    "label": "ICC - Status",
+    "type": "textarea",
+    "desc": "Populated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Steps_to_Reproduce__c",
+    "label": "Steps to Reproduce",
+    "type": "textarea",
+    "desc": "Numbered steps a developer can follow to reproduce the bug. Captured on the Case: Bug Tracking flow.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Store_Name__c",
+    "label": "Store Name",
+    "type": "reference",
+    "desc": "The store (Account) that first reported this bug, stamped by the Case: Bug Tracking flow from the originating Case's Account. One Incident can affect many stores - the full list is the Cases attached via CaseRelatedIssue. This field records the reporter only.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Suitable_Workaround_Available__c",
+    "label": "Suitable Workaround Available?",
+    "type": "picklist",
+    "desc": "Whether a suitable workaround exists. Captured on the Case: Bug Tracking flow and mirrored from Case.Suitable_Workaround_Available__c.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Summary__c",
+    "label": "ICC - Summary",
+    "type": "textarea",
+    "desc": "Field is updated via API from ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Support_Tech__c",
+    "label": "Support Tech Name",
+    "type": "reference",
+    "desc": "The support tech who reported the bug. Stamped by the Case: Bug Tracking flow from the running user, so it survives Incident ownership changes and is not the same as Created By once records are transferred.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "System_Area_Affected__c",
+    "label": "System Area Affected",
+    "type": "textarea",
+    "desc": "Area of the system where the bug shows up (screen, module, report, integration, etc.). Captured on the Case: Bug Tracking flow.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Time_to_Resolution__c",
+    "label": "ICC - Time to Resolution",
+    "type": "textarea",
+    "desc": "Populated by ICC",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Total_Emails_Sent__c",
+    "label": "Total Emails Sent",
+    "type": "double",
+    "desc": "Bug Tracker Phase 2. Sum of Case.Total_Emails_Sent__c across the Cases attached to this Incident. The Case-level figure is already maintained by the existing Case email-count flow, so this is a second-level sum rather than a Task rollup.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Total_Outbound_Calls__c",
+    "label": "Total Outbound Calls",
+    "type": "double",
+    "desc": "Bug Tracker Phase 2. Sum of Case.Total_Outbound_Calls__c across the Cases attached to this Incident. The Case-level figure is already maintained by the existing Case call-count flow, so this is a second-level sum rather than a Task rollup.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "VIP_Customer__c",
+    "label": "VIP Customer?",
+    "type": "boolean",
+    "desc": "Bug Tracker Phase 2. Pre-filled by the Case: Bug Tracking flow at Incident creation from the reporting Account's support contract. Left editable on purpose so it can be corrected; it is a snapshot, not a live formula.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Video_URL__c",
+    "label": "Video URL",
+    "type": "textarea",
+    "desc": "Links to screen recordings of the bug, one URL per line. Long Text Area rather than a URL field so more than one recording fits; video is hosted outside Salesforce to avoid file storage consumption.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Incident",
+    "field": "Dev_Ticket_URL__c",
+    "label": "Dev Ticket URL",
+    "type": "string",
+    "desc": "Displays the Dev Ticket ID as a clickable hyperlink to the bug in the Dev System.",
+    "created": "2026-10-21",
     "newInWindow": true
    }
   ],
   "fRemoved": [
    {
-    "obj": "Account",
-    "field": "dupcheck__dc3DisableDuplicateCheck__c",
-    "label": "Disable Deduplicate",
-    "type": "boolean"
-   },
-   {
-    "obj": "Account",
-    "field": "dupcheck__dc3Index__c",
-    "label": "Deduplicate Index",
-    "type": "textarea"
-   },
-   {
-    "obj": "Account",
-    "field": "dupcheck__dc3UltimateParent__c",
-    "label": "Ultimate Parent",
-    "type": "reference"
-   },
-   {
     "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Assignee_Name__c",
-    "label": "Zendesk Support Ticket Assignee Name",
-    "type": "string"
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Brand_Name__c",
-    "label": "Zendesk Support Ticket Brand Name",
-    "type": "string"
+    "obj": "Opportunity",
+    "field": "GuideCX_Project_Created__c",
+    "label": "GuideCX Project Created",
+    "type": "boolean",
+    "desc": ""
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Created_At__c",
-    "label": "Zendesk Support Ticket Created At",
-    "type": "datetime"
+    "obj": "Opportunity",
+    "field": "beynd__CreateBeyndProjectOnClosedWon__c",
+    "label": "Create GUIDEcx Project (Deprecated)",
+    "type": "boolean",
+    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version."
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Form_Name__c",
-    "label": "Zendesk Support Ticket Form Name",
-    "type": "string"
+    "obj": "Opportunity",
+    "field": "beynd__beyndProject__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer."
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Group_Name__c",
-    "label": "Zendesk Support Ticket Group Name",
-    "type": "string"
+    "obj": "POS_Software__c",
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_ID__c",
-    "label": "Zendesk Support Ticket ID",
-    "type": "string"
+    "obj": "Survey_Result__c",
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
    },
    {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Initial_Assigned__c",
-    "label": "Zendesk Support Ticket Initial Assigned",
-    "type": "datetime"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Organization_Name__c",
-    "label": "Zendesk Support Ticket Organization Name",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Requester_As_Lead__c",
-    "label": "Zendesk Support Ticket Requester As Lead",
-    "type": "reference"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Requester_Email__c",
-    "label": "Zendesk Support Ticket Requester Email",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Requester_Name__c",
-    "label": "Zendesk Support Ticket Requester Name",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Resolution_Bus__c",
-    "label": "Zendesk Support Ticket Resolution (Bus)",
-    "type": "double"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Resolution_Cal__c",
-    "label": "Zendesk Support Ticket Resolution (Cal)",
-    "type": "double"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Solved_At__c",
-    "label": "Zendesk Support Ticket Solved At",
-    "type": "datetime"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Tags__c",
-    "label": "Zendesk Support Ticket Tag",
-    "type": "textarea"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_URL__c",
-    "label": "Zendesk Support Ticket URL",
-    "type": "url"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_Support_Ticket_Updated_At__c",
-    "label": "Zendesk Support Ticket Updated At",
-    "type": "datetime"
-   },
-   {
-    "obj": "Case",
-    "field": "Zendesk_ID_migrated__c",
-    "label": "Zendesk ID (migrated)",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "Case_Status_Change__c",
-    "label": "Case Status Change",
-    "type": "datetime"
-   },
-   {
-    "obj": "Case",
-    "field": "External_Address__c",
-    "label": "External Address",
-    "type": "email"
-   },
-   {
-    "obj": "Case",
-    "field": "Ethernet_Cradle__c",
-    "label": "Ethernet Cradle",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Dock__c",
-    "label": "Dock",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "P5_Terminal__c",
-    "label": "P5 Terminal",
-    "type": "boolean"
-   },
-   {
-    "obj": "Case",
-    "field": "Backend_Processor__c",
-    "label": "Backend Processor",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Escalation_Counter__c",
-    "label": "Escalation Counter",
-    "type": "double"
-   },
-   {
-    "obj": "Case",
-    "field": "Payments_Portal_ID__c",
-    "label": "Payments Portal ID",
-    "type": "string"
-   },
-   {
-    "obj": "Case",
-    "field": "RMA_Issue__c",
-    "label": "RMA Issue",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Next_Action_Date__c",
-    "label": "Next Action Date",
-    "type": "date"
-   },
-   {
-    "obj": "Case",
-    "field": "Date_Payments_was_Enabled__c",
-    "label": "Date Payments was Enabled",
-    "type": "date"
-   },
-   {
-    "obj": "Case",
-    "field": "Case_Opportunity_Type__c",
-    "label": "Case - Opportunity Type",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Case_Onboarding_Type__c",
-    "label": "Case - Onboarding Type",
-    "type": "picklist"
-   },
-   {
-    "obj": "Case",
-    "field": "Case_Primary_Processor__c",
-    "label": "Case - Primary Processor",
-    "type": "textarea"
-   },
-   {
-    "obj": "Contact",
-    "field": "dupcheck__dc3DisableDuplicateCheck__c",
-    "label": "Disable Deduplicate",
-    "type": "boolean"
-   },
-   {
-    "obj": "Contact",
-    "field": "dupcheck__dc3Index__c",
-    "label": "Deduplicate Index",
-    "type": "textarea"
-   },
-   {
-    "obj": "Lead",
-    "field": "dupcheck__dc3DisableDuplicateCheck__c",
-    "label": "Disable Deduplicate",
-    "type": "boolean"
-   },
-   {
-    "obj": "Lead",
-    "field": "dupcheck__dc3Index__c",
-    "label": "Deduplicate Index",
-    "type": "textarea"
-   },
-   {
-    "obj": "Lead",
-    "field": "dupcheck__dc3Web2Lead__c",
-    "label": "is Web2Lead",
-    "type": "boolean"
-   },
-   {
-    "obj": "User",
-    "field": "dupcheck__dc3DisableDCTriggers__c",
-    "label": "Disable All Deduplicate triggers",
-    "type": "boolean"
-   },
-   {
-    "obj": "User",
-    "field": "dupcheck__dc3DisableDuplicateCheck__c",
-    "label": "Disable Deduplicate",
-    "type": "boolean"
+    "obj": "SurveyInvitation",
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
    }
   ],
   "fChanged": [
    {
-    "obj": "Account",
-    "field": "Brand__c",
-    "label": "Brand - Account",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Account",
-    "field": "Cohort_Brand__c",
-    "label": "Account - Cohort Brand",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
     "obj": "Address",
     "field": "TimeZone",
     "label": "Time Zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1858,6 +727,7 @@
     "obj": "AgentWork",
     "field": "Status",
     "label": "Status",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1874,6 +744,7 @@
     "obj": "ApprovalSubmissionDetail",
     "field": "ActionChannelName",
     "label": "Action Channel Name",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1889,6 +760,7 @@
     "obj": "AsyncOperationTracker",
     "field": "JobType",
     "label": "Job Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1916,6 +788,7 @@
     "obj": "AsyncOperationTracker",
     "field": "StepName",
     "label": "Step Name",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1943,6 +816,7 @@
     "obj": "AuthorizationFormConsent",
     "field": "Status",
     "label": "Status",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1958,6 +832,7 @@
     "obj": "CalculationProcedureStep",
     "field": "StepType",
     "label": "Step Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -1974,11 +849,15 @@
     "obj": "Case",
     "field": "Reason",
     "label": "Case Reason",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Low Health Score"
+       "CX Flagged Outreach",
+       "Issue Resolution Follow-Up",
+       "Orientation - 100 Days",
+       "Software Account Deactivation"
       ],
       "removed": [],
       "reordered": false
@@ -1987,19 +866,14 @@
    },
    {
     "obj": "Case",
-    "field": "Status_Reason__c",
-    "label": "Status Reason",
+    "field": "Product_at_Risk__c",
+    "label": "Product at Risk",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Bug Fix",
-       "Configuration/Setup",
-       "Feature Request",
-       "Incident Related",
-       "Technical Fix",
-       "Third Party Issue",
-       "User Error/Education"
+       "Processor"
       ],
       "removed": [],
       "reordered": false
@@ -2007,29 +881,42 @@
     ]
    },
    {
-    "obj": "CommSubscriptionTiming",
-    "field": "PreferredTimeZone",
-    "label": "Preferred Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "Contact",
-    "field": "Brand__c",
-    "label": "Brand",
+    "obj": "Case",
+    "field": "Products_Impacted__c",
+    "label": "Products Impacted",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "iGov"
+       "Processor"
       ],
       "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Account_Management_Sub_Reason__c",
+    "label": "Account Management Sub-Reason",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Abandoned Case",
+       "Negative Sentiment Score",
+       "Online Review Management",
+       "Reoccurring Issue",
+       "Resolved Case",
+       "Scheduled Check-In",
+       "Sensitive Issue Follow-Up"
+      ],
+      "removed": [
+       "Low CSAT",
+       "Scheduled Follow Up"
+      ],
       "reordered": false
      }
     ]
@@ -2038,6 +925,7 @@
     "obj": "ContactPointAddress",
     "field": "BestTimeToContactTimezone",
     "label": "Best time to contact time zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2051,6 +939,7 @@
     "obj": "ContactPointEmail",
     "field": "BestTimeToContactTimezone",
     "label": "Best time to contact time zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2064,6 +953,7 @@
     "obj": "ContactPointPhone",
     "field": "BestTimeToContactTimezone",
     "label": "Best time to contact time zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2077,6 +967,7 @@
     "obj": "Event",
     "field": "RecurrenceTimeZoneSidKey",
     "label": "Recurrence Time Zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2090,6 +981,7 @@
     "obj": "ExpressionSet",
     "field": "InterfaceSourceType",
     "label": "Interface Source Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2109,6 +1001,7 @@
     "obj": "FlowOrchestrationInstance",
     "field": "FlowType",
     "label": "Flow Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2126,6 +1019,7 @@
     "obj": "FlowOrchestrationInstance",
     "field": "FlowDefinitionVersionName",
     "label": "Flow Definition Version Name",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2135,8 +1029,6 @@
        "revcloud_self_serve__getPartnerOpps-1",
        "revcloud_self_serve__GetProductInfo-1",
        "runtime_appointmentbooking__GuestAuth-1",
-       "setup_se__InitiateIdV-1",
-       "setup_se__ValidateIdV-1",
        "sfdc_fieldservice__DcInspectionForm-1",
        "sfpl__CreateProductLimitAlert-1"
       ],
@@ -2149,6 +1041,7 @@
     "obj": "FlowOrchestrationLog",
     "field": "Kind",
     "label": "Milestone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2164,6 +1057,7 @@
     "obj": "FlowOrchestrationWorkItem",
     "field": "ScreenFlow",
     "label": "Screen Flow ID",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2173,8 +1067,6 @@
        "revcloud_self_serve__getPartnerOpps",
        "revcloud_self_serve__GetProductInfo",
        "runtime_appointmentbooking__GuestAuth",
-       "setup_se__InitiateIdV",
-       "setup_se__ValidateIdV",
        "sfdc_fieldservice__DcInspectionForm",
        "sfpl__CreateProductLimitAlert"
       ],
@@ -2187,6 +1079,7 @@
     "obj": "FlowOrchestrationWorkItem",
     "field": "FlowType",
     "label": "Flow Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2201,14 +1094,16 @@
     ]
    },
    {
-    "obj": "Lead",
-    "field": "Brand__c",
-    "label": "Brand - Lead",
+    "obj": "Incident",
+    "field": "Status",
+    "label": "Status",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "iGov"
+       "Investigating",
+       "Fixed & Monitoring"
       ],
       "removed": [],
       "reordered": false
@@ -2216,14 +1111,17 @@
     ]
    },
    {
-    "obj": "Lead",
-    "field": "Original_company_Generating_Lead__c",
-    "label": "Original Company Generating Lead",
+    "obj": "Incident",
+    "field": "Priority",
+    "label": "Priority",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "iGov"
+       "Sev 1 - Critical",
+       "Sev 2 - Major",
+       "Sev 3 - Minor"
       ],
       "removed": [],
       "reordered": false
@@ -2231,45 +1129,31 @@
     ]
    },
    {
-    "obj": "Lead",
-    "field": "New_Company_to_Follow_Up__c",
-    "label": "New Company to Follow-Up",
+    "obj": "Incident",
+    "field": "Type",
+    "label": "Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "iGov"
+       "Authentication Issues",
+       "Database Performance Issues",
+       "Degraded Performance",
+       "Email Delivery Issues",
+       "ICC Incident",
+       "Intermittent Connectivity Issues",
+       "Network Connectivity",
+       "Payment Processing Down",
+       "Phone System Down",
+       "POS Software Bug",
+       "POS Terminal Connectivity",
+       "Reporting Unavailable",
+       "Scheduled Maintenance",
+       "Payments Bug"
       ],
       "removed": [],
       "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Lead",
-    "field": "Strategy__c",
-    "label": "Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Location",
-    "field": "TimeZone",
-    "label": "Time Zone",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
      }
     ]
    },
@@ -2277,74 +1161,77 @@
     "obj": "Macro",
     "field": "StartingContext",
     "label": "Apply To",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "ActOnIt__Activity__c",
-       "ActOnIt__ActivityMapping__c",
-       "ActOnIt__APIRequest__c",
-       "ActOnIt__CalloutConfiguration__c",
-       "ActOnIt__Condition__c",
+       "Calendly__CalendlyExternalEvent__c",
+       "Calendly__CalendlyMeetingRecap__c",
+       "LiveAgentSession",
+       "LiveChatTranscript",
        "ContactPointOttSvc",
-       "ActOnIt__MessageRecipientAction__c",
        "DevopsPipelineEnvironment",
        "DevopsPipelineStage",
        "DevopsPipelnStgProm",
        "DevopsPipelnStgPromWkItem",
        "DevopsProjectEnvironment",
        "DevopsProjectPipeline",
-       "ActOnIt__MessageErrorLog__c",
-       "ActOnIt__MacroAction__c",
-       "ActOnIt__MessageAction__c",
-       "ActOnIt__MessageActionField__c",
-       "ActOnIt__BlockedMessage__c",
-       "ActOnIt__MessageType__c",
-       "ActOnIt__MessageTypeAction__c",
-       "ActOnIt__MessageTypeCallout__c",
-       "ActOnIt__MessageRequest__c",
-       "ActOnIt__MessageRequestRecipient__c",
-       "ActOnIt__ObjectSettings__c",
-       "ActOnIt__MessageLog__c",
-       "ActOnIt__PersonalizationSettings__c",
+       "arbihistora__Histora__c",
+       "arbihistora__History_Tracking_Field__c",
+       "arbihistora__History_Tracking_Setup__c",
        "DevopsPipeline",
        "DevopsProject",
-       "ActOnIt__PromptAction__c",
-       "ActOnIt__Prompt__c",
-       "ActOnIt__ScheduledMessage__c",
-       "ActOnIt__MessageRecipient__c",
+       "ServiceRequestRelatedRecord",
        "SourceCodeRepository",
        "SourceCodeRepositoryBranch",
        "SourceCodeRepoProvider",
-       "Survey_Invitation_Queue__c",
-       "ActOnIt__UserSettings__c",
        "WorkItem",
        "WorkItemComponent",
-       "WorkItemComponentList",
-       "WorkPlan",
-       "WorkPlanTemplate",
-       "WorkPlanTemplateEntry",
-       "WorkStep",
-       "WorkStepTemplate"
+       "WorkItemComponentList"
       ],
       "removed": [
-       "dupcheck__dcAnalytics__c",
-       "dupcheck__dcAudit__c",
-       "dupcheck__dcDelta__c",
-       "dupcheck__dcDiscard__c",
-       "dupcheck__dc3Duplicate__c",
-       "dupcheck__dcFrequent__c",
-       "dupcheck__dc3GenericStorage__c",
-       "dupcheck__dcGroup__c",
-       "dupcheck__dcIndex__c",
-       "dupcheck__dcJob__c",
-       "dupcheck__dcLayout__c",
-       "dupcheck__dc3Log__c",
-       "dupcheck__dc3ObjectMeta__c",
-       "dupcheck__dcQueue__c",
-       "dupcheck__dcTelemetry__c",
-       "dupcheck__dcTemp__c"
+       "beynd__BeyndAPIMessage__c",
+       "beynd__BeyndMilestone__c",
+       "beynd__BeyndProject__c",
+       "beynd__BeyndTask__c"
       ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "MessagingEndUser",
+    "field": "MessageType",
+    "label": "Message Type",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "GoogleChat",
+       "Slack",
+       "ExternalVoice"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "MessagingSession",
+    "field": "ChannelType",
+    "label": "Channel Type",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "GoogleChat",
+       "Slack",
+       "ExternalVoice"
+      ],
+      "removed": [],
       "reordered": false
      }
     ]
@@ -2353,6 +1240,7 @@
     "obj": "OperatingHours",
     "field": "TimeZone",
     "label": "Time Zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2363,69 +1251,10 @@
     ]
    },
    {
-    "obj": "Opportunity",
-    "field": "Strategy__c",
-    "label": "Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Cohort_Brand__c",
-    "label": "Opportunity - Cohort Brand",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "Brand__c",
-    "label": "Brand - Opportunity",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "Opportunity",
-    "field": "SA_Rate_Type__c",
-    "label": "SA - Rate Type",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Surcharge"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
     "obj": "ProcessException",
     "field": "Category",
     "label": "Category",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2441,46 +1270,58 @@
     "obj": "RecordAction",
     "field": "FlowDefinition",
     "label": "Flow Definition ID",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Account_Create_Low_Health_Score_Case_Single_Run",
-       "ActOnIt__Act_On_It_Change_Owner",
-       "ActOnIt__Act_On_It_Notify_Case_Owner_On_File_Attachment_Template",
-       "ActOnIt__Act_On_It_Template_Feed_Comment_Trigger_Flow",
-       "ActOnIt__Act_On_It_Template_Notify_Users_Mentioned_in_Chatter",
-       "ActOnIt__ActOnIt_Auto_Launch_Flow_Message_Action_Template",
-       "ActOnIt__ActOnIt_Email_Preview_Send",
-       "ActOnIt__ActOnIt_Give_Feedback_Flow",
-       "ActOnIt__ActOnIt_Message_Recipient_After_Insert_Flow",
-       "ActOnIt__ActOnIt_Personalized_Message_Flow",
-       "ActOnIt__ActOnIt_Screen_Flow_Message_Action_Template",
-       "ActOnIt__ActOnItRecordEditForm",
-       "ActOnIt__FeedCommentTriggerFlow",
-       "ActOnIt__Notify_Users_Mentioned_In_Chatter",
-       "Case_Send_Survey_Invitation_Queued",
-       "Case_Stamp_Last_Note_Date",
-       "Lead_Set_Field_Defaults",
-       "Make_XBU_Opp_Web_Processing_Only",
-       "Make_XBU_Quote_DealHub_Payments_Approval",
-       "Merchant_ID_Deactivate_Stale_MIDs",
+       "arbihistora__Histora_Custom_Field_History_Tracking_Flow",
+       "Billing_Contact_Reconcile_SBU",
+       "Calendly__CreateExternalEventTemplate",
+       "Calendly__UpdateEventMeetingNotesTemplate",
+       "Calendly_Sync_Health_Alert",
+       "Case_Add_to_Incident",
+       "Case_Related_Issue_Count_Cases_on_Incident_Create",
+       "Case_Related_Issue_Count_Cases_on_Incident_Delete",
+       "Health_Score_Create_Low_Health_Score_Case",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update",
+       "Incident_Set_Record_Type_ICC",
+       "Incident_Update_Status_from_ICC",
+       "Opportunity_Default_AvaTax_Origin_from_Account",
+       "Quote_Set_AvaTax_Origin_From_Ship_To",
+       "Recurly_Account_Billing_Contact_Reconcile_Weekly",
+       "Recurly_Account_Sync_Billing_Contact",
        "revcloud_self_serve__Create_Quote",
        "revcloud_self_serve__findPrdctsPricing",
        "revcloud_self_serve__getPartnerOpps",
        "revcloud_self_serve__GetProductInfo",
-       "setup_se__InitiateIdV",
-       "setup_se__ValidateIdV",
+       "Scheduled_Create_Software_Deactivation_Case",
        "sfpl__CreateProductLimitAlert",
-       "Shipment_Post_Delivered_Feed_Item_to_Case",
-       "Shipment_Post_In_Transit_Feed_Item_to_Case",
-       "Survey_Invitation_Queue_Post_Case_Comment",
-       "TEST_Shipment_Delivered_Feed_Logic"
+       "Task_Refresh_Open_Task_Data"
       ],
       "removed": [
-       "Case_Case_Closed_for_Not_Live_Merchant",
        "Case_Case_Created_for_Not_Live_Merchant",
-       "Case_Order_Fulfillment_was_shipped"
+       "Case_Update_GuideCX_Project_EBT",
+       "GuideCX_Add_SNap_Information",
+       "GuideCX_Create_Account_Management_Case",
+       "GuideCX_Link_Payments_Onboarding_Case_to_GuideCX",
+       "GuideCX_Project_Close_At_Risk_Case",
+       "GuideCX_Project_Create_At_Risk_Case",
+       "GuideCX_Project_Create_Retention_Case",
+       "GuideCX_Project_Remove_Done_Date",
+       "GuideCX_Project_Send_Onboarding_Survey_Invitation",
+       "GuideCX_Project_Update_Done_Date_Field",
+       "GuideCX_Send_Post_Onboarding_Outbound_Message",
+       "GuideCX_Status_Cancelled",
+       "GuideCX_Status_Done",
+       "GuideCx_Update_Account_Go_Live_Date",
+       "GuideCX_Update_Case_EBT_when_Changed",
+       "GuideCX_Update_Project_Manager_Assigned_Date",
+       "Opportunity_Create_GuideCX_Project",
+       "Opportunity_Update_GuideCX_EBT_Check",
+       "Project_Update_Account_Go_Live_Date",
+       "Zapier_GuidCX_Tag_At_Risk_Notification"
       ],
       "reordered": false
      }
@@ -2490,50 +1331,63 @@
     "obj": "RecordAction",
     "field": "ActionDefinition",
     "label": "Action Definition",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "Account_Create_Low_Health_Score_Case_Single_Run",
-       "ActOnIt__Act_On_It_Change_Owner",
-       "ActOnIt__Act_On_It_Notify_Case_Owner_On_File_Attachment_Template",
-       "ActOnIt__Act_On_It_Template_Feed_Comment_Trigger_Flow",
-       "ActOnIt__Act_On_It_Template_Notify_Users_Mentioned_in_Chatter",
-       "ActOnIt__ActOnIt_Auto_Launch_Flow_Message_Action_Template",
-       "ActOnIt__ActOnIt_Email_Preview_Send",
-       "ActOnIt__ActOnIt_Give_Feedback_Flow",
-       "ActOnIt__ActOnIt_Message_Recipient_After_Insert_Flow",
-       "ActOnIt__ActOnIt_Personalized_Message_Flow",
-       "ActOnIt__ActOnIt_Screen_Flow_Message_Action_Template",
-       "ActOnIt__ActOnItRecordEditForm",
-       "ActOnIt__FeedCommentTriggerFlow",
-       "ActOnIt__Notify_Users_Mentioned_In_Chatter",
-       "Case_Send_Survey_Invitation_Queued",
-       "Case_Stamp_Last_Note_Date",
-       "Lead_Set_Field_Defaults",
-       "Make_XBU_Opp_Web_Processing_Only",
-       "Make_XBU_Quote_DealHub_Payments_Approval",
-       "Merchant_ID_Deactivate_Stale_MIDs",
-       "QuickActionDefinition.ActOnIt__MessageRequest__c.ActOnIt__Quick_Clone",
-       "QuickActionDefinition.ActOnIt__MessageType__c.ActOnIt__Quick_Clone",
-       "QuickActionDefinition.ActOnIt__UserSettings__c.ActOnIt__GeneralSettings",
+       "arbihistora__Histora_Custom_Field_History_Tracking_Flow",
+       "Billing_Contact_Reconcile_SBU",
+       "Calendly__CreateExternalEventTemplate",
+       "Calendly__UpdateEventMeetingNotesTemplate",
+       "Calendly_Sync_Health_Alert",
+       "Case_Add_to_Incident",
+       "Case_Related_Issue_Count_Cases_on_Incident_Create",
+       "Case_Related_Issue_Count_Cases_on_Incident_Delete",
+       "Health_Score_Create_Low_Health_Score_Case",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update",
+       "Incident_Set_Record_Type_ICC",
+       "Incident_Update_Status_from_ICC",
+       "Opportunity_Default_AvaTax_Origin_from_Account",
+       "QuickActionDefinition.Case.Add_to_Incident",
+       "QuickActionDefinition.Incident.Close_Related_Cases",
+       "QuickActionDefinition.Incident.Send_Customer_Update",
+       "QuickActionDefinition.LiveChatTranscript._LightningUpdateLiveChatTranscript",
+       "Quote_Set_AvaTax_Origin_From_Ship_To",
+       "Recurly_Account_Billing_Contact_Reconcile_Weekly",
+       "Recurly_Account_Sync_Billing_Contact",
        "revcloud_self_serve__Create_Quote",
        "revcloud_self_serve__findPrdctsPricing",
        "revcloud_self_serve__getPartnerOpps",
        "revcloud_self_serve__GetProductInfo",
-       "setup_se__InitiateIdV",
-       "setup_se__ValidateIdV",
+       "Scheduled_Create_Software_Deactivation_Case",
        "sfpl__CreateProductLimitAlert",
-       "Shipment_Post_Delivered_Feed_Item_to_Case",
-       "Shipment_Post_In_Transit_Feed_Item_to_Case",
-       "Survey_Invitation_Queue_Post_Case_Comment",
-       "TEST_Shipment_Delivered_Feed_Logic"
+       "Task_Refresh_Open_Task_Data"
       ],
       "removed": [
-       "Case_Case_Closed_for_Not_Live_Merchant",
        "Case_Case_Created_for_Not_Live_Merchant",
-       "Case_Order_Fulfillment_was_shipped",
-       "QuickActionDefinition.Lead.dupcheck__DCConvert"
+       "Case_Update_GuideCX_Project_EBT",
+       "GuideCX_Add_SNap_Information",
+       "GuideCX_Create_Account_Management_Case",
+       "GuideCX_Link_Payments_Onboarding_Case_to_GuideCX",
+       "GuideCX_Project_Close_At_Risk_Case",
+       "GuideCX_Project_Create_At_Risk_Case",
+       "GuideCX_Project_Create_Retention_Case",
+       "GuideCX_Project_Remove_Done_Date",
+       "GuideCX_Project_Send_Onboarding_Survey_Invitation",
+       "GuideCX_Project_Update_Done_Date_Field",
+       "GuideCX_Send_Post_Onboarding_Outbound_Message",
+       "GuideCX_Status_Cancelled",
+       "GuideCX_Status_Done",
+       "GuideCx_Update_Account_Go_Live_Date",
+       "GuideCX_Update_Case_EBT_when_Changed",
+       "GuideCX_Update_Project_Manager_Assigned_Date",
+       "Opportunity_Create_GuideCX_Project",
+       "Opportunity_Update_GuideCX_EBT_Check",
+       "Project_Update_Account_Go_Live_Date",
+       "QuickActionDefinition.beynd__BeyndProject__c.GuideCX_Project_Details",
+       "Zapier_GuidCX_Tag_At_Risk_Notification"
       ],
       "reordered": false
      }
@@ -2543,6 +1397,7 @@
     "obj": "RevenueAsyncOperation",
     "field": "JobType",
     "label": "Job Type",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2567,72 +1422,15 @@
     ]
    },
    {
-    "obj": "ringdna__Conversation__c",
-    "field": "ringdna__Disposition__c",
-    "label": "Disposition",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [],
-      "removed": [],
-      "reordered": true
-     }
-    ]
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Lead_Brand__c",
-    "label": "RC - Lead Brand",
+    "obj": "SurveySubject",
+    "field": "SubjectEntityType",
+    "label": "Related Object",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
       "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Opportunity_Strategy__c",
-    "label": "RC - Opportunity Strategy",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "Free Support"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Account_Cohort_Brand__c",
-    "label": "RC - Account Cohort Brand",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
-      ],
-      "removed": [],
-      "reordered": false
-     }
-    ]
-   },
-   {
-    "obj": "ringdna__Conversation__c",
-    "field": "RC_Account_Brand__c",
-    "label": "RC - Account Brand",
-    "changes": [
-     {
-      "attr": "picklist",
-      "added": [
-       "iGov"
+       "LiveChatTranscript"
       ],
       "removed": [],
       "reordered": false
@@ -2643,6 +1441,7 @@
     "obj": "Task",
     "field": "RecurrenceTimeZoneSidKey",
     "label": "Recurrence Time Zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2656,6 +1455,7 @@
     "obj": "User",
     "field": "TimeZoneSidKey",
     "label": "Time Zone",
+    "desc": "",
     "changes": [
      {
       "attr": "picklist",
@@ -2664,12 +1464,874 @@
       "reordered": true
      }
     ]
+   },
+   {
+    "obj": "WorkStep",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Case_Add_to_Incident",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Case_Add_to_Incident",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
    }
   ],
-  "addedCreatedInWindow": 34,
+  "addedCreatedInWindow": 68,
   "addedPreexisting": 0,
-  "addedUnknownCreated": 5
+  "addedUnknownCreated": 2
  },
- "prevDate": "2026-08-28",
- "genDate": "2026-10-08"
+ "xbu": {
+  "prevObjects": 562,
+  "curObjects": 571,
+  "prevFields": 15647,
+  "curFields": 15799,
+  "objAdded": [
+   "Calendly__CalendlyExternalEvent__c",
+   "Calendly__CalendlyMeetingRecap__c"
+  ],
+  "objRemoved": [
+   "beynd__BeyndAPIConfig__mdt",
+   "beynd__BeyndAPIMessage__c",
+   "beynd__BeyndMilestone__c",
+   "beynd__BeyndProject__c",
+   "beynd__BeyndSettings__c",
+   "beynd__BeyndTask__c",
+   "beynd__GuideCX_Project_Source__mdt"
+  ],
+  "churnAdded": [
+   "CaseRelatedIssue",
+   "ChangeRequest",
+   "ChangeRequestRelatedIssue",
+   "ChangeRequestRelatedItem",
+   "EntityMilestone",
+   "Incident",
+   "IncidentRelatedItem",
+   "LearningItem",
+   "LiveAgentSession",
+   "LiveChatTranscript",
+   "LiveChatVisitor",
+   "Problem",
+   "ProblemIncident",
+   "ProblemRelatedItem"
+  ],
+  "churnRemoved": [],
+  "fAdded": [
+   {
+    "obj": "Billing_Case_Request__c",
+    "field": "Create_Software_Lockout_Case__c",
+    "label": "Create Software Lockout Case",
+    "type": "boolean",
+    "desc": "Set by the Close Case form when the agent chose to create a Software Lockout (Product Support deactivation) case. Read by the billing-case creation flows so the deactivation case is created at the same time as the billing case.",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Billing_Case_Request__c",
+    "field": "Software_Deactivation_Case__c",
+    "label": "Software Deactivation Case",
+    "type": "reference",
+    "desc": "",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Billing_Case_Request__c",
+    "field": "Software_Deactivation_Creation_Date__c",
+    "label": "Software Deactivation Creation Date",
+    "type": "date",
+    "desc": "Scheduled creation date for the Software Deactivation (Product Support) case, captured on the Close Case form (Software Deactivation screen).",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Primary_Incident__c",
+    "label": "Incident",
+    "type": "reference",
+    "desc": "The Incident (bug) this Case is attached to. Set by the Case: Bug Tracking flow. Many Cases can point at one Incident. Gives Case formulas and the Zapier integration a single-hop path to the Dev ticket fields; the standard CaseRelatedIssue junction record is created alongside it for native Incident Management UI.",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Projected_Churn_Date__c",
+    "label": "Projected Churn Date",
+    "type": "date",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "New_Processor__c",
+    "label": "New Processor",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Case",
+    "field": "Original_Processor__c",
+    "label": "Original Processor",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-22",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Create_Type__c",
+    "label": "Case Create Type",
+    "type": "picklist",
+    "desc": "",
+    "created": "2026-10-21",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created_Case_Number__c",
+    "label": "Case Created Case Number",
+    "type": "string",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created_URL__c",
+    "label": "Case Created URL",
+    "type": "url",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Case_Created__c",
+    "label": "Case Created",
+    "type": "boolean",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "Health_Score__c",
+    "field": "Error_Messages__c",
+    "label": "Error Messages",
+    "type": "textarea",
+    "desc": "",
+    "created": "2026-10-31",
+    "newInWindow": true
+   },
+   {
+    "obj": "WorkPlan",
+    "field": "Description",
+    "label": "Description",
+    "type": "textarea",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlan",
+    "field": "WorkPlanTemplateId",
+    "label": "Work Plan Template ID",
+    "type": "reference",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlan",
+    "field": "ParentRecordId",
+    "label": "Parent Record ID",
+    "type": "reference",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlanTemplate",
+    "field": "IsActive",
+    "label": "Active",
+    "type": "boolean",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlanTemplate",
+    "field": "Description",
+    "label": "Description",
+    "type": "textarea",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlanTemplate",
+    "field": "RelativeExecutionOrder",
+    "label": "Relative Execution Order",
+    "type": "int",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkPlanTemplateEntry",
+    "field": "ExecutionOrder",
+    "label": "Execution Order",
+    "type": "int",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "Description",
+    "label": "Description",
+    "type": "textarea",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "WorkPlanExecutionOrder",
+    "label": "Work Plan Execution Order",
+    "type": "int",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "StartTime",
+    "label": "Start Time",
+    "type": "datetime",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "EndTime",
+    "label": "End Time",
+    "type": "datetime",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "PausedFlowInterviewId",
+    "label": "Paused Flow Interview ID",
+    "type": "reference",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "type": "picklist",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "ActionType",
+    "label": "Action Type",
+    "type": "picklist",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStep",
+    "field": "ParentRecordId",
+    "label": "Parent Record ID",
+    "type": "reference",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "IsActive",
+    "label": "Active",
+    "type": "boolean",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "Description",
+    "label": "Description",
+    "type": "textarea",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "type": "picklist",
+    "desc": "",
+    "created": null
+   },
+   {
+    "obj": "WorkStepTemplate",
+    "field": "ActionType",
+    "label": "Action Type",
+    "type": "picklist",
+    "desc": "",
+    "created": null
+   }
+  ],
+  "fRemoved": [
+   {
+    "obj": "Account",
+    "field": "GuideCx_Customer_Kickoff__c",
+    "label": "GuideCx Customer Kickoff",
+    "type": "date",
+    "desc": ""
+   },
+   {
+    "obj": "Account_Onboarding__c",
+    "field": "GuideCx_Project__c",
+    "label": "GuideCx Project",
+    "type": "reference",
+    "desc": ""
+   },
+   {
+    "obj": "Case",
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
+   },
+   {
+    "obj": "CommSubscriptionChannelType",
+    "field": "MessagingChannelId",
+    "label": "Messaging Channel ID",
+    "type": "reference",
+    "desc": ""
+   },
+   {
+    "obj": "CommSubscriptionChannelType",
+    "field": "MessagingChannelUsageId",
+    "label": "Messaging Channel Usage ID",
+    "type": "reference",
+    "desc": ""
+   },
+   {
+    "obj": "GCX_Milestones__c",
+    "field": "GuideCX_Milestone__c",
+    "label": "GuideCX Milestone",
+    "type": "reference",
+    "desc": ""
+   },
+   {
+    "obj": "Opportunity",
+    "field": "beynd__CreateBeyndProjectOnClosedWon__c",
+    "label": "Create GUIDEcx Project (Deprecated)",
+    "type": "boolean",
+    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version."
+   },
+   {
+    "obj": "Opportunity",
+    "field": "beynd__beyndProject__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer."
+   },
+   {
+    "obj": "Opportunity",
+    "field": "GuideCX_Unique_ID__c",
+    "label": "GuideCX Unique ID",
+    "type": "string",
+    "desc": ""
+   },
+   {
+    "obj": "Opportunity",
+    "field": "GuideCX_Project_Created__c",
+    "label": "GuideCX Project Created",
+    "type": "boolean",
+    "desc": ""
+   },
+   {
+    "obj": "Survey_Result__c",
+    "field": "GuideCX_Project__c",
+    "label": "GuideCX Project",
+    "type": "reference",
+    "desc": ""
+   }
+  ],
+  "fChanged": [
+   {
+    "obj": "Address",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Reason",
+    "label": "Case Reason",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "CX Flagged Outreach",
+       "Issue Resolution Follow-Up",
+       "Orientation - 100 Days",
+       "Software Account Deactivation"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Product_at_Risk__c",
+    "label": "Product at Risk",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Processor"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Products_Impacted__c",
+    "label": "Products Impacted",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Processor"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Case",
+    "field": "Account_Management_Sub_Reason__c",
+    "label": "Account Management Sub-Reason",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Abandoned Case",
+       "Negative Sentiment Score",
+       "Online Review Management",
+       "Reoccurring Issue",
+       "Resolved Case",
+       "Scheduled Check In",
+       "Sensitive Issue Follow-Up"
+      ],
+      "removed": [
+       "Low CSAT",
+       "Scheduled Follow Up"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "CommSubscriptionTiming",
+    "field": "PreferredTimeZone",
+    "label": "Preferred Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointAddress",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointEmail",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "ContactPointPhone",
+    "field": "BestTimeToContactTimezone",
+    "label": "Best time to contact time zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Event",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationInstance",
+    "field": "FlowDefinitionVersionName",
+    "label": "Flow Definition Version Name",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "runtime_service_incident_mgmt__CCOIO-1",
+       "runtime_service_incident_mgmt__CRRI-1"
+      ],
+      "removed": [
+       "setup_service_folmessaging__MSContact-1"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "FlowOrchestrationWorkItem",
+    "field": "ScreenFlow",
+    "label": "Screen Flow ID",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "runtime_service_incident_mgmt__CCOIO",
+       "runtime_service_incident_mgmt__CRRI"
+      ],
+      "removed": [
+       "setup_service_folmessaging__MSContact"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Location",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "Macro",
+    "field": "StartingContext",
+    "label": "Apply To",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Calendly__CalendlyExternalEvent__c",
+       "Calendly__CalendlyMeetingRecap__c",
+       "CaseRelatedIssue",
+       "ChangeRequest",
+       "ChangeRequestRelatedIssue",
+       "ChangeRequestRelatedItem",
+       "LiveAgentSession",
+       "LiveChatTranscript",
+       "Incident",
+       "IncidentRelatedItem",
+       "EntityMilestone",
+       "Problem",
+       "ProblemRelatedItem",
+       "ProblemIncident",
+       "ServiceRequestRelatedRecord"
+      ],
+      "removed": [
+       "beynd__BeyndAPIMessage__c",
+       "beynd__BeyndMilestone__c",
+       "beynd__BeyndProject__c",
+       "beynd__BeyndTask__c",
+       "MessagingSession",
+       "MessagingEndUser"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "OperatingHours",
+    "field": "TimeZone",
+    "label": "Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "FlowDefinition",
+    "label": "Flow Definition ID",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Billing_Contact_Reconcile_Weekly",
+       "Account_Case_Entitlement_on_Brand_Change",
+       "Activity_Clear_Opportunity_Stage_when_not_on_Opportunity",
+       "Billing_Contact_Reconcile_XBU",
+       "Calendly__CreateExternalEventTemplate",
+       "Calendly__UpdateEventMeetingNotesTemplate",
+       "Case_Add_to_Incident",
+       "Case_Product_Support_Transfer_Baseline_Owner",
+       "Case_Related_Issue_Count_Cases_on_Incident_Create",
+       "Case_Related_Issue_Count_Cases_on_Incident_Delete",
+       "Create_Software_Deactivation_Case_From_Request",
+       "Health_Score_Create_Low_Health_Score_Case",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update",
+       "Incident_Set_Record_Type_ICC",
+       "runtime_service_incident_mgmt__CCOIO",
+       "runtime_service_incident_mgmt__CRRI"
+      ],
+      "removed": [
+       "Case_Update_GuideCX_Project_EBT",
+       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU",
+       "GuideCX_Link_Payments_Onboarding_Case_to_GuideCX",
+       "GuideCX_Project_Close_At_Risk_Case",
+       "GuideCX_Project_Create_At_Risk_Case",
+       "GuideCX_Project_Send_Onboarding_Survey_Invitation",
+       "GuideCX_Project_Send_Post_Onboarding_Qualtrics_Survey",
+       "GuideCX_Project_Update_Done_Date_Field",
+       "GuideCX_Status_Cancelled",
+       "GuideCX_Status_Done",
+       "GuideCx_Update_Account_Go_Live_Date",
+       "GuideCX_Update_Case_EBT_when_Changed",
+       "GuideCX_Update_Project_Manager_Assigned_Date",
+       "Make_GuidCX_Tag_At_Risk_Notification",
+       "Opportunity_Add_GuideCx_Project",
+       "Opportunity_Create_GuideCX_Project",
+       "Opportunity_Send_Onboarding_Question",
+       "Opportunity_Update_GuideCX_EBT_Check",
+       "setup_service_folmessaging__MSContact",
+       "Update_GuideCx_Owner"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "RecordAction",
+    "field": "ActionDefinition",
+    "label": "Action Definition",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Account_Billing_Contact_Reconcile_Weekly",
+       "Account_Case_Entitlement_on_Brand_Change",
+       "Activity_Clear_Opportunity_Stage_when_not_on_Opportunity",
+       "Billing_Contact_Reconcile_XBU",
+       "Calendly__CreateExternalEventTemplate",
+       "Calendly__UpdateEventMeetingNotesTemplate",
+       "Case_Add_to_Incident",
+       "Case_Product_Support_Transfer_Baseline_Owner",
+       "Case_Related_Issue_Count_Cases_on_Incident_Create",
+       "Case_Related_Issue_Count_Cases_on_Incident_Delete",
+       "Create_Software_Deactivation_Case_From_Request",
+       "Health_Score_Create_Low_Health_Score_Case",
+       "Incident_Close_Related_Cases",
+       "Incident_Send_Customer_Update",
+       "Incident_Set_Record_Type_ICC",
+       "QuickActionDefinition.Case.Add_to_Incident",
+       "QuickActionDefinition.ChangeRequest._LightningUpdateChangeRequest",
+       "QuickActionDefinition.Incident._LightningUpdateIncident",
+       "QuickActionDefinition.Incident.Close_Related_Cases",
+       "QuickActionDefinition.Incident.Send_Customer_Update",
+       "QuickActionDefinition.LiveChatTranscript._LightningUpdateLiveChatTranscript",
+       "QuickActionDefinition.Problem._LightningUpdateProblem",
+       "runtime_service_incident_mgmt__CCOIO",
+       "runtime_service_incident_mgmt__CRRI"
+      ],
+      "removed": [
+       "Case_Update_GuideCX_Project_EBT",
+       "GuideCX_Auto_Create_Orientation_Cases_after_7_or_35_Days_Both_BU",
+       "GuideCX_Link_Payments_Onboarding_Case_to_GuideCX",
+       "GuideCX_Project_Close_At_Risk_Case",
+       "GuideCX_Project_Create_At_Risk_Case",
+       "GuideCX_Project_Send_Onboarding_Survey_Invitation",
+       "GuideCX_Project_Send_Post_Onboarding_Qualtrics_Survey",
+       "GuideCX_Project_Update_Done_Date_Field",
+       "GuideCX_Status_Cancelled",
+       "GuideCX_Status_Done",
+       "GuideCx_Update_Account_Go_Live_Date",
+       "GuideCX_Update_Case_EBT_when_Changed",
+       "GuideCX_Update_Project_Manager_Assigned_Date",
+       "Make_GuidCX_Tag_At_Risk_Notification",
+       "Opportunity_Add_GuideCx_Project",
+       "Opportunity_Create_GuideCX_Project",
+       "Opportunity_Send_Onboarding_Question",
+       "Opportunity_Update_GuideCX_EBT_Check",
+       "QuickActionDefinition.beynd__BeyndProject__c.GuideCX_Project_Details",
+       "setup_service_folmessaging__MSContact",
+       "Update_GuideCx_Owner"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "SurveySubject",
+    "field": "SubjectEntityType",
+    "label": "Related Object",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "Incident",
+       "LiveChatTranscript"
+      ],
+      "removed": [
+       "MessagingSession"
+      ],
+      "reordered": false
+     }
+    ]
+   },
+   {
+    "obj": "Task",
+    "field": "RecurrenceTimeZoneSidKey",
+    "label": "Recurrence Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "User",
+    "field": "TimeZoneSidKey",
+    "label": "Time Zone",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [],
+      "removed": [],
+      "reordered": true
+     }
+    ]
+   },
+   {
+    "obj": "WorkStep",
+    "field": "Status",
+    "label": "Status",
+    "desc": "",
+    "changes": [
+     {
+      "attr": "picklist",
+      "added": [
+       "New",
+       "In Progress",
+       "Paused",
+       "Completed",
+       "Not Applicable"
+      ],
+      "removed": [],
+      "reordered": false
+     }
+    ]
+   }
+  ],
+  "addedCreatedInWindow": 12,
+  "addedPreexisting": 0,
+  "addedUnknownCreated": 19
+ },
+ "prevDate": "2026-10-08",
+ "genDate": "2026-11-01"
 }
