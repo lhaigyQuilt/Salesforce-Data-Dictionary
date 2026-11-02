@@ -34,7 +34,8 @@
     "label": "Owner ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "Billing_Case_Request__c",
@@ -43,7 +44,8 @@
     "type": "boolean",
     "desc": "Set by the Close Case form when the agent chose to create a Software Lockout (Product Support deactivation) case. Read by the billing-case creation flows so the deactivation case is created at the same time as the billing case.",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Billing_Case_Request__c",
@@ -52,7 +54,8 @@
     "type": "reference",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Billing_Case_Request__c",
@@ -61,7 +64,8 @@
     "type": "date",
     "desc": "Scheduled creation date for the Software Deactivation (Product Support) case, captured on the Close Case form (Software Deactivation screen).",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -70,7 +74,8 @@
     "type": "reference",
     "desc": "The Incident (bug) this Case is attached to. Set by the Case: Bug Tracking flow. Many Cases can point at one Incident. Gives Case formulas and the Zapier integration a single-hop path to the Dev ticket fields; the standard CaseRelatedIssue junction record is created alongside it for native Incident Management UI.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -79,7 +84,8 @@
     "type": "date",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -88,7 +94,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -97,7 +104,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "CaseRelatedIssue",
@@ -106,7 +114,8 @@
     "type": "string",
     "desc": "Brand of the linked case's account (Account.Brand__c), so it can be shown in the Case Related Issues related list on Incident.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "CaseRelatedIssue",
@@ -115,7 +124,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Surfaces Case.Total_Emails_Sent__c onto the junction so DLRS can SUM it up to the Incident. DLRS aggregates a field on the child record, and cannot traverse CaseRelatedIssue to the Case itself - this formula is that bridge.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "CaseRelatedIssue",
@@ -124,7 +134,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Surfaces Case.Total_Outbound_Calls__c onto the junction so DLRS can SUM it up to the Incident. DLRS aggregates a field on the child record, and cannot traverse CaseRelatedIssue to the Case itself - this formula is that bridge.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Health_Score__c",
@@ -133,7 +144,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -142,7 +154,8 @@
     "type": "string",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -151,7 +164,8 @@
     "type": "url",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -160,7 +174,8 @@
     "type": "boolean",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -169,7 +184,8 @@
     "type": "textarea",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Incident",
@@ -177,7 +193,8 @@
     "label": "Record Type ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "Incident",
@@ -186,7 +203,8 @@
     "type": "double",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -195,7 +213,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Brand of the reporting store, pre-filled by the Case: Bug Tracking flow from Case.Case_Brand__c. Uses the same Brands global value set as the Case field, so any value valid on the Case is valid here.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -204,7 +223,8 @@
     "type": "textarea",
     "desc": "Field is populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -213,7 +233,8 @@
     "type": "textarea",
     "desc": "Populated by ICC via API",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -222,7 +243,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Count of Cases attached to this Incident via the CaseRelatedIssue junction, maintained by a DLRS rollup. Deliberately NOT the pre-existing Related_Case_Count__c, which belongs to the ICC process and is FLS-restricted to the ICC permission sets.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -231,7 +253,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Plain number field with no calculation behind it - intended to be populated by AI scoring at a later date. Not on the screen flow.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -240,7 +263,8 @@
     "type": "textarea",
     "desc": "Verbatim console error output for the bug. Captured on the Case: Bug Tracking flow. Placeholder answers such as \"See Video\" are explicitly discouraged in the help text.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -249,7 +273,8 @@
     "type": "double",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -258,7 +283,8 @@
     "type": "string",
     "desc": "ID of the bug in the Dev System (Jira / Shortcut / Azure). Written back by the Zapier integration. Unique + External ID to enforce the 1:1 relationship between a Dev System bug and a Salesforce Incident.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -267,7 +293,8 @@
     "type": "url",
     "desc": "Raw URL of the bug in the Dev System. Written back by the Zapier integration. Dev Ticket URL renders this as a hyperlink labelled with the Dev Ticket ID.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -276,7 +303,8 @@
     "type": "url",
     "desc": "Bug Tracker Phase 2. URL captured on the Case: Bug Tracking flow. Distinct from Dev Ticket Link, which is the Zapier-written link to the ticket in the Dev System.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -285,7 +313,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -294,7 +323,8 @@
     "type": "textarea",
     "desc": "Example data that demonstrates the bug - links to pages showing the problem, product IDs, RTO numbers, etc. Captured on the Case: Bug Tracking flow.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -303,7 +333,8 @@
     "type": "textarea",
     "desc": "used for ICC incidents only",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -312,7 +343,8 @@
     "type": "datetime",
     "desc": "Populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -321,7 +353,8 @@
     "type": "textarea",
     "desc": "This field is populated by ICC \nExample:  inc-002",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -330,7 +363,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -339,7 +373,8 @@
     "type": "picklist",
     "desc": "Handshake flag for the Zapier middleware. The Case: Bug Tracking flow sets this to Pending on newly created bug Incidents; Zapier picks those up, creates the Dev System ticket, then stamps Dev Ticket ID / Dev Ticket Link and sets this to Sent.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -348,7 +383,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -357,7 +393,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -366,7 +403,8 @@
     "type": "picklist",
     "desc": "Whether the bug is reproducible. Captured on the Case: Bug Tracking flow and mirrored from Case.Is_Reproducible__c.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -375,7 +413,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -384,7 +423,8 @@
     "type": "double",
     "desc": "Number of times a client has called about this bug. Manual entry only - no automation or formula.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -393,7 +433,8 @@
     "type": "string",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -402,7 +443,8 @@
     "type": "string",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -411,7 +453,8 @@
     "type": "url",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -420,7 +463,8 @@
     "type": "textarea",
     "desc": "Populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -429,7 +473,8 @@
     "type": "picklist",
     "desc": "Bug Tracker Phase 2. Captured on the Case: Bug Tracking flow. One of the bug-impact questions used to triage severity.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -438,7 +483,8 @@
     "type": "url",
     "desc": "ICC Record URL or JIRA URL",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -447,7 +493,8 @@
     "type": "multipicklist",
     "desc": "Products impacted by this bug. Captured on the Case: Bug Tracking flow and mirrored from Case.Products_Impacted__c. Values kept in sync with the Case picklist.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -456,7 +503,8 @@
     "type": "double",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -465,7 +513,8 @@
     "type": "currency",
     "desc": "Sum of the most recent successful Recurly purchase amount across the distinct accounts of the cases linked to this incident. Recalculated when a case is linked or unlinked.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -474,7 +523,8 @@
     "type": "currency",
     "desc": "Sum of Residuals - Avg Residual across the distinct accounts of the cases linked to this incident. Recalculated when a case is linked or unlinked.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -483,7 +533,8 @@
     "type": "picklist",
     "desc": "Where the reporting tech was able to reproduce the bug - on an internal Test Site or only on the Customer Site. Captured on the Case: Bug Tracking flow.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -492,7 +543,8 @@
     "type": "double",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -501,7 +553,8 @@
     "type": "textarea",
     "desc": "Populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -510,7 +563,8 @@
     "type": "textarea",
     "desc": "Links to screenshots of the bug, one URL per line. Long Text Area rather than a URL field so many links fit; images are hosted outside Salesforce to avoid file storage consumption.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -519,7 +573,8 @@
     "type": "textarea",
     "desc": "Field is populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -528,7 +583,8 @@
     "type": "string",
     "desc": "Software version the bug was observed on. Captured on the Case: Bug Tracking flow and mirrored from Case.Software_Version__c.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -537,7 +593,8 @@
     "type": "picklist",
     "desc": "Dev Ticket status synchronised hourly from the Dev System by the Zapier integration. Only synced while the related Case Status is not Closed. Does not drive Case Status.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -546,7 +603,8 @@
     "type": "textarea",
     "desc": "Populated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -555,7 +613,8 @@
     "type": "textarea",
     "desc": "Numbered steps a developer can follow to reproduce the bug. Captured on the Case: Bug Tracking flow.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -564,7 +623,8 @@
     "type": "reference",
     "desc": "The store (Account) that first reported this bug, stamped by the Case: Bug Tracking flow from the originating Case's Account. One Incident can affect many stores - the full list is the Cases attached via CaseRelatedIssue. This field records the reporter only.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -573,7 +633,8 @@
     "type": "picklist",
     "desc": "Whether a suitable workaround exists. Captured on the Case: Bug Tracking flow and mirrored from Case.Suitable_Workaround_Available__c.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -582,7 +643,8 @@
     "type": "textarea",
     "desc": "Field is updated via API from ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -591,7 +653,8 @@
     "type": "reference",
     "desc": "The support tech who reported the bug. Stamped by the Case: Bug Tracking flow from the running user, so it survives Incident ownership changes and is not the same as Created By once records are transferred.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -600,7 +663,8 @@
     "type": "textarea",
     "desc": "Area of the system where the bug shows up (screen, module, report, integration, etc.). Captured on the Case: Bug Tracking flow.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -609,7 +673,8 @@
     "type": "textarea",
     "desc": "Populated by ICC",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -618,7 +683,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Sum of Case.Total_Emails_Sent__c across the Cases attached to this Incident. The Case-level figure is already maintained by the existing Case email-count flow, so this is a second-level sum rather than a Task rollup.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -627,7 +693,8 @@
     "type": "double",
     "desc": "Bug Tracker Phase 2. Sum of Case.Total_Outbound_Calls__c across the Cases attached to this Incident. The Case-level figure is already maintained by the existing Case call-count flow, so this is a second-level sum rather than a Task rollup.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -636,7 +703,8 @@
     "type": "boolean",
     "desc": "Bug Tracker Phase 2. Pre-filled by the Case: Bug Tracking flow at Incident creation from the reporting Account's support contract. Left editable on purpose so it can be corrected; it is a snapshot, not a live formula.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -645,7 +713,8 @@
     "type": "textarea",
     "desc": "Links to screen recordings of the bug, one URL per line. Long Text Area rather than a URL field so more than one recording fits; video is hosted outside Salesforce to avoid file storage consumption.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Incident",
@@ -654,7 +723,8 @@
     "type": "string",
     "desc": "Displays the Dev Ticket ID as a clickable hyperlink to the bug in the Dev System.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    }
   ],
   "fRemoved": [
@@ -663,49 +733,63 @@
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "Opportunity",
     "field": "GuideCX_Project_Created__c",
     "label": "GuideCX Project Created",
     "type": "boolean",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-23"
    },
    {
     "obj": "Opportunity",
     "field": "beynd__CreateBeyndProjectOnClosedWon__c",
     "label": "Create GUIDEcx Project (Deprecated)",
     "type": "boolean",
-    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version."
+    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version.",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-26"
    },
    {
     "obj": "Opportunity",
     "field": "beynd__beyndProject__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer."
+    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer.",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "POS_Software__c",
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-22"
    },
    {
     "obj": "Survey_Result__c",
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "SurveyInvitation",
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    }
   ],
   "fChanged": [
@@ -721,7 +805,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "AgentWork",
@@ -738,7 +825,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ApprovalSubmissionDetail",
@@ -754,7 +844,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "AsyncOperationTracker",
@@ -782,7 +875,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "AsyncOperationTracker",
@@ -810,7 +906,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "AuthorizationFormConsent",
@@ -826,7 +925,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "CalculationProcedureStep",
@@ -843,7 +945,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Case",
@@ -862,7 +967,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "Case",
@@ -878,7 +986,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "Case",
@@ -894,7 +1005,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": true
    },
    {
     "obj": "Case",
@@ -919,7 +1033,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "ContactPointAddress",
@@ -933,7 +1050,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ContactPointEmail",
@@ -947,7 +1067,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ContactPointPhone",
@@ -961,7 +1084,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Event",
@@ -975,7 +1101,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ExpressionSet",
@@ -995,7 +1124,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationInstance",
@@ -1013,7 +1145,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationInstance",
@@ -1035,7 +1170,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationLog",
@@ -1051,7 +1189,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationWorkItem",
@@ -1073,7 +1214,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationWorkItem",
@@ -1091,7 +1235,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Incident",
@@ -1108,7 +1255,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Incident",
@@ -1126,7 +1276,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Incident",
@@ -1155,7 +1308,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Macro",
@@ -1198,7 +1354,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "MessagingEndUser",
@@ -1216,7 +1375,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "MessagingSession",
@@ -1234,7 +1396,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "OperatingHours",
@@ -1248,7 +1413,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ProcessException",
@@ -1264,7 +1432,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "RecordAction",
@@ -1325,7 +1496,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "RecordAction",
@@ -1391,7 +1565,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "RevenueAsyncOperation",
@@ -1419,7 +1596,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "SurveySubject",
@@ -1435,7 +1615,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Task",
@@ -1449,7 +1632,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "User",
@@ -1463,7 +1649,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "WorkStep",
@@ -1481,7 +1670,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "WorkStepTemplate",
@@ -1499,7 +1691,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    }
   ],
   "addedCreatedInWindow": 68,
@@ -1549,7 +1744,8 @@
     "type": "boolean",
     "desc": "Set by the Close Case form when the agent chose to create a Software Lockout (Product Support deactivation) case. Read by the billing-case creation flows so the deactivation case is created at the same time as the billing case.",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Billing_Case_Request__c",
@@ -1558,7 +1754,8 @@
     "type": "reference",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Billing_Case_Request__c",
@@ -1567,7 +1764,8 @@
     "type": "date",
     "desc": "Scheduled creation date for the Software Deactivation (Product Support) case, captured on the Close Case form (Software Deactivation screen).",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -1576,7 +1774,8 @@
     "type": "reference",
     "desc": "The Incident (bug) this Case is attached to. Set by the Case: Bug Tracking flow. Many Cases can point at one Incident. Gives Case formulas and the Zapier integration a single-hop path to the Dev ticket fields; the standard CaseRelatedIssue junction record is created alongside it for native Incident Management UI.",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -1585,7 +1784,8 @@
     "type": "date",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -1594,7 +1794,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Case",
@@ -1603,7 +1804,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-22",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Lisa Haigy"
    },
    {
     "obj": "Health_Score__c",
@@ -1612,7 +1814,8 @@
     "type": "picklist",
     "desc": "",
     "created": "2026-10-21",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -1621,7 +1824,8 @@
     "type": "string",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -1630,7 +1834,8 @@
     "type": "url",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -1639,7 +1844,8 @@
     "type": "boolean",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "Health_Score__c",
@@ -1648,7 +1854,8 @@
     "type": "textarea",
     "desc": "",
     "created": "2026-10-31",
-    "newInWindow": true
+    "newInWindow": true,
+    "createdBy": "Neil Buen"
    },
    {
     "obj": "WorkPlan",
@@ -1656,7 +1863,8 @@
     "label": "Description",
     "type": "textarea",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlan",
@@ -1664,7 +1872,8 @@
     "label": "Work Plan Template ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlan",
@@ -1672,7 +1881,8 @@
     "label": "Parent Record ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlanTemplate",
@@ -1680,7 +1890,8 @@
     "label": "Active",
     "type": "boolean",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlanTemplate",
@@ -1688,7 +1899,8 @@
     "label": "Description",
     "type": "textarea",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlanTemplate",
@@ -1696,7 +1908,8 @@
     "label": "Relative Execution Order",
     "type": "int",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkPlanTemplateEntry",
@@ -1704,7 +1917,8 @@
     "label": "Execution Order",
     "type": "int",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1712,7 +1926,8 @@
     "label": "Description",
     "type": "textarea",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1720,7 +1935,8 @@
     "label": "Work Plan Execution Order",
     "type": "int",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1728,7 +1944,8 @@
     "label": "Start Time",
     "type": "datetime",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1736,7 +1953,8 @@
     "label": "End Time",
     "type": "datetime",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1744,7 +1962,8 @@
     "label": "Paused Flow Interview ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1752,7 +1971,8 @@
     "label": "Action Definition",
     "type": "picklist",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1760,7 +1980,8 @@
     "label": "Action Type",
     "type": "picklist",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStep",
@@ -1768,7 +1989,8 @@
     "label": "Parent Record ID",
     "type": "reference",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStepTemplate",
@@ -1776,7 +1998,8 @@
     "label": "Active",
     "type": "boolean",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStepTemplate",
@@ -1784,7 +2007,8 @@
     "label": "Description",
     "type": "textarea",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStepTemplate",
@@ -1792,7 +2016,8 @@
     "label": "Action Definition",
     "type": "picklist",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    },
    {
     "obj": "WorkStepTemplate",
@@ -1800,7 +2025,8 @@
     "label": "Action Type",
     "type": "picklist",
     "desc": "",
-    "created": null
+    "created": null,
+    "createdBy": null
    }
   ],
   "fRemoved": [
@@ -1809,77 +2035,99 @@
     "field": "GuideCx_Customer_Kickoff__c",
     "label": "GuideCx Customer Kickoff",
     "type": "date",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-26"
    },
    {
     "obj": "Account_Onboarding__c",
     "field": "GuideCx_Project__c",
     "label": "GuideCx Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "Case",
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "CommSubscriptionChannelType",
     "field": "MessagingChannelId",
     "label": "Messaging Channel ID",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "CommSubscriptionChannelType",
     "field": "MessagingChannelUsageId",
     "label": "Messaging Channel Usage ID",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "GCX_Milestones__c",
     "field": "GuideCX_Milestone__c",
     "label": "GuideCX Milestone",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-23"
    },
    {
     "obj": "Opportunity",
     "field": "beynd__CreateBeyndProjectOnClosedWon__c",
     "label": "Create GUIDEcx Project (Deprecated)",
     "type": "boolean",
-    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version."
+    "desc": "This is a deprecated field and can be ignored. It's kept here to prevent data loss from earlier versions of the GUIDEcx managed package but will be removed in a future version.",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-27"
    },
    {
     "obj": "Opportunity",
     "field": "beynd__beyndProject__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer."
+    "desc": "This field is no longer used by the GUIDEcx managed package and will be removed in a future version. It's retained for now to prevent data loss but should not be used any longer.",
+    "removedBy": null,
+    "removedDate": null
    },
    {
     "obj": "Opportunity",
     "field": "GuideCX_Unique_ID__c",
     "label": "GuideCX Unique ID",
     "type": "string",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-23"
    },
    {
     "obj": "Opportunity",
     "field": "GuideCX_Project_Created__c",
     "label": "GuideCX Project Created",
     "type": "boolean",
-    "desc": ""
+    "desc": "",
+    "removedBy": "Lisa Haigy",
+    "removedDate": "2026-10-26"
    },
    {
     "obj": "Survey_Result__c",
     "field": "GuideCX_Project__c",
     "label": "GuideCX Project",
     "type": "reference",
-    "desc": ""
+    "desc": "",
+    "removedBy": null,
+    "removedDate": null
    }
   ],
   "fChanged": [
@@ -1895,7 +2143,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Case",
@@ -1914,7 +2165,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "Case",
@@ -1930,7 +2184,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "Case",
@@ -1946,7 +2203,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": true
    },
    {
     "obj": "Case",
@@ -1971,7 +2231,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": "Lisa Haigy",
+    "changedDate": "2026-10-22",
+    "changedByApprox": false
    },
    {
     "obj": "CommSubscriptionTiming",
@@ -1985,7 +2248,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ContactPointAddress",
@@ -1999,7 +2265,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ContactPointEmail",
@@ -2013,7 +2282,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "ContactPointPhone",
@@ -2027,7 +2299,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Event",
@@ -2041,7 +2316,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationInstance",
@@ -2060,7 +2338,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "FlowOrchestrationWorkItem",
@@ -2079,7 +2360,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Location",
@@ -2093,7 +2377,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Macro",
@@ -2130,7 +2417,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "OperatingHours",
@@ -2144,7 +2434,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "RecordAction",
@@ -2197,7 +2490,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "RecordAction",
@@ -2258,7 +2554,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "SurveySubject",
@@ -2277,7 +2576,10 @@
       ],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "Task",
@@ -2291,7 +2593,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "User",
@@ -2305,7 +2610,10 @@
       "removed": [],
       "reordered": true
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    },
    {
     "obj": "WorkStep",
@@ -2325,7 +2633,10 @@
       "removed": [],
       "reordered": false
      }
-    ]
+    ],
+    "changedBy": null,
+    "changedDate": null,
+    "changedByApprox": true
    }
   ],
   "addedCreatedInWindow": 12,

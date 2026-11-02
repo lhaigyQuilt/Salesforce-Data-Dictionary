@@ -114,15 +114,31 @@ const createdOn = r => {
   const ds = [...new Set(r.orgs.map(id => r.byOrg[id].created).filter(Boolean))];
   return ds.length ? 'created ' + ds.map(niceDate).join(' / ') : '';
 };
+// "by X" chip for who made a change. approxKey, when given, softens the claim when
+// there was no exact Setup Audit Trail match and we fell back to the field's last
+// metadata editor (who may not be who made this specific change).
+const whoChip = (r, byKey, approxKey) => {
+  const whos = [...new Set(r.orgs.map(id => r.byOrg[id][byKey]).filter(Boolean))];
+  if (!whos.length) return '';
+  const approx = approxKey && r.orgs.some(id => r.byOrg[id][approxKey]);
+  return '<span class="cwho"' + (approx
+      ? ' title="No exact Setup Audit Trail match in the diff window — showing the last person to edit this field’s metadata, who may not be who made this specific change.">'
+      : '>') + 'by ' + esc(whos.join(' / ')) + (approx ? ' <i>(approx.)</i>' : '') + '</span>';
+};
 const newHTML = newF.length
   ? byObject(newF, r => li(r, fieldHead(r, friendlyType(r.type, snapField(r))) +
-      '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + viewBtn(r) + descOf(r)))
+      '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + whoChip(r, 'createdBy') + viewBtn(r) + descOf(r)))
   : '<p class="cnone">No new fields were created.</p>';
 
 const removed = merge('fRemoved');
 const prevField = r => PREVSNAP[r.orgs[0]].get(r.obj + '.' + r.field);
+const removedOn = r => {
+  const ds = [...new Set(r.orgs.map(id => r.byOrg[id].removedDate).filter(Boolean))];
+  return ds.length ? 'deleted ' + ds.map(niceDate).join(' / ') : '';
+};
 const remHTML = removed.length
-  ? byObject(removed, r => li(r, fieldHead(r, friendlyType(r.type, prevField(r))) + descOf(r)))
+  ? byObject(removed, r => li(r, fieldHead(r, friendlyType(r.type, prevField(r))) +
+      '<span class="cwhen">' + esc(removedOn(r)) + '</span>' + whoChip(r, 'removedBy') + descOf(r)))
   : '<p class="cnone">No fields were deleted.</p>';
 
 function changeText(c) {
@@ -150,7 +166,8 @@ const chgHTML = changed.length
       const detail = same
         ? '<div class="corg">' + r.byOrg[r.orgs[0]].changes.map(changeText).join('') + '</div>'
         : r.orgs.map(id => '<div class="corg">' + orgBadge([id]) + r.byOrg[id].changes.map(changeText).join('') + '</div>').join('');
-      return li(r, fieldHead(r, friendlyType(snapField(r) ? snapField(r).type : '', snapField(r))) + viewBtn(r) + descOf(r) + detail);
+      return li(r, fieldHead(r, friendlyType(snapField(r) ? snapField(r).type : '', snapField(r))) +
+        whoChip(r, 'changedBy', 'changedByApprox') + viewBtn(r) + descOf(r) + detail);
     })
   : '<p class="cnone">No existing fields were changed.</p>';
 
@@ -172,7 +189,7 @@ const visHTML = visibleF.length
     '<p>These fields already existed in Salesforce before ' + esc(niceDate(PREV)) + ', but the previous scan could not see them ' +
     '(usually because of field-level security on the account that runs the scan). Nothing about them changed in Salesforce, ' +
     'so they are not counted as new above.</p>' +
-    byObject(visibleF, r => li(r, fieldHead(r, friendlyType(r.type, snapField(r))) + '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + descOf(r))) +
+    byObject(visibleF, r => li(r, fieldHead(r, friendlyType(r.type, snapField(r))) + '<span class="cwhen">' + esc(createdOn(r)) + '</span>' + whoChip(r, 'createdBy') + descOf(r))) +
     NOMATCH + '</details>'
   : '';
 
@@ -457,6 +474,8 @@ ul.clist .orgtag{color:var(--surface)}
 .capi{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 .cty{font-size:11.5px;color:var(--ink2);border:1px solid var(--line);border-radius:6px;padding:0 7px}
 .cwhen{font-size:12px;color:var(--muted)}
+.cwho{font-size:12px;color:var(--muted)}
+.cwho i{font-style:normal;color:var(--faint)}
 .cview{margin-left:auto;border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent-ink);border-radius:7px;
   padding:3px 11px;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600}
 .cview:hover{background:var(--accent);color:var(--surface)}
